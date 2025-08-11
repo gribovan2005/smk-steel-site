@@ -1,6 +1,6 @@
 import { google } from "googleapis";
 
-export type LeadRow = [string, string, string, string, string, string?];
+export type LeadRow = string[];
 
 function parseCredentials(): { client_email?: string; private_key?: string } | null {
   const b64 = process.env.GOOGLE_SHEETS_CREDENTIALS_BASE64;
@@ -83,7 +83,7 @@ export async function setupLeadsSheet(): Promise<void> {
     range: `${tab}!A1:F1`,
     valueInputOption: "RAW",
     requestBody: {
-      values: [["Дата", "Имя", "Телефон", "Email", "Сообщение", "Файл"]],
+      values: [["Дата", "Имя", "Телефон", "Email", "Сообщение", "Файл 1", "Файл 2", "Файл 3"]],
     },
   });
 
@@ -101,9 +101,9 @@ export async function setupLeadsSheet(): Promise<void> {
         {
           addBanding: {
             bandedRange: {
-              range: { sheetId: gid, startRowIndex: 0, startColumnIndex: 0, endColumnIndex: 6 },
+              range: { sheetId: gid, startRowIndex: 0, startColumnIndex: 0, endColumnIndex: 8 },
               rowProperties: {
-                headerColor: { red: 1, green: 0.75, blue: 0.2 },
+                headerColor: { red: 0.1, green: 0.1, blue: 0.1 },
                 firstBandColor: { red: 0.98, green: 0.98, blue: 0.98 },
                 secondBandColor: { red: 0.93, green: 0.93, blue: 0.93 },
               },
@@ -112,12 +112,12 @@ export async function setupLeadsSheet(): Promise<void> {
         },
         {
           autoResizeDimensions: {
-            dimensions: { sheetId: gid, dimension: "COLUMNS", startIndex: 0, endIndex: 6 },
+            dimensions: { sheetId: gid, dimension: "COLUMNS", startIndex: 0, endIndex: 8 },
           },
         },
         {
           setBasicFilter: {
-            filter: { range: { sheetId: gid, startRowIndex: 0, startColumnIndex: 0, endColumnIndex: 6 } },
+            filter: { range: { sheetId: gid, startRowIndex: 0, startColumnIndex: 0, endColumnIndex: 8 } },
           },
         },
       ],

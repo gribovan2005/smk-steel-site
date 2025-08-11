@@ -12,7 +12,7 @@ const leadSchema = z.object({
   message: z.string().trim().max(1000).optional(),
 });
 
-async function sendTelegram(text: string) {
+async function sendTelegramHTML(html: string) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chatId) return;
@@ -20,7 +20,7 @@ async function sendTelegram(text: string) {
   await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text, parse_mode: "HTML" }),
+    body: JSON.stringify({ chat_id: chatId, text: html, parse_mode: "HTML" }),
   });
 }
 
@@ -92,14 +92,12 @@ export async function POST(req: Request) {
       };
       const data = leadSchema.parse(raw);
 
-      // Collect single and multiple files
       const files: File[] = [];
       const single = form.get("file");
       if (single instanceof File && single.size > 0) files.push(single);
       const many = form.getAll("files");
       for (const f of many) if (f instanceof File && f.size > 0) files.push(f);
 
-      // Upload and collect links
       const uploadedUrls: string[] = [];
       const filenames: string[] = [];
       let emailAttachment: { filename: string; content: Buffer; contentType?: string } | undefined;
@@ -119,7 +117,6 @@ export async function POST(req: Request) {
         }
       }
 
-      const subject = `Новая заявка с сайта СМК Сталь`;
       const lines: string[] = [
         `Имя: ${data.name || "—"}`,
         `Телефон: ${data.phone}`,
@@ -134,15 +131,22 @@ export async function POST(req: Request) {
       lines.push(`Время: ${new Date().toLocaleString("ru-RU")}`);
 
       const text = lines.join("\n");
-      const html = text.replaceAll("\n", "<br/>");
 
-      const sheetCell = uploadedUrls[0]
-        ? `=HYPERLINK("${uploadedUrls[0]}";"Скачать")`
-        : (filenames[0] || "");
+      // Telegram clickable anchors
+      const htmlTelegram = uploadedUrls.length
+        ? `${lines.slice(0, 4).join("<br/>")}<br/>Ссылки:<br/>${uploadedUrls
+            .map((u, i) => `${i + 1}) <a href=\"${u}\">Скачать</a>`) 
+            .join("<br/>")}<br/>${lines[lines.length - 1]}`
+        : text.replaceAll("\n", "<br/>");
+
+      const htmlEmail = text.replaceAll("\n", "<br/>");
+
+      // Up to 3 links into separate columns
+      const sheetLinks = [0, 1, 2].map((i) => (uploadedUrls[i] ? `=HYPERLINK("${uploadedUrls[i]}";"Скачать")` : ""));
 
       await Promise.all([
-        sendEmail(subject, html, emailAttachment).catch(() => {}),
-        sendTelegram(text).catch(() => {}),
+        sendEmail("Новая заявка с сайта СМК Сталь", htmlEmail, emailAttachment).catch(() => {}),
+        sendTelegramHTML(htmlTelegram).catch(() => {}),
         sendWhatsApp(text).catch(() => {}),
         appendLeadToSheet([
           new Date().toISOString(),
@@ -150,7 +154,7 @@ export async function POST(req: Request) {
           data.phone,
           data.email || "",
           data.message || "",
-          sheetCell,
+          ...sheetLinks,
         ]),
         insertOrder({
           customer_name: data.name || null,
@@ -169,7 +173,6 @@ export async function POST(req: Request) {
     const json = await req.json();
     const data = leadSchema.parse(json);
 
-    const subject = `Новая заявка с сайта СМК Сталь`;
     const text = [
       `Имя: ${data.name || "—"}`,
       `Телефон: ${data.phone}`,
@@ -177,11 +180,11 @@ export async function POST(req: Request) {
       `Комментарий: ${data.message || "—"}`,
       `Время: ${new Date().toLocaleString("ru-RU")}`,
     ].join("\n");
-    const html = text.replaceAll("\n", "<br/>");
+    const htmlEmail = text.replaceAll("\n", "<br/>");
 
     await Promise.all([
-      sendEmail(subject, html).catch(() => {}),
-      sendTelegram(text).catch(() => {}),
+      sendEmail("Новая заявка с сайта СМК Сталь", htmlEmail).catch(() => {}),
+      sendTelegramHTML(htmlEmail).catch(() => {}),
       sendWhatsApp(text).catch(() => {}),
       appendLeadToSheet([
         new Date().toISOString(),
