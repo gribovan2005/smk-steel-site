@@ -1,66 +1,45 @@
 import Link from "next/link";
-import { listOrders } from "@/lib/db";
+import Image from "next/image";
+import { publicOrders } from "@/data/orders";
 
-export default async function OrdersPage() {
-  let orders: Array<{
-    id: string;
-    created_at: string;
-    customer_name: string | null;
-    phone: string;
-    email: string | null;
-    message: string | null;
-    attachment_filename: string | null;
-    attachment_url: string | null;
-    status: string;
-  }> = [];
-  try {
-    orders = await listOrders(50);
-  } catch {
-    // Fallback placeholder when DB not configured
-    orders = [
-      {
-        id: "ORD-001",
-        created_at: new Date().toISOString(),
-        customer_name: "ООО Ромашка",
-        phone: "+7 (900) 000-00-00",
-        email: "info@example.com",
-        message: "Изготовление металлокаркаса склада",
-        attachment_filename: null,
-        attachment_url: null,
-        status: "new",
-      },
-    ];
-  }
-
+export default function OrdersPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <header className="border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-          <h1 className="text-xl font-bold">Заказы</h1>
+          <h1 className="text-xl font-bold">Наши заказы</h1>
           <Link href="/" className="text-orange-600 hover:text-orange-700">На главную</Link>
         </div>
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-8">
         <div className="grid gap-6">
-          {orders.map((o) => (
+          {publicOrders.map((o) => (
             <div key={o.id} className="rounded-xl border p-6">
-              <div className="flex items-center justify-between gap-4 flex-wrap">
+              <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
-                  <p className="text-sm text-gray-500">{new Date(o.created_at).toLocaleString("ru-RU")}</p>
-                  <p className="text-lg font-semibold">{o.customer_name || "Без имени"}</p>
-                  <p className="text-sm text-gray-600">{o.phone} {o.email ? `· ${o.email}` : ""}</p>
+                  <p className="text-sm text-gray-500">{new Date(o.createdAt).toLocaleString("ru-RU")}{o.location ? ` · ${o.location}` : ""}</p>
+                  <p className="text-lg font-semibold">{o.title}</p>
+                  {o.clientName ? <p className="text-sm text-gray-600">Заказчик: {o.clientName}</p> : null}
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className={`text-xs px-2 py-1 rounded-full border ${o.status === 'done' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-yellow-50 text-yellow-700 border-yellow-200'}`}>{o.status === 'done' ? 'Выполнен' : 'Новый'}</span>
-                  {o.attachment_url ? (
-                    <a className="text-sm text-orange-600 hover:text-orange-700" href={o.attachment_url} target="_blank" rel="noreferrer">Скачать файл</a>
-                  ) : o.attachment_filename ? (
-                    <span className="text-sm text-gray-500">Файл: {o.attachment_filename}</span>
-                  ) : null}
-                </div>
+                {o.tags && o.tags.length ? (
+                  <div className="flex flex-wrap gap-2">
+                    {o.tags.map((t) => (
+                      <span key={t} className="text-xs px-2 py-1 rounded-full border bg-gray-50 text-gray-700 border-gray-200">{t}</span>
+                    ))}
+                  </div>
+                ) : null}
               </div>
-              {o.message ? <p className="mt-3">{o.message}</p> : null}
+              {o.description ? <p className="mt-3">{o.description}</p> : null}
+              {o.images?.length ? (
+                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {o.images.map((src, idx) => (
+                    <div key={idx} className="relative h-32 w-full overflow-hidden rounded-lg border">
+                      <Image src={src} alt={`${o.title} фото ${idx + 1}`} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
+                    </div>
+                  ))}
+                </div>
+              ) : null}
             </div>
           ))}
         </div>
