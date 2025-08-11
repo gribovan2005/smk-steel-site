@@ -9,6 +9,8 @@ export type OrderRow = {
   email: string | null;
   message: string | null;
   attachment_filename: string | null;
+  attachment_url: string | null;
+  status: string; // e.g., 'new' | 'done'
 };
 
 export async function ensureSchema() {
@@ -23,6 +25,9 @@ export async function ensureSchema() {
       attachment_filename text
     );
   `;
+  // New columns for evolving schema
+  await sql`alter table orders add column if not exists status text not null default 'new';`;
+  await sql`alter table orders add column if not exists attachment_url text;`;
 }
 
 export async function insertOrder(input: {
@@ -31,17 +36,23 @@ export async function insertOrder(input: {
   email?: string | null;
   message?: string | null;
   attachment_filename?: string | null;
+  attachment_url?: string | null;
 }) {
   await ensureSchema();
   const id = randomUUID();
   await sql`
-    insert into orders (id, customer_name, phone, email, message, attachment_filename)
-    values (${id}, ${input.customer_name || null}, ${input.phone}, ${input.email || null}, ${input.message || null}, ${input.attachment_filename || null})
+    insert into orders (id, customer_name, phone, email, message, attachment_filename, attachment_url)
+    values (${id}, ${input.customer_name || null}, ${input.phone}, ${input.email || null}, ${input.message || null}, ${input.attachment_filename || null}, ${input.attachment_url || null})
   `;
+}
+
+export async function updateOrderStatus(id: string, status: 'new' | 'done') {
+  await ensureSchema();
+  await sql`update orders set status = ${status} where id = ${id}`;
 }
 
 export async function listOrders(limit = 50): Promise<OrderRow[]> {
   await ensureSchema();
-  const { rows } = await sql<OrderRow>`select id, created_at, customer_name, phone, email, message, attachment_filename from orders order by created_at desc limit ${limit}`;
+  const { rows } = await sql<OrderRow>`select id, created_at, customer_name, phone, email, message, attachment_filename, attachment_url, status from orders order by created_at desc limit ${limit}`;
   return rows;
 } 

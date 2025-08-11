@@ -3,6 +3,7 @@ import { z } from "zod";
 import nodemailer from "nodemailer";
 import { appendLeadToSheet } from "@/lib/googleSheets";
 import { insertOrder } from "@/lib/db";
+import { put } from "@vercel/blob";
 
 const leadSchema = z.object({
   name: z.string().trim().max(100).optional(),
@@ -63,8 +64,17 @@ async function sendEmail(subject: string, html: string, attachment?: { filename:
 
   try {
     await transporter.sendMail({ from, to, subject, html, attachments: attachment ? [attachment] : undefined });
-  } catch {
-    // Ignore email failures to avoid blocking lead creation
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("SMTP sendMail failed", {
+      host,
+      port,
+      from,
+      to,
+      hasUser: Boolean(user),
+      hasPass: Boolean(pass),
+      error: message,
+    });
   }
 }
 
@@ -84,9 +94,17 @@ export async function POST(req: Request) {
 
       const file = form.get("file") as File | null;
       let attachment: { filename: string; content: Buffer; contentType?: string } | undefined = undefined;
+      let attachmentUrl: string | undefined = undefined;
       if (file && file.size > 0) {
         const buffer = Buffer.from(await file.arrayBuffer());
         attachment = { filename: file.name || "attachment", content: buffer, contentType: file.type || undefined };
+        // Upload to Vercel Blob
+        try {
+          const uploaded = await put(`leads/${Date.now()}-${attachment.filename}`, buffer, { access: "public", contentType: attachment.contentType });
+          attachmentUrl = uploaded.url;
+        } catch (e) {
+          console.error("Blob upload failed", e);
+        }
       }
 
       const subject = `Новая заявка с сайта СМК Сталь`;
@@ -96,8 +114,9 @@ export async function POST(req: Request) {
         `Email: ${data.email || "—"}`,
         `Комментарий: ${data.message || "—"}`,
         `Файл: ${attachment ? attachment.filename : "—"}`,
+        attachmentUrl ? `Ссылка: ${attachmentUrl}` : null,
         `Время: ${new Date().toLocaleString("ru-RU")}`,
-      ].join("\n");
+      ].filter(Boolean).join("\n");
       const html = text.replaceAll("\n", "<br/>");
 
       await Promise.all([
@@ -110,7 +129,7 @@ export async function POST(req: Request) {
           data.phone,
           data.email || "",
           data.message || "",
-          attachment?.filename || "",
+          attachmentUrl || attachment?.filename || "",
         ]),
         insertOrder({
           customer_name: data.name || null,
@@ -118,6 +137,7 @@ export async function POST(req: Request) {
           email: data.email || null,
           message: data.message || null,
           attachment_filename: attachment?.filename || null,
+          attachment_url: attachmentUrl || null,
         }).catch(() => {}),
       ]);
 

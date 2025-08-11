@@ -10,6 +10,8 @@ export default async function OrdersPage() {
     email: string | null;
     message: string | null;
     attachment_filename: string | null;
+    attachment_url: string | null;
+    status: string;
   }> = [];
   try {
     orders = await listOrders(50);
@@ -24,6 +26,8 @@ export default async function OrdersPage() {
         email: "info@example.com",
         message: "Изготовление металлокаркаса склада",
         attachment_filename: null,
+        attachment_url: null,
+        status: "new",
       },
     ];
   }
@@ -47,9 +51,14 @@ export default async function OrdersPage() {
                   <p className="text-lg font-semibold">{o.customer_name || "Без имени"}</p>
                   <p className="text-sm text-gray-600">{o.phone} {o.email ? `· ${o.email}` : ""}</p>
                 </div>
-                {o.attachment_filename ? (
-                  <span className="text-sm text-gray-500">Файл: {o.attachment_filename}</span>
-                ) : null}
+                <div className="flex items-center gap-3">
+                  <span className={`text-xs px-2 py-1 rounded-full border ${o.status === 'done' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-yellow-50 text-yellow-700 border-yellow-200'}`}>{o.status === 'done' ? 'Выполнен' : 'Новый'}</span>
+                  {o.attachment_url ? (
+                    <a className="text-sm text-orange-600 hover:text-orange-700" href={o.attachment_url} target="_blank" rel="noreferrer">Скачать файл</a>
+                  ) : o.attachment_filename ? (
+                    <span className="text-sm text-gray-500">Файл: {o.attachment_filename}</span>
+                  ) : null}
+                </div>
               </div>
               {o.message ? <p className="mt-3">{o.message}</p> : null}
             </div>
