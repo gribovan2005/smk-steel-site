@@ -55,14 +55,14 @@ export default function Home() {
             <span className="text-lg font-semibold tracking-wide">СМК Сталь</span>
             <span className="hidden sm:block text-sm text-gray-300">zakaz@smksteel-spb.ru</span>
           </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <a href="#services" className="hover:text-gray-300">Услуги</a>
-            <a href="#prices" className="hover:text-gray-300">Цены</a>
-            <a href="#projects" className="hover:text-gray-300">Работы</a>
-            <Link href="/orders" className="hover:text-gray-300">Заказы</Link>
-            <a href="#contacts" className="hover:text-gray-300">Контакты</a>
+          <nav className="hidden md:flex items-center gap-3 text-sm font-medium">
+            <a href="#services" className="btn-outline btn-sm">Услуги</a>
+            <a href="#prices" className="btn-outline btn-sm">Цены</a>
+            <a href="#projects" className="btn-outline btn-sm">Работы</a>
+            <Link href="/orders" className="btn-outline btn-sm">Заказы</Link>
+            <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
           </nav>
-          <Link href="tel:+79219472911" className="text-base font-medium hover:text-gray-300">+7 (921) 947-29-11</Link>
+          <Link href="tel:+79219472911" className="btn-outline btn-sm">+7 (921) 947-29-11</Link>
         </div>
       </header>
 
@@ -77,8 +77,8 @@ export default function Home() {
               Проектирование, изготовление и монтаж металлоконструкций.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#lead" className="inline-block rounded-md bg-white text-black px-5 py-2.5 font-semibold hover:bg-gray-200">Оставить заявку</a>
-              <a href="#projects" className="inline-block rounded-md border border-white/30 text-white px-5 py-2.5 font-semibold hover:bg-white/10">Наши работы</a>
+              <a href="#lead" className="btn">Оставить заявку</a>
+              <a href="#projects" className="btn-outline">Наши работы</a>
             </div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur p-6 sm:p-8">
@@ -99,7 +99,7 @@ export default function Home() {
                   <p className="text-lg font-semibold text-white">{s.name}</p>
                   <p className="mt-2 text-gray-300 font-medium">{s.price}</p>
                 </div>
-                <a href="#lead" className="mt-4 text-sm font-medium text-white/90 hover:text-white">Заказать →</a>
+                <a href="#lead" className="mt-4 btn-outline btn-sm w-max">Заказать →</a>
               </div>
             ))}
           </div>
@@ -166,6 +166,10 @@ export default function Home() {
           </div>
           <div className="rounded-xl border border-white/10 bg-black/40 backdrop-blur p-6">
             <LeadForm />
+            <div className="mt-4 flex gap-3">
+              <a href="#" className="btn-outline btn-sm">Позвонить</a>
+              <a href="#" className="btn-outline btn-sm">Написать</a>
+            </div>
           </div>
         </div>
       </section>
@@ -178,10 +182,12 @@ export default function Home() {
             <p className="mt-2">+7 (921) 947-29-11</p>
             <p>zakaz@smksteel-spb.ru</p>
             <p>г. Санкт-Петербург. ул. Караваевская 57</p>
+            <a href="#lead" className="mt-4 inline-block btn-outline btn-sm">Связаться</a>
           </div>
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
             <h3 className="font-semibold">Производство</h3>
             <p className="mt-2">м. Парнас, ул. Домостроительная 10Б</p>
+            <a href="#lead" className="mt-4 inline-block btn-outline btn-sm">Оставить заявку</a>
           </div>
         </div>
       </section>
