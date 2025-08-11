@@ -3,6 +3,7 @@ import Link from "next/link";
 import LeadForm from "@/components/LeadForm";
 import Script from "next/script";
 import ParallaxBG from "@/components/ParallaxBG";
+import { publicOrders } from "@/data/orders";
 
 export default function Home() {
   const works: string[] = [
@@ -25,7 +26,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="/welding.jpg" />
+      <ParallaxBG imageUrl="/welding.jpg" scalePercent={110} />
       <div className="absolute inset-0 bg-black/60 -z-10" />
 
       <Script id="ld-services" type="application/ld+json"
@@ -59,7 +60,7 @@ export default function Home() {
             <a href="#services" className="btn-outline btn-sm">Услуги</a>
             <a href="#prices" className="btn-outline btn-sm">Цены</a>
             <a href="#projects" className="btn-outline btn-sm">Работы</a>
-            <Link href="/orders" className="btn-outline btn-sm">Заказы</Link>
+            <a href="#orders" className="btn-outline btn-sm">Заказы</a>
             <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
           </nav>
           <Link href="tel:+79219472911" className="btn-outline btn-sm">+7 (921) 947-29-11</Link>
@@ -137,6 +138,43 @@ export default function Home() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Orders (showcase on same page) */}
+      <section id="orders" className="py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Заказы</h2>
+          <div className="grid gap-6">
+            {publicOrders.map((o) => (
+              <div key={o.id} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div>
+                    <p className="text-sm text-gray-400">{new Date(o.createdAt).toLocaleString("ru-RU")} {o.location ? `· ${o.location}` : ""}</p>
+                    <p className="text-lg font-semibold">{o.title}</p>
+                    {o.clientName ? <p className="text-sm text-gray-300">Заказчик: {o.clientName}</p> : null}
+                  </div>
+                  {o.tags && o.tags.length ? (
+                    <div className="flex flex-wrap gap-2">
+                      {o.tags.map((t) => (
+                        <span key={t} className="text-xs px-2 py-1 rounded-full border border-white/20 text-gray-200">{t}</span>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+                {o.description ? <p className="mt-3 text-gray-300">{o.description}</p> : null}
+                {o.images?.length ? (
+                  <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {o.images.map((src, idx) => (
+                      <div key={idx} className="relative h-32 w-full overflow-hidden rounded-lg border border-white/10">
+                        <Image src={src} alt={`${o.title} фото ${idx + 1}`} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ))}
           </div>
         </div>
       </section>
