@@ -3,7 +3,7 @@ import { z } from "zod";
 import nodemailer from "nodemailer";
 import { appendLeadToSheet } from "@/lib/googleSheets";
 import { insertOrder } from "@/lib/db";
-import { put } from "@vercel/blob";
+import { uploadToDrive } from "@/lib/googleDrive";
 
 const leadSchema = z.object({
   name: z.string().trim().max(100).optional(),
@@ -66,15 +66,7 @@ async function sendEmail(subject: string, html: string, attachment?: { filename:
     await transporter.sendMail({ from, to, subject, html, attachments: attachment ? [attachment] : undefined });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    console.error("SMTP sendMail failed", {
-      host,
-      port,
-      from,
-      to,
-      hasUser: Boolean(user),
-      hasPass: Boolean(pass),
-      error: message,
-    });
+    console.error("SMTP sendMail failed", { host, port, from, to, hasUser: Boolean(user), hasPass: Boolean(pass), error: message });
   }
 }
 
@@ -98,7 +90,7 @@ export async function POST(req: Request) {
       const many = form.getAll("files");
       for (const f of many) if (f instanceof File && f.size > 0) files.push(f);
 
-      const uploadedUrls: string[] = [];
+      const downloadUrls: string[] = [];
       const filenames: string[] = [];
       let emailAttachment: { filename: string; content: Buffer; contentType?: string } | undefined;
 
@@ -110,10 +102,10 @@ export async function POST(req: Request) {
           if (idx === 0) {
             emailAttachment = { filename: f.name || "attachment", content: buffer, contentType: f.type || undefined };
           }
-          const uploaded = await put(`leads/${Date.now()}-${encodeURIComponent(f.name || `file-${idx + 1}`)}`, buffer, { access: "public", contentType: f.type || undefined });
-          uploadedUrls.push(`${uploaded.url}?download=1`);
+          const { downloadUrl } = await uploadToDrive({ filename: f.name || `file-${idx + 1}`, mimeType: f.type || undefined, buffer });
+          downloadUrls.push(downloadUrl);
         } catch (e) {
-          console.error("Blob upload failed", e);
+          console.error("Drive upload failed", e);
         }
       }
 
@@ -124,25 +116,20 @@ export async function POST(req: Request) {
         `Комментарий: ${data.message || "—"}`,
       ];
       if (filenames.length) lines.push(`Файлы: ${filenames.join(", ")}`);
-      if (uploadedUrls.length) {
+      if (downloadUrls.length) {
         lines.push("Ссылки:");
-        uploadedUrls.forEach((u, i) => lines.push(`${i + 1}) ${u}`));
+        downloadUrls.forEach((u, i) => lines.push(`${i + 1}) ${u}`));
       }
       lines.push(`Время: ${new Date().toLocaleString("ru-RU")}`);
 
       const text = lines.join("\n");
-
-      // Telegram clickable anchors
-      const htmlTelegram = uploadedUrls.length
-        ? `${lines.slice(0, 4).join("<br/>")}<br/>Ссылки:<br/>${uploadedUrls
-            .map((u, i) => `${i + 1}) <a href=\"${u}\">Скачать</a>`) 
-            .join("<br/>")}<br/>${lines[lines.length - 1]}`
+      const htmlTelegram = downloadUrls.length
+        ? `${lines.slice(0, 4).join("<br/>")}<br/>Ссылки:<br/>${downloadUrls.map((u, i) => `${i + 1}) <a href=\"${u}\">Скачать</a>`).join("<br/>")}<br/>${lines[lines.length - 1]}`
         : text.replaceAll("\n", "<br/>");
-
       const htmlEmail = text.replaceAll("\n", "<br/>");
 
       // Up to 3 links into separate columns
-      const sheetLinks = [0, 1, 2].map((i) => (uploadedUrls[i] ? `=HYPERLINK("${uploadedUrls[i]}";"Скачать")` : ""));
+      const sheetLinks = [0, 1, 2].map((i) => (downloadUrls[i] ? `=HYPERLINK("${downloadUrls[i]}";"Скачать")` : ""));
 
       await Promise.all([
         sendEmail("Новая заявка с сайта СМК Сталь", htmlEmail, emailAttachment).catch(() => {}),
@@ -162,7 +149,7 @@ export async function POST(req: Request) {
           email: data.email || null,
           message: data.message || null,
           attachment_filename: filenames[0] || null,
-          attachment_url: uploadedUrls[0] || null,
+          attachment_url: downloadUrls[0] || null,
         }).catch(() => {}),
       ]);
 
