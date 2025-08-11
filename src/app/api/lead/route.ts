@@ -107,6 +107,7 @@ export async function POST(req: Request) {
         }
       }
 
+      const dlUrl = attachmentUrl ? `${attachmentUrl}?download=1` : undefined;
       const subject = `Новая заявка с сайта СМК Сталь`;
       const text = [
         `Имя: ${data.name || "—"}`,
@@ -114,7 +115,7 @@ export async function POST(req: Request) {
         `Email: ${data.email || "—"}`,
         `Комментарий: ${data.message || "—"}`,
         `Файл: ${attachment ? attachment.filename : "—"}`,
-        attachmentUrl ? `Ссылка: ${attachmentUrl}` : null,
+        dlUrl ? `Ссылка: ${dlUrl}` : null,
         `Время: ${new Date().toLocaleString("ru-RU")}`,
       ].filter(Boolean).join("\n");
       const html = text.replaceAll("\n", "<br/>");
@@ -129,7 +130,7 @@ export async function POST(req: Request) {
           data.phone,
           data.email || "",
           data.message || "",
-          attachmentUrl || attachment?.filename || "",
+          dlUrl ? `=HYPERLINK("${dlUrl}","Скачать")` : (attachment?.filename || ""),
         ]),
         insertOrder({
           customer_name: data.name || null,
