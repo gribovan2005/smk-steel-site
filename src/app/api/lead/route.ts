@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import nodemailer from "nodemailer";
 import { appendLeadToSheet } from "@/lib/googleSheets";
+import { insertOrder } from "@/lib/db";
 
 const leadSchema = z.object({
   name: z.string().trim().max(100).optional(),
@@ -107,6 +108,13 @@ export async function POST(req: Request) {
           data.message || "",
           attachment?.filename || "",
         ]),
+        insertOrder({
+          customer_name: data.name || null,
+          phone: data.phone,
+          email: data.email || null,
+          message: data.message || null,
+          attachment_filename: attachment?.filename || null,
+        }).catch(() => {}),
       ]);
 
       return NextResponse.json({ ok: true });
@@ -137,6 +145,12 @@ export async function POST(req: Request) {
         data.email || "",
         data.message || "",
       ]),
+      insertOrder({
+        customer_name: data.name || null,
+        phone: data.phone,
+        email: data.email || null,
+        message: data.message || null,
+      }).catch(() => {}),
     ]);
 
     return NextResponse.json({ ok: true });
