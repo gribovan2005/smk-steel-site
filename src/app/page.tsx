@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="https://images.unsplash.com/photo-1496302662116-35cc4f36df92?q=80&w=1600&auto=format&fit=crop" />
+      <ParallaxBG imageUrl="/welding.jpg" />
       <div className="absolute inset-0 bg-black/60 -z-10" />
 
       <Script id="ld-services" type="application/ld+json"
