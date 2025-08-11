@@ -92,36 +92,56 @@ export async function POST(req: Request) {
       };
       const data = leadSchema.parse(raw);
 
-      const file = form.get("file") as File | null;
-      let attachment: { filename: string; content: Buffer; contentType?: string } | undefined = undefined;
-      let attachmentUrl: string | undefined = undefined;
-      if (file && file.size > 0) {
-        const buffer = Buffer.from(await file.arrayBuffer());
-        attachment = { filename: file.name || "attachment", content: buffer, contentType: file.type || undefined };
-        // Upload to Vercel Blob
+      // Collect single and multiple files
+      const files: File[] = [];
+      const single = form.get("file");
+      if (single instanceof File && single.size > 0) files.push(single);
+      const many = form.getAll("files");
+      for (const f of many) if (f instanceof File && f.size > 0) files.push(f);
+
+      // Upload and collect links
+      const uploadedUrls: string[] = [];
+      const filenames: string[] = [];
+      let emailAttachment: { filename: string; content: Buffer; contentType?: string } | undefined;
+
+      for (let idx = 0; idx < files.length; idx++) {
+        const f = files[idx];
+        filenames.push(f.name || `file-${idx + 1}`);
         try {
-          const uploaded = await put(`leads/${Date.now()}-${attachment.filename}`, buffer, { access: "public", contentType: attachment.contentType });
-          attachmentUrl = uploaded.url;
+          const buffer = Buffer.from(await f.arrayBuffer());
+          if (idx === 0) {
+            emailAttachment = { filename: f.name || "attachment", content: buffer, contentType: f.type || undefined };
+          }
+          const uploaded = await put(`leads/${Date.now()}-${encodeURIComponent(f.name || `file-${idx + 1}`)}`, buffer, { access: "public", contentType: f.type || undefined });
+          uploadedUrls.push(`${uploaded.url}?download=1`);
         } catch (e) {
           console.error("Blob upload failed", e);
         }
       }
 
-      const dlUrl = attachmentUrl ? `${attachmentUrl}?download=1` : undefined;
       const subject = `Новая заявка с сайта СМК Сталь`;
-      const text = [
+      const lines: string[] = [
         `Имя: ${data.name || "—"}`,
         `Телефон: ${data.phone}`,
         `Email: ${data.email || "—"}`,
         `Комментарий: ${data.message || "—"}`,
-        `Файл: ${attachment ? attachment.filename : "—"}`,
-        dlUrl ? `Ссылка: ${dlUrl}` : null,
-        `Время: ${new Date().toLocaleString("ru-RU")}`,
-      ].filter(Boolean).join("\n");
+      ];
+      if (filenames.length) lines.push(`Файлы: ${filenames.join(", ")}`);
+      if (uploadedUrls.length) {
+        lines.push("Ссылки:");
+        uploadedUrls.forEach((u, i) => lines.push(`${i + 1}) ${u}`));
+      }
+      lines.push(`Время: ${new Date().toLocaleString("ru-RU")}`);
+
+      const text = lines.join("\n");
       const html = text.replaceAll("\n", "<br/>");
 
+      const sheetCell = uploadedUrls[0]
+        ? `=HYPERLINK("${uploadedUrls[0]}";"Скачать")`
+        : (filenames[0] || "");
+
       await Promise.all([
-        sendEmail(subject, html, attachment).catch(() => {}),
+        sendEmail(subject, html, emailAttachment).catch(() => {}),
         sendTelegram(text).catch(() => {}),
         sendWhatsApp(text).catch(() => {}),
         appendLeadToSheet([
@@ -130,15 +150,15 @@ export async function POST(req: Request) {
           data.phone,
           data.email || "",
           data.message || "",
-          dlUrl ? `=HYPERLINK("${dlUrl}";"Скачать")` : (attachment?.filename || ""),
+          sheetCell,
         ]),
         insertOrder({
           customer_name: data.name || null,
           phone: data.phone,
           email: data.email || null,
           message: data.message || null,
-          attachment_filename: attachment?.filename || null,
-          attachment_url: attachmentUrl || null,
+          attachment_filename: filenames[0] || null,
+          attachment_url: uploadedUrls[0] || null,
         }).catch(() => {}),
       ]);
 
