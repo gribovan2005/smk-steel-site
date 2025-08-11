@@ -32,7 +32,7 @@ async function sendWhatsApp(text: string) {
   await fetch(url, {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -61,7 +61,11 @@ async function sendEmail(subject: string, html: string, attachment?: { filename:
     auth: user && pass ? { user, pass } : undefined,
   });
 
-  await transporter.sendMail({ from, to, subject, html, attachments: attachment ? [attachment] : undefined });
+  try {
+    await transporter.sendMail({ from, to, subject, html, attachments: attachment ? [attachment] : undefined });
+  } catch {
+    // Ignore email failures to avoid blocking lead creation
+  }
 }
 
 export async function POST(req: Request) {
@@ -97,9 +101,9 @@ export async function POST(req: Request) {
       const html = text.replaceAll("\n", "<br/>");
 
       await Promise.all([
-        sendEmail(subject, html, attachment),
-        sendTelegram(text),
-        sendWhatsApp(text),
+        sendEmail(subject, html, attachment).catch(() => {}),
+        sendTelegram(text).catch(() => {}),
+        sendWhatsApp(text).catch(() => {}),
         appendLeadToSheet([
           new Date().toISOString(),
           data.name || "",
@@ -135,9 +139,9 @@ export async function POST(req: Request) {
     const html = text.replaceAll("\n", "<br/>");
 
     await Promise.all([
-      sendEmail(subject, html),
-      sendTelegram(text),
-      sendWhatsApp(text),
+      sendEmail(subject, html).catch(() => {}),
+      sendTelegram(text).catch(() => {}),
+      sendWhatsApp(text).catch(() => {}),
       appendLeadToSheet([
         new Date().toISOString(),
         data.name || "",
