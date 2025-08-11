@@ -27,7 +27,10 @@ export default function Home() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://xn----8sb2agb3adi6g.xn--p1ai";
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen text-gray-100 relative">
+      <div className="aurora" />
+      <div className="absolute inset-0 bg-grid" />
+
       <Script id="ld-services" type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -49,7 +52,7 @@ export default function Home() {
       />
 
       {/* Header */}
-      <header className="border-b border-gray-200">
+      <header className="border-b border-white/10 sticky top-0 z-30 backdrop-blur bg-black/30">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
@@ -59,20 +62,20 @@ export default function Home() {
               height={60}
               className="h-10 w-auto"
             />
-            <span className="hidden sm:block text-sm text-gray-600">
+            <span className="hidden sm:block text-sm text-gray-300">
               zakaz@smksteel-spb.ru
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <a href="#services" className="hover:text-teal-600">Услуги</a>
-            <a href="#prices" className="hover:text-teal-600">Цены</a>
-            <a href="#projects" className="hover:text-teal-600">Работы</a>
-            <Link href="/orders" className="hover:text-teal-600">Заказы</Link>
-            <a href="#contacts" className="hover:text-teal-600">Контакты</a>
+            <a href="#services" className="hover:text-teal-300">Услуги</a>
+            <a href="#prices" className="hover:text-teal-300">Цены</a>
+            <a href="#projects" className="hover:text-teal-300">Работы</a>
+            <Link href="/orders" className="hover:text-teal-300">Заказы</Link>
+            <a href="#contacts" className="hover:text-teal-300">Контакты</a>
           </nav>
           <Link
             href="tel:+79219472911"
-            className="text-base font-semibold text-gray-900 hover:text-teal-600"
+            className="text-base font-semibold hover:text-teal-300"
           >
             +7 (921) 947-29-11
           </Link>
@@ -80,21 +83,22 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-[url('https://static.tildacdn.com/tild3164-3666-4466-b438-386138646664/77caa7895060415df745.jpg')] bg-no-repeat bg-cover bg-center bg-fixed" aria-label="Изготовление металлоконструкций в Санкт-Петербурге">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="text-white">
-            <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight">
-              Изготовление металлоконструкций
-              <br />
-              в Санкт-Петербурге
+      <section className="relative isolate overflow-hidden bg-[url('https://images.unsplash.com/photo-1541976076758-347942db1970?q=80&w=1600&auto=format&fit=crop')] bg-no-repeat bg-cover bg-center bg-fixed">
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight gradient-text">
+              Металлоконструкции нового уровня
             </h1>
-            <p className="mt-6 text-lg max-w-xl opacity-90">
-              Полный цикл производства и изготовления металлоконструкций
+            <p className="mt-6 text-lg max-w-xl text-gray-200">
+              Проектирование, изготовление и монтаж. Сроки, качество и прозрачная смета.
             </p>
-            <p className="mt-6 text-2xl font-bold">от 18000 руб/тн</p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a href="#lead" className="inline-block rounded-md bg-teal-500 text-white px-5 py-2.5 font-semibold hover:bg-teal-400">Оставить заявку</a>
+              <a href="#projects" className="inline-block rounded-md border border-white/20 text-white px-5 py-2.5 font-semibold hover:bg-white/10">Наши работы</a>
+            </div>
           </div>
-          <div className="bg-white/90 backdrop-blur rounded-xl shadow-2xl p-6 sm:p-8">
+          <div className="glass rounded-2xl shadow-2xl p-6 sm:p-8">
             <h3 className="text-xl font-semibold mb-4">Отправьте заявку на расчет</h3>
             <LeadForm />
           </div>
@@ -102,7 +106,7 @@ export default function Home() {
       </section>
 
       {/* Advantages */}
-      <section className="py-12" id="advantages" aria-label="Преимущества СМК Сталь">
+      <section className="py-16" id="advantages" aria-label="Преимущества СМК Сталь">
         <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             "Собственное производство 3000м2",
@@ -110,25 +114,25 @@ export default function Home() {
             "Производственные мощности ≥ 300 тн/мес",
             "Все допуски СРО, ISO 9001",
           ].map((text) => (
-            <div key={text} className="rounded-xl border border-gray-200 p-6">
-              <p className="font-semibold">{text}</p>
+            <div key={text} className="glass rounded-xl border border-white/10 p-6">
+              <p className="font-semibold text-gray-100">{text}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Services */}
-      <section className="py-16 bg-gray-50" id="services" aria-label="Услуги и типовые конструкции">
+      <section className="py-20" id="services" aria-label="Услуги и типовые конструкции">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8">Типовые конструкции</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8 gradient-text">Типовые конструкции</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <div key={s.name} className="rounded-xl border bg-white p-6 flex flex-col justify-between">
+              <div key={s.name} className="glass rounded-xl border border-white/10 p-6 flex flex-col justify-between">
                 <div>
-                  <p className="text-lg font-semibold">{s.name}</p>
-                  <p className="mt-2 text-teal-600 font-bold">{s.price}</p>
+                  <p className="text-lg font-semibold text-gray-100">{s.name}</p>
+                  <p className="mt-2 text-teal-300 font-bold">{s.price}</p>
                 </div>
-                <a href="#lead" className="mt-4 text-sm font-medium text-teal-600 hover:text-teal-700" aria-label={`Заказать ${s.name}`}>Заказать →</a>
+                <a href="#lead" className="mt-4 text-sm font-medium text-teal-300 hover:text-teal-200" aria-label={`Заказать ${s.name}`}>Заказать →</a>
               </div>
             ))}
           </div>
@@ -136,15 +140,15 @@ export default function Home() {
       </section>
 
       {/* Prices */}
-      <section id="prices" className="py-16" aria-label="Цены на металлоконструкции">
+      <section id="prices" className="py-20" aria-label="Цены на металлоконструкции">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Пример расчета стоимости за тонну</h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full border text-sm">
-              <thead className="bg-gray-100">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 gradient-text">Пример расчета стоимости за тонну</h2>
+          <div className="overflow-x-auto glass rounded-xl border border-white/10">
+            <table className="min-w-full text-sm">
+              <thead className="bg-white/5">
                 <tr>
-                  <th className="text-left p-3 border">Наименование</th>
-                  <th className="text-left p-3 border">Цена</th>
+                  <th className="text-left p-3 border-b border-white/10">Наименование</th>
+                  <th className="text-left p-3 border-b border-white/10">Цена</th>
                 </tr>
               </thead>
               <tbody>
@@ -159,23 +163,23 @@ export default function Home() {
                   ["Изготовление металлоконструкций", "19 950р"],
                   ["Итого", "75 530р"],
                 ].map(([name, price]) => (
-                  <tr key={name as string}>
-                    <td className="p-3 border">{name}</td>
-                    <td className="p-3 border font-semibold">{price}</td>
+                  <tr key={name as string} className="odd:bg-white/0 even:bg-white/5">
+                    <td className="p-3">{name}</td>
+                    <td className="p-3 font-semibold text-teal-300">{price}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <a href="#lead" className="inline-block mt-6 rounded-md bg-teal-600 text-white px-5 py-2.5 font-semibold hover:bg-teal-700">Оставить заявку</a>
+          <a href="#lead" className="inline-block mt-6 rounded-md bg-teal-500 text-white px-5 py-2.5 font-semibold hover:bg-teal-400">Оставить заявку</a>
         </div>
       </section>
 
       {/* Projects */}
-      <section id="projects" className="py-16" aria-label="Наши работы: реализованные проекты">
+      <section id="projects" className="py-20" aria-label="Наши работы: реализованные проекты">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Реализованные проекты</h2>
-          <div className="overflow-hidden border rounded-xl">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 gradient-text">Реализованные проекты</h2>
+          <div className="overflow-hidden glass rounded-xl border border-white/10">
             <div className="marquee">
               {[...works, ...works].map((src, idx) => (
                 <div key={idx} className="relative h-48 w-80 sm:h-56 sm:w-96 m-2 flex-shrink-0 overflow-hidden rounded-lg">
@@ -187,39 +191,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA + Form duplicate for SEO/UX */}
-      <section id="lead" className="py-16" aria-label="Оставить заявку на расчет металлоконструкций">
+      {/* CTA + Form duplicate */}
+      <section id="lead" className="py-20">
         <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold">Оставьте заявку на расчет</h2>
-            <p className="mt-4 text-gray-600">
+            <h2 className="text-2xl sm:text-3xl font-bold gradient-text">Оставьте заявку на расчет</h2>
+            <p className="mt-4 text-gray-300">
               Ответим в течение рабочего дня. Можно указать только телефон.
             </p>
           </div>
-          <div className="bg-white rounded-xl border p-6">
+          <div className="glass rounded-xl border border-white/10 p-6">
             <LeadForm />
           </div>
         </div>
       </section>
 
       {/* Contacts */}
-      <section id="contacts" className="py-12 bg-gray-50" aria-label="Контакты СМК Сталь">
+      <section id="contacts" className="py-16">
         <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
+          <div className="glass rounded-xl border border-white/10 p-6">
             <h3 className="font-semibold">Офис</h3>
             <p className="mt-2">+7 (921) 947-29-11</p>
             <p>zakaz@smksteel-spb.ru</p>
             <p>г. Санкт-Петербург. ул. Караваевская 57</p>
           </div>
-          <div>
+          <div className="glass rounded-xl border border-white/10 p-6">
             <h3 className="font-semibold">Производство</h3>
             <p className="mt-2">м. Парнас, ул. Домостроительная 10Б</p>
           </div>
         </div>
       </section>
 
-      <footer className="py-8 border-t">
-        <div className="mx-auto max-w-7xl px-4 text-sm text-gray-500">
+      <footer className="py-8 border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400">
           © {new Date().getFullYear()} СМК Сталь
         </div>
       </footer>
