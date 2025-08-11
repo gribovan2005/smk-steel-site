@@ -130,7 +130,7 @@ export async function POST(req: Request) {
           data.phone,
           data.email || "",
           data.message || "",
-          dlUrl ? `=HYPERLINK("${dlUrl}","Скачать")` : (attachment?.filename || ""),
+          dlUrl ? `=HYPERLINK("${dlUrl}";"Скачать")` : (attachment?.filename || ""),
         ]),
         insertOrder({
           customer_name: data.name || null,
