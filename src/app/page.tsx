@@ -64,15 +64,15 @@ export default function Home() {
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <a href="#services" className="hover:text-orange-600">Услуги</a>
-            <a href="#prices" className="hover:text-orange-600">Цены</a>
-            <a href="#projects" className="hover:text-orange-600">Работы</a>
-            <Link href="/orders" className="hover:text-orange-600">Заказы</Link>
-            <a href="#contacts" className="hover:text-orange-600">Контакты</a>
+            <a href="#services" className="hover:text-teal-600">Услуги</a>
+            <a href="#prices" className="hover:text-teal-600">Цены</a>
+            <a href="#projects" className="hover:text-teal-600">Работы</a>
+            <Link href="/orders" className="hover:text-teal-600">Заказы</Link>
+            <a href="#contacts" className="hover:text-teal-600">Контакты</a>
           </nav>
           <Link
             href="tel:+79219472911"
-            className="text-base font-semibold text-gray-900 hover:text-orange-600"
+            className="text-base font-semibold text-gray-900 hover:text-teal-600"
           >
             +7 (921) 947-29-11
           </Link>
@@ -80,8 +80,8 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-[url('https://static.tildacdn.com/tild3164-3666-4466-b438-386138646664/77caa7895060415df745.jpg')] bg-cover bg-center" aria-label="Изготовление металлоконструкций в Санкт-Петербурге">
-        <div className="absolute inset-0 bg-black/60" />
+      <section className="relative isolate overflow-hidden bg-[url('https://static.tildacdn.com/tild3164-3666-4466-b438-386138646664/77caa7895060415df745.jpg')] bg-no-repeat bg-cover bg-center bg-fixed" aria-label="Изготовление металлоконструкций в Санкт-Петербурге">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         <div className="relative mx-auto max-w-7xl px-4 py-16 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="text-white">
             <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight">
@@ -94,7 +94,7 @@ export default function Home() {
             </p>
             <p className="mt-6 text-2xl font-bold">от 18000 руб/тн</p>
           </div>
-          <div className="bg-white rounded-xl shadow-2xl p-6 sm:p-8">
+          <div className="bg-white/90 backdrop-blur rounded-xl shadow-2xl p-6 sm:p-8">
             <h3 className="text-xl font-semibold mb-4">Отправьте заявку на расчет</h3>
             <LeadForm />
           </div>
@@ -126,9 +126,9 @@ export default function Home() {
               <div key={s.name} className="rounded-xl border bg-white p-6 flex flex-col justify-between">
                 <div>
                   <p className="text-lg font-semibold">{s.name}</p>
-                  <p className="mt-2 text-orange-600 font-bold">{s.price}</p>
+                  <p className="mt-2 text-teal-600 font-bold">{s.price}</p>
                 </div>
-                <a href="#lead" className="mt-4 text-sm font-medium text-orange-600 hover:text-orange-700" aria-label={`Заказать ${s.name}`}>Заказать →</a>
+                <a href="#lead" className="mt-4 text-sm font-medium text-teal-600 hover:text-teal-700" aria-label={`Заказать ${s.name}`}>Заказать →</a>
               </div>
             ))}
           </div>
@@ -167,7 +167,7 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-          <a href="#lead" className="inline-block mt-6 rounded-md bg-orange-600 text-white px-5 py-2.5 font-semibold hover:bg-orange-700">Оставить заявку</a>
+          <a href="#lead" className="inline-block mt-6 rounded-md bg-teal-600 text-white px-5 py-2.5 font-semibold hover:bg-teal-700">Оставить заявку</a>
         </div>
       </section>
 
