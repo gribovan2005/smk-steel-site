@@ -99,10 +99,7 @@ export async function POST(req: Request) {
         `Комментарий: ${data.message || "—"}`,
       ];
       if (filenames.length) lines.push(`Файлы: ${filenames.join(", ")}`);
-      if (downloadUrls.length) {
-        lines.push("Ссылки:");
-        downloadUrls.forEach((u, i) => lines.push(`${i + 1}) ${u}`));
-      }
+      // raw links are not added to the text; we will append proxied links below
       lines.push(`Время: ${new Date().toLocaleString("ru-RU")}`);
 
       const text = lines.join("\n");
@@ -115,7 +112,7 @@ export async function POST(req: Request) {
       });
 
       await Promise.all([
-        sendTelegram(text + (downloadUrls.length ? "\n\nСсылки (через прокси):\n" + downloadUrls.map((u, i) => `${i + 1}) ${ (process.env.NEXT_PUBLIC_SITE_URL || "") + "/api/file?url=" + encodeURIComponent(u) + "&name=" + encodeURIComponent(filenames[i] || `file-${i+1}`) }`).join("\n") : "")).catch(() => {}),
+        sendTelegram(text + (downloadUrls[0] ? "\n\nСсылка:\n" + `${ (process.env.NEXT_PUBLIC_SITE_URL || "") + "/api/file?url=" + encodeURIComponent(downloadUrls[0]) + "&name=" + encodeURIComponent(filenames[0] || "file") }` : "")).catch(() => {}),
         appendLeadToSheet([
           new Date().toISOString(),
           data.name || "",
