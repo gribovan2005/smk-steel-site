@@ -7,10 +7,14 @@ import { publicOrders } from "@/data/orders";
 
 export default function Home() {
   const works: string[] = [
-    "https://images.unsplash.com/photo-1523419409543-36d5b2b36a23?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1502786129293-79981df4e689?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1497280725660-fdb83f0bce1a?q=80&w=1600&auto=format&fit=crop",
+    "/tilda/static_tildacdn_com-Opornye-konstruktsii.jpg",
+    "/tilda/static_tildacdn_com-IMG_9224.jpg",
+    "/tilda/static_tildacdn_com-C_swchiller_20120717.jpg",
+    "/tilda/static_tildacdn_com-12072012423.jpg",
+    "/tilda/static_tildacdn_com-8355f7db7f0d96436779.jpg",
+    "/tilda/static_tildacdn_com-XXXL.jpg",
+    "/tilda/static_tildacdn_com-thumb.jpg",
+    "/tilda/static_tildacdn_com-4.jpg",
   ];
 
   const services = [
