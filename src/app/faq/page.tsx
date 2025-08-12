@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "FAQ — ответы на вопросы | СМК Сталь",
@@ -72,7 +73,7 @@ export default function FAQPage() {
       </div>
 
       <div className="mt-10 text-center">
-        <a href="/" className="btn-outline">На главную</a>
+        <Link href="/" className="btn-outline">На главную</Link>
       </div>
     </div>
   );
