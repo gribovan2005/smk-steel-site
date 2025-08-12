@@ -22,8 +22,8 @@ export default function Home() {
     { name: "Прогоны, балки покрытия", price: "От 18000 руб/тн", img: "/tilda/static_tildacdn_com-8355f7db7f0d96436779.jpg" },
     { name: "Электросварной двутавр", price: "От 17000 руб/тн", img: "/tilda/static_tildacdn_com-XXXL.jpg" },
     { name: "Колонны", price: "От 22000 руб/тн", img: "/tilda/static_tildacdn_com-IMG_9224.jpg" },
-    { name: "Связи, фахверк, распорки", price: "От 22000 руб/тн", img: "/tilda/static_tildacdn_com-12072012423.jpg" },
-    { name: "Балки перекрытий", price: "От 18000 руб/тн", img: "/tilda/static_tildacdn_com-Opornye-konstruktsii.jpg" },
+    { name: "Связи, фахверк, распорки", price: "От 22000 руб/тн", img: "/tilda/static_tildacdn_com-835e515259312359159d.jpg" },
+    { name: "Балки перекрытий", price: "От 18000 руб/тн", img: "/tilda/static_tildacdn_com-12072012423.jpg" },
     { name: "Лестницы, ограждения, площадки", price: "От 30000 руб/тн", img: "/tilda/static_tildacdn_com-thumb.jpg" },
     { name: "Закладные изделия", price: "От 45000 руб/тн", img: "/tilda/static_tildacdn_com-uzel00851.png" },
     { name: "Створные знаки", price: "От 45000 руб/тн", img: "/tilda/static_tildacdn_com-photo.png" },
@@ -31,7 +31,7 @@ export default function Home() {
     { name: "Подкрановые балки", price: "От 45000 руб/тн", img: "/tilda/static_tildacdn_com-Opornye-konstruktsii.jpg" },
     { name: "Приварка статичных болтов", price: "От 400 руб/шт. Выезд на объект", img: "/tilda/static_tildacdn_com-noroot.png" },
     { name: "Пространственные конструкции", price: "От 35000 руб/тн", img: "/tilda/static_tildacdn_com-835e515259312359159d.jpg" },
-    { name: "Опоры ЛЭП", price: "От 35000 руб/тн", img: "/tilda/static_tildacdn_com-iStock-695448564.jpg" },
+    { name: "Опоры ЛЭП", price: "От 35000 руб/тн", img: "/tilda/static_tildacdn_com-2.jpg" },
     { name: "Емкости и резервуары", price: "От 50000 руб/тн", img: "/tilda/static_tildacdn_com-C_swchiller_20120717.jpg" },
     { name: "Нестандартные изделия", price: "От 60000 руб/тн", img: "/tilda/static_tildacdn_com-___.jpg" },
   ];
@@ -121,7 +121,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="/welding_2.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
+      <ParallaxBG imageUrl="/welding_2.jpg" scalePercent={160} brightness={1.18} contrast={1.08} maxShiftPercent={10} />
       {/* Затемняющий градиент поверх фона для читабельности */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
 
@@ -150,7 +150,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {/* emblem removed per request */}
-            <span className="text-lg font-semibold tracking-wide whitespace-nowrap">СМК Сталь</span>
+            <span className="text-lg font-semibold tracking-wide whitespace-nowrap px-3 py-1 rounded-lg border border-white/20 bg-black/40 backdrop-blur">СМК Сталь</span>
           </div>
           <nav className="hidden md:flex items-center gap-5 text-sm font-semibold uppercase">
             <a href="#services" className="link-nav">Услуги</a>
@@ -159,6 +159,7 @@ export default function Home() {
             <a href="#steps" className="link-nav">Этапы</a>
             <a href="#projects" className="link-nav">Работы</a>
             <a href="#equipment" className="link-nav">Оборудование</a>
+            <a href="/faq" className="link-nav">FAQ</a>
             <a href="#clients" className="link-nav">Клиенты</a>
             <a href="#orders" className="link-nav">Заказы</a>
             <details className="relative">
@@ -184,6 +185,7 @@ export default function Home() {
                   ["#steps","Этапы"],
                   ["#projects","Работы"],
                   ["#equipment","Оборудование"],
+                  ["/faq","FAQ"],
                   ["#clients","Клиенты"],
                   ["#orders","Заказы"],
                   ["#contacts","Контакты"],
@@ -200,7 +202,7 @@ export default function Home() {
       {/* Company intro text directly on parallax */}
       <section className="px-4">
         <div className="mx-auto max-w-7xl">
-          <p className="max-w-5xl text-sm sm:text-base text-gray-100 leading-relaxed">
+          <p className="max-w-4xl mx-auto text-center text-sm sm:text-base text-gray-100 leading-relaxed">
             СМК Сталь один из лидирующих игроков на рынке производства металлоконструкций с 2013 года. Мы предлагаем нашим клиентам полный комплекс услуг в сфере возведения зданий и сооружений различного назначения, которые предполагают использование различных металлоконструкций. Активно развиваем строительное направление для выполнения любых общестроительных работ, начиная от благоустройства, заканчивая исполнением функций генерального подрядчика.
           </p>
         </div>
@@ -231,7 +233,7 @@ export default function Home() {
       {/* Services */}
       <section id="services" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold">Услуги</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center">Услуги</h2>
           <p className="mt-2 text-gray-300 max-w-2xl">Мы оказываем весь спектр услуг по обработке и заготовке металлических изделий</p>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {services.map((s) => (
@@ -256,7 +258,7 @@ export default function Home() {
       {/* Constructions */}
       <section className="py-20" id="constructions">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8">Типовые конструкции</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">Типовые конструкции</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {constructions.map((c) => (
               <div key={c.name} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur overflow-hidden">
@@ -281,11 +283,11 @@ export default function Home() {
       {/* Prices */}
       <section id="prices" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Цены</h2>
-          <div className="overflow-x-auto rounded-xl border border-white/12 bg-white/5">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Цены</h2>
+          <div className="overflow-x-auto rounded-xl border border-white/20 bg-black/30 backdrop-blur">
             <table className="min-w-full text-sm">
               <thead>
-                <tr className="bg-white/10 text-white">
+                <tr className="bg-white/15 text-white">
                   <th className="text-left p-4 border-b border-white/10">Наименование</th>
                   <th className="text-left p-4 border-b border-white/10">Цена</th>
                 </tr>
@@ -302,9 +304,9 @@ export default function Home() {
                   ["Изготовление металлоконструкций", "19 950р"],
                   ["Итого", "75 530р"],
                 ].map(([name, price]) => (
-                  <tr key={name as string} className="border-t border-white/10">
-                    <td className="p-4 text-white/90">{name}</td>
-                    <td className="p-4 font-semibold text-white">{price}</td>
+                  <tr key={name as string} className="border-t border-white/10 hover:bg-white/5">
+                    <td className="p-4 text-white">{name}</td>
+                    <td className="p-4 font-semibold text-white text-right">{price}</td>
                   </tr>
                 ))}
               </tbody>
@@ -316,7 +318,7 @@ export default function Home() {
       {/* Steps */}
       <section id="steps" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-10">Этапы работы с нами</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-center">Этапы работы с нами</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s) => (
               <div key={s.num} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6 text-center">
@@ -333,7 +335,7 @@ export default function Home() {
       <section id="equipment" className="py-20">
         <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6">Наше оборудование</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center lg:text-left">Наше оборудование</h2>
             <div className="grid grid-cols-2 gap-3">
               {equipmentImages.map((src, i) => (
                 <div key={i} className="relative h-36 sm:h-44 w-full overflow-hidden rounded-lg border border-white/10">
@@ -343,11 +345,13 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <ol className="list-decimal pl-5 space-y-2 text-gray-200">
-              {equipmentList.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ol>
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
+              <ol className="list-decimal pl-6 space-y-2 text-white/90 text-sm sm:text-base">
+                {equipmentList.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
       </section>
@@ -355,7 +359,7 @@ export default function Home() {
       {/* Orders (showcase on same page) */}
       <section id="orders" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Заказы</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Заказы</h2>
           <div className="grid gap-6">
             {publicOrders.map((o) => (
               <div key={o.id} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
@@ -392,7 +396,7 @@ export default function Home() {
       {/* Projects */}
       <section id="projects" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Работы</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Работы</h2>
           <div className="overflow-hidden rounded-xl border border-white/10 bg-black/30 backdrop-blur">
             <div className="marquee">
               {[...works, ...works].map((src, idx) => (
@@ -410,7 +414,7 @@ export default function Home() {
       {/* Clients */}
       <section id="clients" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold">Наши клиенты</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center">Наши клиенты</h2>
           <p className="mt-2 text-gray-300">Гордимся сотрудничеством с лидерами рынка</p>
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
             {clientLogos.map((src, i) => (
@@ -460,7 +464,7 @@ export default function Home() {
       {/* Map */}
       <section id="map" className="py-16">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">На карте</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">На карте</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="rounded-xl border border-white/10 overflow-hidden">
               <div className="p-3 text-sm font-semibold">Производство — м. Парнас, ул. Домостроительная 10Б</div>
