@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import nodemailer from "nodemailer";
 import { appendLeadToSheet } from "@/lib/googleSheets";
 import { insertOrder } from "@/lib/db";
 import { uploadToDrive } from "@/lib/googleDrive";
@@ -45,52 +44,6 @@ async function sendTelegramHTML(html: string) {
   }
 }
 
-async function sendWhatsApp(text: string) {
-  const token = process.env.WHATSAPP_ACCESS_TOKEN;
-  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
-  const to = process.env.WHATSAPP_TO;
-  if (!token || !phoneNumberId || !to) return;
-  const url = `https://graph.facebook.com/v20.0/${phoneNumberId}/messages`;
-  await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      messaging_product: "whatsapp",
-      to,
-      type: "text",
-      text: { body: text.slice(0, 4000) },
-    }),
-  });
-}
-
-async function sendEmail(subject: string, html: string, attachment?: { filename: string; content: Buffer; contentType?: string }) {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT || 0);
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const from = process.env.EMAIL_FROM || user;
-  const to = process.env.EMAIL_TO;
-
-  if (!host || !port || !to || !from) return;
-
-  const transporter = nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: user && pass ? { user, pass } : undefined,
-  });
-
-  try {
-    await transporter.sendMail({ from, to, subject, html, attachments: attachment ? [attachment] : undefined });
-  } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    console.error("SMTP sendMail failed", { host, port, from, to, hasUser: Boolean(user), hasPass: Boolean(pass), error: message });
-  }
-}
-
 export async function POST(req: Request) {
   try {
     const contentType = req.headers.get("content-type") || "";
@@ -113,16 +66,12 @@ export async function POST(req: Request) {
 
       const downloadUrls: string[] = [];
       const filenames: string[] = [];
-      let emailAttachment: { filename: string; content: Buffer; contentType?: string } | undefined;
 
       for (let idx = 0; idx < files.length; idx++) {
         const f = files[idx];
         filenames.push(f.name || `file-${idx + 1}`);
         try {
           const buffer = Buffer.from(await f.arrayBuffer());
-          if (idx === 0) {
-            emailAttachment = { filename: f.name || "attachment", content: buffer, contentType: f.type || undefined };
-          }
           const { downloadUrl } = await uploadToDrive({ filename: f.name || `file-${idx + 1}`, mimeType: f.type || undefined, buffer });
           downloadUrls.push(downloadUrl);
         } catch (e) {
@@ -153,14 +102,11 @@ export async function POST(req: Request) {
       const htmlTelegram = downloadUrls.length
         ? `${safeTop.join("<br/>")}<br/>Ссылки:<br/>${downloadUrls.map((u, i) => `${i + 1}) <a href=\"${escapeHtml(u)}\">Скачать</a>`).join("<br/>")}<br/>${escapeHtml(lines[lines.length - 1])}`
         : truncate(text).replaceAll("\n", "<br/>");
-      const htmlEmail = text.replaceAll("\n", "<br/>");
 
       const sheetLinks = [0, 1, 2].map((i) => (downloadUrls[i] ? `=HYPERLINK("${downloadUrls[i]}";"Скачать")` : ""));
 
       await Promise.all([
-        sendEmail("Новая заявка с сайта СМК Сталь", htmlEmail, emailAttachment).catch(() => {}),
         sendTelegramHTML(htmlTelegram).catch(() => {}),
-        sendWhatsApp(text).catch(() => {}),
         appendLeadToSheet([
           new Date().toISOString(),
           data.name || "",
@@ -192,12 +138,10 @@ export async function POST(req: Request) {
       `Комментарий: ${data.message || "—"}`,
       `Время: ${new Date().toLocaleString("ru-RU")}`,
     ].join("\n");
-    const htmlEmail = text.replaceAll("\n", "<br/>");
+    const html = text.replaceAll("\n", "<br/>");
 
     await Promise.all([
-      sendEmail("Новая заявка с сайта СМК Сталь", htmlEmail).catch(() => {}),
-      sendTelegramHTML(truncate(htmlEmail)).catch(() => {}),
-      sendWhatsApp(text).catch(() => {}),
+      sendTelegramHTML(truncate(html)).catch(() => {}),
       appendLeadToSheet([
         new Date().toISOString(),
         data.name || "",
