@@ -442,6 +442,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Map */}
+      <section id="map" className="py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6">На карте</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="rounded-xl border border-white/10 overflow-hidden">
+              <div className="p-3 text-sm font-semibold">Производство — м. Парнас, ул. Домостроительная 10Б</div>
+              <div className="aspect-[16/9] w-full">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.google.com/maps?q=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3,%20%D0%94%D0%BE%D0%BC%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%2010%D0%91&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
+            <div className="rounded-xl border border-white/10 overflow-hidden">
+              <div className="p-3 text-sm font-semibold">Офис — ул. Караваевская 57</div>
+              <div className="aspect-[16/9] w-full">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.google.com/maps?q=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3,%20%D0%9A%D0%B0%D1%80%D0%B0%D0%B2%D0%B0%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2057&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="py-8 border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400">© {new Date().getFullYear()} СМК Сталь</div>
       </footer>
