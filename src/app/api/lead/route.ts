@@ -12,16 +12,37 @@ const leadSchema = z.object({
   message: z.string().trim().max(1000).optional(),
 });
 
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function truncate(input: string, max = 3800): string {
+  return input.length > max ? input.slice(0, max - 3) + "..." : input;
+}
+
 async function sendTelegramHTML(html: string) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chatId) return;
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
-  await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text: html, parse_mode: "HTML" }),
-  });
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, text: truncate(html), parse_mode: "HTML", disable_web_page_preview: true }),
+    });
+    if (!res.ok) {
+      const body = await res.text().catch(() => "");
+      console.error("Telegram sendMessage failed", { status: res.status, body });
+    }
+  } catch (e) {
+    console.error("Telegram request error", e);
+  }
 }
 
 async function sendWhatsApp(text: string) {
@@ -123,12 +144,17 @@ export async function POST(req: Request) {
       lines.push(`Время: ${new Date().toLocaleString("ru-RU")}`);
 
       const text = lines.join("\n");
+      const safeTop = [
+        `Имя: ${escapeHtml(data.name || "—")}`,
+        `Телефон: ${escapeHtml(data.phone)}`,
+        `Email: ${escapeHtml(data.email || "—")}`,
+        `Комментарий: ${escapeHtml(data.message || "—")}`,
+      ];
       const htmlTelegram = downloadUrls.length
-        ? `${lines.slice(0, 4).join("<br/>")}<br/>Ссылки:<br/>${downloadUrls.map((u, i) => `${i + 1}) <a href=\"${u}\">Скачать</a>`).join("<br/>")}<br/>${lines[lines.length - 1]}`
-        : text.replaceAll("\n", "<br/>");
+        ? `${safeTop.join("<br/>")}<br/>Ссылки:<br/>${downloadUrls.map((u, i) => `${i + 1}) <a href=\"${escapeHtml(u)}\">Скачать</a>`).join("<br/>")}<br/>${escapeHtml(lines[lines.length - 1])}`
+        : truncate(text).replaceAll("\n", "<br/>");
       const htmlEmail = text.replaceAll("\n", "<br/>");
 
-      // Up to 3 links into separate columns
       const sheetLinks = [0, 1, 2].map((i) => (downloadUrls[i] ? `=HYPERLINK("${downloadUrls[i]}";"Скачать")` : ""));
 
       await Promise.all([
@@ -156,7 +182,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true });
     }
 
-    // JSON fallback
     const json = await req.json();
     const data = leadSchema.parse(json);
 
@@ -171,7 +196,7 @@ export async function POST(req: Request) {
 
     await Promise.all([
       sendEmail("Новая заявка с сайта СМК Сталь", htmlEmail).catch(() => {}),
-      sendTelegramHTML(htmlEmail).catch(() => {}),
+      sendTelegramHTML(truncate(htmlEmail)).catch(() => {}),
       sendWhatsApp(text).catch(() => {}),
       appendLeadToSheet([
         new Date().toISOString(),
