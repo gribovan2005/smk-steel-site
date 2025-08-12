@@ -25,7 +25,7 @@ function truncate(input: string, max = 3800): string {
   return input.length > max ? input.slice(0, max - 3) + "..." : input;
 }
 
-async function sendTelegramHTML(html: string) {
+async function sendTelegram(text: string) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chatId) return;
@@ -34,7 +34,7 @@ async function sendTelegramHTML(html: string) {
     const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text: truncate(html), parse_mode: "HTML", disable_web_page_preview: true }),
+      body: JSON.stringify({ chat_id: chatId, text: truncate(text), disable_web_page_preview: true }),
     });
     if (!res.ok) {
       const body = await res.text().catch(() => "");
@@ -106,20 +106,11 @@ export async function POST(req: Request) {
       lines.push(`Время: ${new Date().toLocaleString("ru-RU")}`);
 
       const text = lines.join("\n");
-      const safeTop = [
-        `Имя: ${escapeHtml(data.name || "—")}`,
-        `Телефон: ${escapeHtml(data.phone)}`,
-        `Email: ${escapeHtml(data.email || "—")}`,
-        `Комментарий: ${escapeHtml(data.message || "—")}`,
-      ];
-      const htmlTelegram = downloadUrls.length
-        ? `${safeTop.join("<br/>")}<br/>Ссылки:<br/>${downloadUrls.map((u, i) => `${i + 1}) <a href=\"${escapeHtml(u)}\">Скачать</a>`).join("<br/>")}<br/>${escapeHtml(lines[lines.length - 1])}`
-        : truncate(text).replaceAll("\n", "<br/>");
 
       const sheetLinks = [0, 1, 2].map((i) => (downloadUrls[i] ? `=HYPERLINK("${downloadUrls[i]}";"Скачать")` : ""));
 
       await Promise.all([
-        sendTelegramHTML(htmlTelegram).catch(() => {}),
+        sendTelegram(text).catch(() => {}),
         appendLeadToSheet([
           new Date().toISOString(),
           data.name || "",
@@ -151,10 +142,9 @@ export async function POST(req: Request) {
       `Комментарий: ${data.message || "—"}`,
       `Время: ${new Date().toLocaleString("ru-RU")}`,
     ].join("\n");
-    const html = text.replaceAll("\n", "<br/>");
 
     await Promise.all([
-      sendTelegramHTML(truncate(html)).catch(() => {}),
+      sendTelegram(text).catch(() => {}),
       appendLeadToSheet([
         new Date().toISOString(),
         data.name || "",
