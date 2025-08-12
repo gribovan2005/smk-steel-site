@@ -64,17 +64,19 @@ body {
 
 /* Header transparent nav links */
 .link-nav {
-  padding: 0.25rem 0.25rem;
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
   background: transparent;
-  border: 0;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
   color: #ffffff;
   font-weight: 600;
   letter-spacing: .04em;
   text-transform: uppercase;
   opacity: .85;
-  transition: opacity .2s ease, text-decoration-color .2s ease;
+  transition: opacity .2s ease, border-color .2s ease;
 }
-.link-nav:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.link-nav:hover { opacity: 1; border-color: #ffffff; }
 
 /* Hide scrollbars helper */
 .no-scrollbar::-webkit-scrollbar { display: none; }

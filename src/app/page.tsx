@@ -145,13 +145,11 @@ export default function Home() {
         }}
       />
 
-      {/* Header over photo */}
-      <header className="sticky top-0 z-30">
+      {/* Fixed transparent header over photo */}
+      <header className="fixed top-0 inset-x-0 z-30">
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10">
-              <Image src={logoSrc} alt="СМК-Сталь эмблема" fill sizes="40px" priority className="object-contain" />
-            </div>
+            {/* emblem removed per request */}
             <span className="text-lg font-semibold tracking-wide">СМК-Сталь</span>
           </div>
           <nav className="hidden md:flex items-center gap-5 text-sm font-semibold uppercase">
@@ -191,6 +189,9 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {/* push content to avoid overlap with fixed header */}
+      <div className="h-16" />
 
       {/* Hero */}
       <section className="relative isolate">
