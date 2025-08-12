@@ -145,12 +145,12 @@ export default function Home() {
         }}
       />
 
-      {/* Fixed transparent header over photo */}
-      <header className="fixed top-0 inset-x-0 z-30">
+      {/* Header over photo (not fixed) */}
+      <header className="relative z-30">
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {/* emblem removed per request */}
-            <span className="text-lg font-semibold tracking-wide whitespace-nowrap">СМК-Сталь</span>
+            <span className="text-lg font-semibold tracking-wide whitespace-nowrap">СМК Сталь</span>
           </div>
           <nav className="hidden md:flex items-center gap-5 text-sm font-semibold uppercase">
             <a href="#services" className="link-nav">Услуги</a>
@@ -190,13 +190,10 @@ export default function Home() {
         </div>
       </header>
 
-      {/* push content to avoid overlap with fixed header */}
-      <div className="h-16" />
-
-      {/* Top company intro text under nav */}
+      {/* Company intro text directly on parallax */}
       <section className="px-4">
-        <div className="mx-auto max-w-7xl text-sm sm:text-base text-gray-100/90 bg-black/30 rounded-xl border border-white/10 backdrop-blur p-4 sm:p-5">
-          <p>
+        <div className="mx-auto max-w-7xl">
+          <p className="max-w-5xl text-sm sm:text-base text-gray-100 leading-relaxed">
             СМК Сталь один из лидирующих игроков на рынке производства металлоконструкций с 2013 года. Мы предлагаем нашим клиентам полный комплекс услуг в сфере возведения зданий и сооружений различного назначения, которые предполагают использование различных металлоконструкций. Активно развиваем строительное направление для выполнения любых общестроительных работ, начиная от благоустройства, заканчивая исполнением функций генерального подрядчика.
           </p>
         </div>
@@ -424,7 +421,7 @@ export default function Home() {
               <p>Мы подтверждаем качество продукции и процессов независимыми сертификатами. Документы предоставляются по запросу.</p>
             </div>
             <div className="relative aspect-[3/4] w-full max-w-sm md:max-w-md mx-auto rounded-xl overflow-hidden border border-white/10">
-              <Image src="/tilda/static_tildacdn_com-___-150.jpg" alt="Сертификат соответствия" fill className="object-contain" sizes="(max-width: 768px) 80vw, 40vw" />
+              <Image src="/tilda/static_tildacdn_com--1.jpg" alt="Сертификат соответствия" fill className="object-contain" sizes="(max-width: 768px) 80vw, 40vw" />
             </div>
           </div>
         </div>
