@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       "Изготовление металлоконструкций в Санкт-Петербурге от 18000 руб./ тн",
     siteName: "СМК Сталь",
     images: [
-      { url: "/welding_3.jpg", width: 1200, height: 630, alt: "СМК Сталь — металлоконструкции" },
+      { url: "/welding_2.jpg", width: 1200, height: 630, alt: "СМК Сталь — металлоконструкции" },
     ],
     url: "https://xn----8sb2agb3adi6g.xn--p1ai",
     locale: "ru_RU",
