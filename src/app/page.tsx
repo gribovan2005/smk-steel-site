@@ -121,7 +121,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="/welding_2.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
+      <ParallaxBG imageUrl="/welding_3.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
       {/* убираем затемнение для чистой шапки поверх фото */}
       {/* <div className="absolute inset-0 bg-black/35 -z-10" /> */}
 
@@ -192,10 +192,6 @@ export default function Home() {
                 ))}
               </div>
             </details>
-            <div className="hidden sm:flex flex-col items-end gap-1 leading-none">
-              <Link href="tel:+79219472911" className="link-nav">+7 (921) 947-29-11</Link>
-              <a href="mailto:zakaz@smksteel-spb.ru" className="link-nav">zakaz@smksteel-spb.ru</a>
-            </div>
           </div>
         </div>
       </header>
@@ -408,34 +404,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Certificates / Compliance */}
-      <section id="certificates" className="py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8">Соответствие и сертификаты</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
-            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4">
-              <p className="font-semibold">Собственное производство 3000м2</p>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4">
-              <p className="font-semibold">Полный цикл металлообработки</p>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4">
-              <p className="font-semibold">Производственные мощности не менее 300 тн в месяц</p>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4">
-              <p className="font-semibold">Все допуски СРО, ISO 9001</p>
-            </div>
-          </div>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            <div className="text-gray-300 text-sm">
-              <p>Мы подтверждаем качество продукции и процессов независимыми сертификатами. Документы предоставляются по запросу.</p>
-            </div>
-            <div className="relative aspect-[3/4] w-full max-w-sm md:max-w-md mx-auto rounded-xl overflow-hidden border border-white/10">
-              <Image src="/tilda/static_tildacdn_com--1.jpg" alt="Сертификат соответствия" fill className="object-contain" sizes="(max-width: 768px) 80vw, 40vw" />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Certificates section removed per request */}
 
       {/* Clients */}
       <section id="clients" className="py-20">
