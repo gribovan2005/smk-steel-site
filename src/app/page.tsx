@@ -121,7 +121,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="/welding.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
+      <ParallaxBG imageUrl="/welding_2.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
       {/* убираем затемнение для чистой шапки поверх фото */}
       {/* <div className="absolute inset-0 bg-black/35 -z-10" /> */}
 
@@ -161,7 +161,17 @@ export default function Home() {
             <a href="#equipment" className="link-nav">Оборудование</a>
             <a href="#clients" className="link-nav">Клиенты</a>
             <a href="#orders" className="link-nav">Заказы</a>
-            <a href="#contacts" className="link-nav">Контакты</a>
+            <details className="relative">
+              <summary className="link-nav cursor-pointer list-none">Контакты</summary>
+              <div className="absolute right-0 mt-2 w-72 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-40">
+                <div className="flex flex-col gap-2 text-left normal-case font-normal">
+                  <a href="tel:+79219472911" className="link-nav">+7 (921) 947-29-11</a>
+                  <a href="mailto:zakaz@smksteel-spb.ru" className="link-nav">zakaz@smksteel-spb.ru</a>
+                  <div className="text-sm text-gray-300">г. Санкт-Петербург, ул. Караваевская 57</div>
+                  <a href="#lead" className="btn-outline btn-sm mt-1">Связаться</a>
+                </div>
+              </div>
+            </details>
           </nav>
           <div className="flex items-center gap-3">
             <details className="md:hidden">
