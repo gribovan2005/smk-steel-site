@@ -36,8 +36,9 @@ export const metadata: Metadata = {
     title: "СМК Сталь — производство металлоконструкций",
     description:
       "Изготовление металлоконструкций в Санкт-Петербурге от 18000 руб./ тн",
+    siteName: "СМК Сталь",
     images: [
-      "https://thb.tildacdn.com/tild3736-3037-4334-b863-353562353039/-/resize/504x/d946dbce69a24e0288d5.jpg",
+      { url: "/welding_3.jpg", width: 1200, height: 630, alt: "СМК Сталь — металлоконструкции" },
     ],
     url: "https://xn----8sb2agb3adi6g.xn--p1ai",
     locale: "ru_RU",
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     description:
       "Изготовление металлоконструкций в Санкт-Петербурге. Полный цикл производства. От 18000 руб/тн.",
     images: [
-      "https://thb.tildacdn.com/tild3736-3037-4334-b863-353562353039/-/resize/504x/d946dbce69a24e0288d5.jpg",
+      { url: "/welding_3.jpg", width: 1200, height: 630, alt: "СМК Сталь — металлоконструкции" },
     ],
   },
   icons: {
@@ -76,6 +77,15 @@ export default function RootLayout({
       streetAddress: "ул. Караваевская 57",
       addressCountry: "RU",
     },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+7-921-947-29-11",
+        contactType: "sales",
+        areaServed: "RU",
+        availableLanguage: ["ru"],
+      },
+    ],
   };
 
   return (

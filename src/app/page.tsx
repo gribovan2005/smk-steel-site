@@ -121,7 +121,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="/welding_3.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
+      <ParallaxBG imageUrl="/welding_4.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
       {/* убираем затемнение для чистой шапки поверх фото */}
       {/* <div className="absolute inset-0 bg-black/35 -z-10" /> */}
 
@@ -196,6 +196,7 @@ export default function Home() {
         </div>
       </header>
 
+      <main>
       {/* Company intro text directly on parallax */}
       <section className="px-4">
         <div className="mx-auto max-w-7xl">
@@ -210,7 +211,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-4 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight">
-              Минимализм. Сталь. Надёжность.
+              Изготовление металлоконструкций в Санкт-Петербурге
             </h1>
             <p className="mt-6 text-lg max-w-xl text-gray-300">
               Проектирование, изготовление и монтаж металлоконструкций.
@@ -486,6 +487,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      </main>
 
       <footer className="py-8 border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400">© {new Date().getFullYear()} СМК Сталь</div>
