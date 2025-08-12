@@ -36,6 +36,44 @@ export default function Home() {
     { name: "Нестандартные изделия", price: "От 60000 руб/тн", img: "/tilda/static_tildacdn_com-___.jpg" },
   ];
 
+  const services: Array<{ name: string; price?: string; desc: string; img: string }> = [
+    {
+      name: "Вальцовка обечаек",
+      price: "от 15000 руб./тн",
+      desc: "Вальцовка обечаек относится к одному из важнейших технологических процессов. Без этого этапа невозможно представить изготовление цилиндрических деталей.",
+      img: "/tilda/static_tildacdn_com-vse-o-valcovke.jpg",
+    },
+    {
+      name: "Плазменная резка",
+      price: "от 100 руб./м",
+      desc: "Плазменная резка применима практически ко всем разновидностям металлов и сплавов. Можно резать чугун, нержавеющую сталь, титан и др.",
+      img: "/tilda/static_tildacdn_com-Plasma_Cutting_2.jpg",
+    },
+    {
+      name: "Гибка листа до 8мм",
+      price: "от 50 руб./гиб",
+      desc: "Гибка листового металла — операция деформирования заготовки для получения изделия нужной формы и размеров.",
+      img: "/tilda/static_tildacdn_com-739f3d7b-f932-49ff-b.jpg",
+    },
+    {
+      name: "Вальцовка профиля",
+      price: "от 2000 р/пм",
+      desc: "Быстрый и недорогой способ создания изделия нужной формы без необходимости сварки стыка.",
+      img: "/tilda/static_tildacdn_com-noroot.png",
+    },
+    {
+      name: "Разработка КМ КМД",
+      desc: "Рабочая документация по ГОСТ и СНиП. Предварительный технико-экономический анализ снижает риски и сроки изготовления.",
+      img: "/tilda/static_tildacdn_com-iStock-695448564.jpg",
+    },
+    {
+      name: "Монтажные работы",
+      price: "от 18000 руб/тн*",
+      desc: "Монтаж зданий и металлоконструкций любой сложности, все допуски СРО.",
+      img: "/tilda/static_tildacdn_com-photo.jpg",
+    },
+  ];
+
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://xn----8sb2agb3adi6g.xn--p1ai";
 
   return (
@@ -71,6 +109,7 @@ export default function Home() {
             <span className="hidden sm:block text-sm text-gray-300">zakaz@smksteel-spb.ru</span>
           </div>
           <nav className="hidden md:flex items-center gap-3 text-sm font-medium">
+            <a href="#services" className="btn-outline btn-sm">Услуги</a>
             <a href="#constructions" className="btn-outline btn-sm">Типовые конструкции</a>
             <a href="#prices" className="btn-outline btn-sm">Цены</a>
             <a href="#projects" className="btn-outline btn-sm">Работы</a>
@@ -99,6 +138,31 @@ export default function Home() {
           <div className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur p-6 sm:p-8">
             <h3 className="text-xl font-semibold mb-4">Отправьте заявку на расчет</h3>
             <LeadForm />
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold">Услуги</h2>
+          <p className="mt-2 text-gray-300 max-w-2xl">Мы оказываем весь спектр услуг по обработке и заготовке металлических изделий</p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {services.map((s) => (
+              <div key={s.name} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4 flex gap-4">
+                <div className="relative w-40 h-28 sm:w-52 sm:h-32 flex-none overflow-hidden rounded-lg border border-white/10">
+                  <Image src={s.img} alt={s.name} fill className="object-cover" sizes="(max-width: 768px) 160px, 208px" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline justify-between gap-2 flex-wrap">
+                    <p className="text-base font-semibold text-white">{s.name}</p>
+                    {s.price ? <p className="text-sm font-medium text-gray-200">{s.price}</p> : null}
+                  </div>
+                  <p className="mt-2 text-sm text-gray-300">{s.desc}</p>
+                  <a href="#lead" className="mt-3 inline-block btn-outline btn-sm">Заказать →</a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
