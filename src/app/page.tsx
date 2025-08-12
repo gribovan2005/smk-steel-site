@@ -121,7 +121,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="/welding_4.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
+      <ParallaxBG imageUrl="/welding_2.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
       {/* убираем затемнение для чистой шапки поверх фото */}
       {/* <div className="absolute inset-0 bg-black/35 -z-10" /> */}
 
