@@ -74,6 +74,30 @@ export default function Home() {
     },
   ];
 
+  const equipmentImages: string[] = [
+    "/tilda/static_tildacdn_com-___5_.jpg",
+    "/tilda/static_tildacdn_com-radialno-sverlilny-s.jpg",
+    "/tilda/static_tildacdn_com-___.jpg",
+    "/tilda/static_tildacdn_com-___-150.jpg",
+  ];
+
+  const equipmentList: string[] = [
+    "Пресс 3-х кулачковый для правки профиля",
+    "Кран мостовой г\\п 5 тн",
+    "Кран мостовой г\\п 15 тн",
+    "Сварочная установка для приварки Стат. Болтов Koster GO Gmbh",
+    "Вальцы 3х валковые(16*2000) ИБ 2222б с подгибом кромки",
+    "Сварочный трактор угловой для сварки под флюсом сВДУ -1250",
+    "Сварочный трактор стыковой для сварки под флюсом сВДУ",
+    "Сварочный п\\ автомат EWM AG (Phoenix 351 Progrtss puls MM F)",
+    "Сварочный п\\автомат ПДГ",
+    "Установка плазменной резки АПР-150",
+    "Ленточнопильный станок по металлу JET MBS-1013CSD",
+    "Покрасочный аппарат Grako",
+    "Радиально-сверлильный станок 2М55",
+    "Трубогиб Профилегиб металлыч-вс-300/70-У",
+  ];
+
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://xn----8sb2agb3adi6g.xn--p1ai";
 
   return (
@@ -113,6 +137,7 @@ export default function Home() {
             <a href="#constructions" className="btn-outline btn-sm">Типовые конструкции</a>
             <a href="#prices" className="btn-outline btn-sm">Цены</a>
             <a href="#projects" className="btn-outline btn-sm">Работы</a>
+            <a href="#equipment" className="btn-outline btn-sm">Оборудование</a>
             <a href="#orders" className="btn-outline btn-sm">Заказы</a>
             <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
           </nav>
@@ -223,6 +248,29 @@ export default function Home() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Equipment */}
+      <section id="equipment" className="py-20">
+        <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6">Наше оборудование</h2>
+            <div className="grid grid-cols-2 gap-3">
+              {equipmentImages.map((src, i) => (
+                <div key={i} className="relative h-36 sm:h-44 w-full overflow-hidden rounded-lg border border-white/10">
+                  <Image src={src} alt={`Оборудование ${i + 1}`} fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <ol className="list-decimal pl-5 space-y-2 text-gray-200">
+              {equipmentList.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
