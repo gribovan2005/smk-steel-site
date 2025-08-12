@@ -62,6 +62,24 @@ body {
 
 .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
 
+/* Header transparent nav links */
+.link-nav {
+  padding: 0.25rem 0.25rem;
+  background: transparent;
+  border: 0;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  opacity: .85;
+  transition: opacity .2s ease, text-decoration-color .2s ease;
+}
+.link-nav:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+
+/* Hide scrollbars helper */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Aurora animated background */
 .aurora {
   position: absolute;

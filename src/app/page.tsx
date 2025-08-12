@@ -122,7 +122,8 @@ export default function Home() {
   return (
     <div className="min-h-screen text-white relative">
       <ParallaxBG imageUrl="/welding.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
-      <div className="absolute inset-0 bg-black/35 -z-10" />
+      {/* убираем затемнение для чистой шапки поверх фото */}
+      {/* <div className="absolute inset-0 bg-black/35 -z-10" /> */}
 
       <Script id="ld-services" type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -144,44 +145,48 @@ export default function Home() {
         }}
       />
 
-      {/* Header */}
-      <header className="border-b border-white/10 sticky top-0 z-30 backdrop-blur bg-black/40">
-        <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-3">
+      {/* Header over photo */}
+      <header className="sticky top-0 z-30">
+        <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10">
               <Image src={logoSrc} alt="СМК-Сталь эмблема" fill sizes="40px" priority className="object-contain" />
             </div>
             <span className="text-lg font-semibold tracking-wide">СМК-Сталь</span>
           </div>
-          <nav className="hidden lg:flex items-center flex-wrap gap-2 text-sm font-medium">
-            <a href="#services" className="btn-outline btn-sm">Услуги</a>
-            <a href="#constructions" className="btn-outline btn-sm">Типовые конструкции</a>
-            <a href="#prices" className="btn-outline btn-sm">Цены</a>
-            <a href="#steps" className="btn-outline btn-sm">Этапы</a>
-            <a href="#projects" className="btn-outline btn-sm">Работы</a>
-            <a href="#equipment" className="btn-outline btn-sm">Оборудование</a>
-            <a href="#clients" className="btn-outline btn-sm">Клиенты</a>
-            <a href="#orders" className="btn-outline btn-sm">Заказы</a>
-            <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
+          <nav className="hidden md:flex items-center gap-5 text-sm font-semibold uppercase">
+            <a href="#services" className="link-nav">Услуги</a>
+            <a href="#constructions" className="link-nav">Типовые конструкции</a>
+            <a href="#prices" className="link-nav">Цены</a>
+            <a href="#steps" className="link-nav">Этапы</a>
+            <a href="#projects" className="link-nav">Работы</a>
+            <a href="#equipment" className="link-nav">Оборудование</a>
+            <a href="#clients" className="link-nav">Клиенты</a>
+            <a href="#orders" className="link-nav">Заказы</a>
+            <a href="#contacts" className="link-nav">Контакты</a>
           </nav>
-          <div className="flex items-center gap-2">
-            <details className="lg:hidden">
-              <summary className="btn-outline btn-sm select-none cursor-pointer">Меню</summary>
-              <div className="absolute right-4 mt-2 w-56 rounded-xl border border-white/10 bg-black/80 backdrop-blur p-2 flex flex-col gap-2 z-40">
-                <a href="#services" className="btn-outline btn-sm">Услуги</a>
-                <a href="#constructions" className="btn-outline btn-sm">Типовые конструкции</a>
-                <a href="#prices" className="btn-outline btn-sm">Цены</a>
-                <a href="#steps" className="btn-outline btn-sm">Этапы</a>
-                <a href="#projects" className="btn-outline btn-sm">Работы</a>
-                <a href="#equipment" className="btn-outline btn-sm">Оборудование</a>
-                <a href="#clients" className="btn-outline btn-sm">Клиенты</a>
-                <a href="#orders" className="btn-outline btn-sm">Заказы</a>
-                <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
+          <div className="flex items-center gap-3">
+            <details className="md:hidden">
+              <summary className="link-nav">Меню</summary>
+              <div className="absolute right-4 mt-2 w-56 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-2 flex flex-col gap-1 z-40">
+                {[
+                  ["#services","Услуги"],
+                  ["#constructions","Типовые конструкции"],
+                  ["#prices","Цены"],
+                  ["#steps","Этапы"],
+                  ["#projects","Работы"],
+                  ["#equipment","Оборудование"],
+                  ["#clients","Клиенты"],
+                  ["#orders","Заказы"],
+                  ["#contacts","Контакты"],
+                ].map(([href, label]) => (
+                  <a key={href as string} href={href as string} className="link-nav">{label as string}</a>
+                ))}
               </div>
             </details>
-            <div className="flex flex-col items-end gap-1">
-              <Link href="tel:+79219472911" className="btn-outline btn-sm">+7 (921) 947-29-11</Link>
-              <a href="mailto:zakaz@smksteel-spb.ru" className="btn-outline btn-sm">zakaz@smksteel-spb.ru</a>
+            <div className="hidden sm:flex flex-col items-end gap-1">
+              <Link href="tel:+79219472911" className="link-nav">+7 (921) 947-29-11</Link>
+              <a href="mailto:zakaz@smksteel-spb.ru" className="link-nav">zakaz@smksteel-spb.ru</a>
             </div>
           </div>
         </div>
