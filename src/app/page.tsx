@@ -122,8 +122,8 @@ export default function Home() {
   return (
     <div className="min-h-screen text-white relative">
       <ParallaxBG imageUrl="/welding_2.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
-      {/* убираем затемнение для чистой шапки поверх фото */}
-      {/* <div className="absolute inset-0 bg-black/35 -z-10" /> */}
+      {/* Затемняющий градиент поверх фона для читабельности */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
 
       <Script id="ld-services" type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -210,10 +210,10 @@ export default function Home() {
       <section className="relative isolate">
         <div className="relative mx-auto max-w-7xl px-4 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight">
+            <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight text-shadow">
               Изготовление металлоконструкций в Санкт-Петербурге
             </h1>
-            <p className="mt-6 text-lg max-w-xl text-gray-300">
+            <p className="mt-6 text-lg max-w-xl text-gray-200 text-shadow">
               Проектирование, изготовление и монтаж металлоконструкций.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
