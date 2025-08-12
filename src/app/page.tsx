@@ -150,7 +150,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {/* emblem removed per request */}
-            <span className="text-lg font-semibold tracking-wide">СМК-Сталь</span>
+            <span className="text-lg font-semibold tracking-wide whitespace-nowrap">СМК-Сталь</span>
           </div>
           <nav className="hidden md:flex items-center gap-5 text-sm font-semibold uppercase">
             <a href="#services" className="link-nav">Услуги</a>
@@ -182,7 +182,7 @@ export default function Home() {
                 ))}
               </div>
             </details>
-            <div className="hidden sm:flex flex-col items-end gap-1">
+            <div className="hidden sm:flex flex-col items-end gap-1 leading-none">
               <Link href="tel:+79219472911" className="link-nav">+7 (921) 947-29-11</Link>
               <a href="mailto:zakaz@smksteel-spb.ru" className="link-nav">zakaz@smksteel-spb.ru</a>
             </div>
@@ -192,6 +192,15 @@ export default function Home() {
 
       {/* push content to avoid overlap with fixed header */}
       <div className="h-16" />
+
+      {/* Top company intro text under nav */}
+      <section className="px-4">
+        <div className="mx-auto max-w-7xl text-sm sm:text-base text-gray-100/90 bg-black/30 rounded-xl border border-white/10 backdrop-blur p-4 sm:p-5">
+          <p>
+            СМК Сталь один из лидирующих игроков на рынке производства металлоконструкций с 2013 года. Мы предлагаем нашим клиентам полный комплекс услуг в сфере возведения зданий и сооружений различного назначения, которые предполагают использование различных металлоконструкций. Активно развиваем строительное направление для выполнения любых общестроительных работ, начиная от благоустройства, заканчивая исполнением функций генерального подрядчика.
+          </p>
+        </div>
+      </section>
 
       {/* Hero */}
       <section className="relative isolate">
@@ -387,6 +396,35 @@ export default function Home() {
                   <Image src={src} alt={`Проект ${idx + 1}`} fill className="object-cover" sizes="(max-width: 768px) 320px, 384px" />
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certificates / Compliance */}
+      <section id="certificates" className="py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8">Соответствие и сертификаты</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4">
+              <p className="font-semibold">Собственное производство 3000м2</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4">
+              <p className="font-semibold">Полный цикл металлообработки</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4">
+              <p className="font-semibold">Производственные мощности не менее 300 тн в месяц</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-4">
+              <p className="font-semibold">Все допуски СРО, ISO 9001</p>
+            </div>
+          </div>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div className="text-gray-300 text-sm">
+              <p>Мы подтверждаем качество продукции и процессов независимыми сертификатами. Документы предоставляются по запросу.</p>
+            </div>
+            <div className="relative aspect-[3/4] w-full max-w-sm md:max-w-md mx-auto rounded-xl overflow-hidden border border-white/10">
+              <Image src="/tilda/static_tildacdn_com-___-150.jpg" alt="Сертификат соответствия" fill className="object-contain" sizes="(max-width: 768px) 80vw, 40vw" />
             </div>
           </div>
         </div>
