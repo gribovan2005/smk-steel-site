@@ -147,12 +147,11 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-white/10 sticky top-0 z-30 backdrop-blur bg-black/40">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="relative w-7 h-7 overflow-hidden rounded">
-              <Image src={logoSrc} alt="СМК Сталь эмблема" fill sizes="28px" className="object-contain" />
+          <div className="flex items-center gap-3">
+            <div className="relative w-10 h-10">
+              <Image src={logoSrc} alt="СМК-Сталь эмблема" fill sizes="40px" priority className="object-contain" />
             </div>
-            <span className="text-lg font-semibold tracking-wide truncate">СМК Сталь</span>
-            <span className="hidden sm:block text-sm text-gray-300 truncate">zakaz@smksteel-spb.ru</span>
+            <span className="text-lg font-semibold tracking-wide">СМК-Сталь</span>
           </div>
           <nav className="hidden lg:flex items-center flex-wrap gap-2 text-sm font-medium">
             <a href="#services" className="btn-outline btn-sm">Услуги</a>
@@ -165,21 +164,26 @@ export default function Home() {
             <a href="#orders" className="btn-outline btn-sm">Заказы</a>
             <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
           </nav>
-          <details className="lg:hidden">
-            <summary className="btn-outline btn-sm select-none cursor-pointer">Меню</summary>
-            <div className="absolute right-4 mt-2 w-56 rounded-xl border border-white/10 bg-black/80 backdrop-blur p-2 flex flex-col gap-2 z-40">
-              <a href="#services" className="btn-outline btn-sm">Услуги</a>
-              <a href="#constructions" className="btn-outline btn-sm">Типовые конструкции</a>
-              <a href="#prices" className="btn-outline btn-sm">Цены</a>
-              <a href="#steps" className="btn-outline btn-sm">Этапы</a>
-              <a href="#projects" className="btn-outline btn-sm">Работы</a>
-              <a href="#equipment" className="btn-outline btn-sm">Оборудование</a>
-              <a href="#clients" className="btn-outline btn-sm">Клиенты</a>
-              <a href="#orders" className="btn-outline btn-sm">Заказы</a>
-              <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
+          <div className="flex items-center gap-2">
+            <details className="lg:hidden">
+              <summary className="btn-outline btn-sm select-none cursor-pointer">Меню</summary>
+              <div className="absolute right-4 mt-2 w-56 rounded-xl border border-white/10 bg-black/80 backdrop-blur p-2 flex flex-col gap-2 z-40">
+                <a href="#services" className="btn-outline btn-sm">Услуги</a>
+                <a href="#constructions" className="btn-outline btn-sm">Типовые конструкции</a>
+                <a href="#prices" className="btn-outline btn-sm">Цены</a>
+                <a href="#steps" className="btn-outline btn-sm">Этапы</a>
+                <a href="#projects" className="btn-outline btn-sm">Работы</a>
+                <a href="#equipment" className="btn-outline btn-sm">Оборудование</a>
+                <a href="#clients" className="btn-outline btn-sm">Клиенты</a>
+                <a href="#orders" className="btn-outline btn-sm">Заказы</a>
+                <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
+              </div>
+            </details>
+            <div className="flex flex-col items-end gap-1">
+              <Link href="tel:+79219472911" className="btn-outline btn-sm">+7 (921) 947-29-11</Link>
+              <a href="mailto:zakaz@smksteel-spb.ru" className="btn-outline btn-sm">zakaz@smksteel-spb.ru</a>
             </div>
-          </details>
-          <Link href="tel:+79219472911" className="hidden sm:inline-block btn-outline btn-sm">+7 (921) 947-29-11</Link>
+          </div>
         </div>
       </header>
 
@@ -387,9 +391,9 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="text-2xl sm:text-3xl font-bold">Наши клиенты</h2>
           <p className="mt-2 text-gray-300">Гордимся сотрудничеством с лидерами рынка</p>
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center">
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
             {clientLogos.map((src, i) => (
-              <div key={i} className="relative h-24 sm:h-28 w-full rounded-lg border border-white/10 bg-white/0 flex items-center justify-center p-4">
+              <div key={i} className="relative h-28 sm:h-36 w-full flex items-center justify-center">
                 <Image src={src} alt={`Клиент ${i + 1}`} fill className="object-contain" sizes="(max-width: 768px) 45vw, 20vw" />
               </div>
             ))}
