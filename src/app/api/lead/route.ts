@@ -107,10 +107,15 @@ export async function POST(req: Request) {
 
       const text = lines.join("\n");
 
-      const sheetLinks = [0, 1, 2].map((i) => (downloadUrls[i] ? `=HYPERLINK("${downloadUrls[i]}";"Скачать")` : ""));
+      const sheetLinks = [0, 1, 2].map((i) => {
+        const u = downloadUrls[i];
+        if (!u) return "";
+        const proxied = `${process.env.NEXT_PUBLIC_SITE_URL || ""}/api/file?url=${encodeURIComponent(u)}&name=${encodeURIComponent(filenames[i] || `file-${i+1}`)}`;
+        return `=HYPERLINK("${proxied}";"Скачать")`;
+      });
 
       await Promise.all([
-        sendTelegram(text).catch(() => {}),
+        sendTelegram(text + (downloadUrls.length ? "\n\nСсылки (через прокси):\n" + downloadUrls.map((u, i) => `${i + 1}) ${ (process.env.NEXT_PUBLIC_SITE_URL || "") + "/api/file?url=" + encodeURIComponent(u) + "&name=" + encodeURIComponent(filenames[i] || `file-${i+1}`) }`).join("\n") : "")).catch(() => {}),
         appendLeadToSheet([
           new Date().toISOString(),
           data.name || "",
