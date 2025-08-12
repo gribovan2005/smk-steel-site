@@ -3,6 +3,14 @@ import Image from "next/image";
 import { publicOrders } from "@/data/orders";
 
 export default function OrdersPage() {
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Главная", item: "/" },
+      { "@type": "ListItem", position: 2, name: "Заказы", item: "/orders" },
+    ],
+  };
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <header className="border-b border-gray-200">
@@ -11,8 +19,14 @@ export default function OrdersPage() {
           <Link href="/" className="text-orange-600 hover:text-orange-700">На главную</Link>
         </div>
       </header>
-
-
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <nav aria-label="Хлебные крошки" className="mx-auto max-w-7xl px-4 py-2 text-sm">
+        <ul className="flex gap-2 text-gray-600">
+          <li><Link href="/" className="hover:underline">Главная</Link></li>
+          <li>/</li>
+          <li aria-current="page" className="text-gray-800">Заказы</li>
+        </ul>
+      </nav>
 
       <main className="mx-auto max-w-7xl px-4 py-8">
         <div className="grid gap-6">
@@ -20,7 +34,7 @@ export default function OrdersPage() {
             <div key={o.id} className="rounded-xl border p-6">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
-                  <p className="text-sm text-gray-500">{new Date(o.createdAt).toLocaleString("ru-RU")}{o.location ? ` · ${o.location}` : ""}</p>
+                  <p className="text-sm text-gray-500">{new Date(o.createdAt).toLocaleString("ru-RU")} {o.location ? ` · ${o.location}` : ""}</p>
                   <p className="text-lg font-semibold">{o.title}</p>
                   {o.clientName ? <p className="text-sm text-gray-600">Заказчик: {o.clientName}</p> : null}
                 </div>
