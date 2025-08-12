@@ -3,6 +3,7 @@ import { z } from "zod";
 import { appendLeadToSheet } from "@/lib/googleSheets";
 import { insertOrder } from "@/lib/db";
 import { uploadToDrive } from "@/lib/googleDrive";
+import { put } from "@vercel/blob";
 
 const leadSchema = z.object({
   name: z.string().trim().max(100).optional(),
@@ -70,13 +71,25 @@ export async function POST(req: Request) {
       for (let idx = 0; idx < files.length; idx++) {
         const f = files[idx];
         filenames.push(f.name || `file-${idx + 1}`);
+        const buffer = Buffer.from(await f.arrayBuffer());
+        // Try Google Drive first
+        let url: string | null = null;
         try {
-          const buffer = Buffer.from(await f.arrayBuffer());
-          const { downloadUrl } = await uploadToDrive({ filename: f.name || `file-${idx + 1}`, mimeType: f.type || undefined, buffer });
-          downloadUrls.push(downloadUrl);
+          const r = await uploadToDrive({ filename: f.name || `file-${idx + 1}`, mimeType: f.type || undefined, buffer });
+          url = r.downloadUrl;
         } catch (e) {
           console.error("Drive upload failed", e);
         }
+        // Fallback to Vercel Blob
+        if (!url) {
+          try {
+            const uploaded = await put(`leads/${Date.now()}-${encodeURIComponent(f.name || `file-${idx + 1}`)}`, buffer, { access: "public", contentType: f.type || undefined });
+            url = `${uploaded.url}?download=1`;
+          } catch (e) {
+            console.error("Blob upload failed", e);
+          }
+        }
+        if (url) downloadUrls.push(url);
       }
 
       const lines: string[] = [
