@@ -115,7 +115,7 @@ body {
 .marquee {
   display: flex;
   width: max-content;
-  animation: scroll-x 30s linear infinite;
+  animation: scroll-x 16s linear infinite;
 }
 
 .marquee:hover {

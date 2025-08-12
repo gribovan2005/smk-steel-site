@@ -40,8 +40,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="/welding.jpg" scalePercent={110} />
-      <div className="absolute inset-0 bg-black/60 -z-10" />
+      <ParallaxBG imageUrl="/welding.jpg" scalePercent={135} brightness={1.18} contrast={1.08} />
+      <div className="absolute inset-0 bg-black/35 -z-10" />
 
       <Script id="ld-services" type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -132,12 +132,12 @@ export default function Home() {
       <section id="prices" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6">Цены</h2>
-          <div className="overflow-x-auto rounded-xl border border-white/10 bg-black/30 backdrop-blur">
+          <div className="overflow-x-auto rounded-xl border border-white/12 bg-white/5">
             <table className="min-w-full text-sm">
-              <thead className="bg-white/5">
-                <tr>
-                  <th className="text-left p-3 border-b border-white/10">Наименование</th>
-                  <th className="text-left p-3 border-b border-white/10">Цена</th>
+              <thead>
+                <tr className="bg-white/10 text-white">
+                  <th className="text-left p-4 border-b border-white/10">Наименование</th>
+                  <th className="text-left p-4 border-b border-white/10">Цена</th>
                 </tr>
               </thead>
               <tbody>
@@ -152,9 +152,9 @@ export default function Home() {
                   ["Изготовление металлоконструкций", "19 950р"],
                   ["Итого", "75 530р"],
                 ].map(([name, price]) => (
-                  <tr key={name as string} className="odd:bg-white/0 even:bg-white/5">
-                    <td className="p-3">{name}</td>
-                    <td className="p-3 font-semibold">{price}</td>
+                  <tr key={name as string} className="border-t border-white/10">
+                    <td className="p-4 text-white/90">{name}</td>
+                    <td className="p-4 font-semibold text-white">{price}</td>
                   </tr>
                 ))}
               </tbody>
