@@ -98,6 +98,24 @@ export default function Home() {
     "Трубогиб Профилегиб металлыч-вс-300/70-У",
   ];
 
+  const steps: Array<{ num: number; title: string; desc: string }> = [
+    { num: 1, title: "1. Оставляете заявку", desc: "Вы оставляете заявку или звоните нам" },
+    { num: 2, title: "2. Получаете консультацию и расчет стоимости", desc: "Вы приезжаете к нам на производство и задаете интересущие вас вопросы, далее рассчитываем стоимость проекта" },
+    { num: 3, title: "3. Договор", desc: "Подписываем договор и начинаем работу" },
+    { num: 4, title: "4. Доставка", desc: "Осуществляем доставку и монтаж металлоконструкций по необходимости" },
+  ];
+
+  const clientLogos: string[] = [
+    "/tilda/static_tildacdn_com-2.jpg",
+    "/tilda/static_tildacdn_com-7MyS3ZFUtIg.jpg",
+    "/tilda/static_tildacdn_com-11.jpg",
+    "/tilda/static_tildacdn_com-52112c7ed5f20be19966.png",
+    "/tilda/static_tildacdn_com-ee.jpg",
+    "/tilda/static_tildacdn_com-gk-morstroj-550x550-.jpg",
+    "/tilda/static_tildacdn_com-moskva_-sao_-savelov.jpg",
+    "/tilda/static_tildacdn_com-_-1.jpg",
+  ];
+
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://xn----8sb2agb3adi6g.xn--p1ai";
 
   return (
@@ -136,8 +154,10 @@ export default function Home() {
             <a href="#services" className="btn-outline btn-sm">Услуги</a>
             <a href="#constructions" className="btn-outline btn-sm">Типовые конструкции</a>
             <a href="#prices" className="btn-outline btn-sm">Цены</a>
+            <a href="#steps" className="btn-outline btn-sm">Этапы</a>
             <a href="#projects" className="btn-outline btn-sm">Работы</a>
             <a href="#equipment" className="btn-outline btn-sm">Оборудование</a>
+            <a href="#clients" className="btn-outline btn-sm">Клиенты</a>
             <a href="#orders" className="btn-outline btn-sm">Заказы</a>
             <a href="#contacts" className="btn-outline btn-sm">Контакты</a>
           </nav>
@@ -252,6 +272,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Steps */}
+      <section id="steps" className="py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-10">Этапы работы с нами</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((s) => (
+              <div key={s.num} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6 text-center">
+                <div className="mx-auto h-10 w-10 rounded-full border border-white/60 flex items-center justify-center font-semibold">{s.num}</div>
+                <p className="mt-4 font-semibold">{s.title}</p>
+                <p className="mt-2 text-sm text-gray-300">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Equipment */}
       <section id="equipment" className="py-20">
         <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
@@ -328,6 +364,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Clients */}
+      <section id="clients" className="py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold">Наши клиенты</h2>
+          <p className="mt-2 text-gray-300">Гордимся сотрудничеством с лидерами рынка</p>
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center">
+            {clientLogos.map((src, i) => (
+              <div key={i} className="relative h-16 sm:h-20 w-full grayscale hover:grayscale-0 transition rounded-lg border border-white/10 bg-white/0 flex items-center justify-center p-3">
+                <Image src={src} alt={`Клиент ${i + 1}`} fill className="object-contain" sizes="(max-width: 768px) 45vw, 20vw" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA + Form */}
       <section id="lead" className="py-20">
         <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -335,7 +386,7 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold">Оставьте заявку</h2>
             <p className="mt-4 text-gray-300">Ответим в течение рабочего дня. Можно указать только телефон.</p>
           </div>
-          <div className="rounded-xl border border-white/10 bg-black/40 backdrop-blur p-6">
+          <div className="rounded-XL border border-white/10 bg-black/40 backdrop-blur p-6">
             <LeadForm />
             <div className="mt-4 flex gap-3">
               <a href="#" className="btn-outline btn-sm">Позвонить</a>
