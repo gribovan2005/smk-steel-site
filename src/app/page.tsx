@@ -17,13 +17,23 @@ export default function Home() {
     "/tilda/static_tildacdn_com-4.jpg",
   ];
 
-  const services = [
-    { name: "Фермы", price: "От 25000 руб/тн" },
-    { name: "Прогоны, балки покрытия", price: "От 18000 руб/тн" },
-    { name: "Электросварной двутавр", price: "От 17000 руб/тн" },
-    { name: "Колонны", price: "От 22000 руб/тн" },
-    { name: "Связи, фахверк, распорки", price: "От 22000 руб/тн" },
-    { name: "Балки перекрытий", price: "От 18000 руб/тн" },
+  const constructions: Array<{ name: string; price: string; img: string }> = [
+    { name: "Фермы", price: "От 25000 руб/тн", img: "/tilda/static_tildacdn_com-4.jpg" },
+    { name: "Прогоны, балки покрытия", price: "От 18000 руб/тн", img: "/tilda/static_tildacdn_com-8355f7db7f0d96436779.jpg" },
+    { name: "Электросварной двутавр", price: "От 17000 руб/тн", img: "/tilda/static_tildacdn_com-XXXL.jpg" },
+    { name: "Колонны", price: "От 22000 руб/тн", img: "/tilda/static_tildacdn_com-IMG_9224.jpg" },
+    { name: "Связи, фахверк, распорки", price: "От 22000 руб/тн", img: "/tilda/static_tildacdn_com-12072012423.jpg" },
+    { name: "Балки перекрытий", price: "От 18000 руб/тн", img: "/tilda/static_tildacdn_com-Opornye-konstruktsii.jpg" },
+    { name: "Лестницы, ограждения, площадки", price: "От 30000 руб/тн", img: "/tilda/static_tildacdn_com-thumb.jpg" },
+    { name: "Закладные изделия", price: "От 45000 руб/тн", img: "/tilda/static_tildacdn_com-uzel00851.png" },
+    { name: "Створные знаки", price: "От 45000 руб/тн", img: "/tilda/static_tildacdn_com-photo.png" },
+    { name: "Дымовые трубы", price: "От 50000 руб/тн", img: "/tilda/static_tildacdn_com-s1200.jpg" },
+    { name: "Подкрановые балки", price: "От 45000 руб/тн", img: "/tilda/static_tildacdn_com-Opornye-konstruktsii.jpg" },
+    { name: "Приварка статичных болтов", price: "От 400 руб/шт. Выезд на объект", img: "/tilda/static_tildacdn_com-noroot.png" },
+    { name: "Пространственные конструкции", price: "От 35000 руб/тн", img: "/tilda/static_tildacdn_com-835e515259312359159d.jpg" },
+    { name: "Опоры ЛЭП", price: "От 35000 руб/тн", img: "/tilda/static_tildacdn_com-iStock-695448564.jpg" },
+    { name: "Емкости и резервуары", price: "От 50000 руб/тн", img: "/tilda/static_tildacdn_com-C_swchiller_20120717.jpg" },
+    { name: "Нестандартные изделия", price: "От 60000 руб/тн", img: "/tilda/static_tildacdn_com-___.jpg" },
   ];
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://xn----8sb2agb3adi6g.xn--p1ai";
@@ -38,7 +48,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
-            itemListElement: services.map((s, i) => ({
+            itemListElement: constructions.map((s, i) => ({
               "@type": "ListItem",
               position: i + 1,
               item: {
@@ -46,7 +56,7 @@ export default function Home() {
                 name: s.name,
                 description: `${s.name} — ${s.price}`,
                 provider: { "@type": "Organization", name: "СМК Сталь" },
-                url: `${siteUrl}#services`,
+                url: `${siteUrl}#constructions`,
               },
             })),
           }),
@@ -61,7 +71,7 @@ export default function Home() {
             <span className="hidden sm:block text-sm text-gray-300">zakaz@smksteel-spb.ru</span>
           </div>
           <nav className="hidden md:flex items-center gap-3 text-sm font-medium">
-            <a href="#services" className="btn-outline btn-sm">Услуги</a>
+            <a href="#constructions" className="btn-outline btn-sm">Типовые конструкции</a>
             <a href="#prices" className="btn-outline btn-sm">Цены</a>
             <a href="#projects" className="btn-outline btn-sm">Работы</a>
             <a href="#orders" className="btn-outline btn-sm">Заказы</a>
@@ -93,20 +103,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-20" id="services">
+      {/* Constructions */}
+      <section className="py-20" id="constructions">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8">Услуги</h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <div key={s.name} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6 flex flex-col justify-between">
-                <div>
-                  <p className="text-lg font-semibold text-white">{s.name}</p>
-                  <p className="mt-2 text-gray-300 font-medium">{s.price}</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8">Типовые конструкции</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {constructions.map((c) => (
+              <div key={c.name} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur overflow-hidden">
+                <div className="relative h-40 w-full border-b border-white/10">
+                  <Image src={c.img} alt={c.name} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
                 </div>
-                <a href="#lead" className="mt-4 btn-outline btn-sm w-max">Заказать →</a>
+                <div className="p-5">
+                  <p className="text-base font-semibold text-white">{c.name}</p>
+                  <p className="mt-2 text-gray-300 font-medium">{c.price}</p>
+                  <a href="#lead" className="mt-4 inline-block btn-outline btn-sm">Заказать →</a>
+                </div>
               </div>
             ))}
+          </div>
+          <div className="mt-6 text-xs text-gray-400 space-y-1">
+            <p>* цены указаны без учета металлопроката и лакокрасочных материалов.</p>
+            <p>** указанные цены не являются публичной офертой. Стоимость указана в рублях за 1 тонну с НДС.</p>
           </div>
         </div>
       </section>
