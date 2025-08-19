@@ -1,7 +1,13 @@
+"use client";
+
 import Script from "next/script";
+import Link from "next/link";
+import { useEffect } from "react";
 import ParallaxBG from "@/components/ParallaxBG";
 import LeadForm from "@/components/LeadForm";
 import { publicOrders } from "@/data/orders";
+import { services } from "@/data/services";
+import { constructions } from "@/data/constructions";
 import {
   HeroSection,
   AboutSection,
@@ -15,6 +21,45 @@ import {
 } from "@/components/sections";
 
 export default function Home() {
+  // Маппинги URL-ов для услуг
+  const serviceUrls: Record<string, string> = {
+    "Вальцовка обечаек": "/services/valtsovka-obechaek",
+    "Плазменная резка": "/services/plazmennaya-rezka",
+    "Гибка листа до 8мм": "/services/gibka-lista",
+    "Вальцовка профиля": "/services/valtsovka-profilya",
+    "Разработка КМ КМД": "/services/km-kmd",
+    "Монтажные работы": "/services/montazh",
+  };
+
+  // Маппинги URL-ов для конструкций (только созданные пока)
+  const constructionUrls: Record<string, string> = {
+    "Фермы": "/constructions/fermy",
+    "Балки перекрытий": "/constructions/balki-perekrytij",
+  };
+
+  // Автоматическое закрытие других выпадающих меню
+  useEffect(() => {
+    const handleDetailsToggle = (event: Event) => {
+      const target = event.target as HTMLDetailsElement;
+      if (target.tagName === 'DETAILS' && target.open) {
+        // Найти все другие details элементы в навигации и закрыть их
+        const allDetails = document.querySelectorAll('nav details');
+        allDetails.forEach((details) => {
+          if (details !== target && (details as HTMLDetailsElement).open) {
+            (details as HTMLDetailsElement).open = false;
+          }
+        });
+      }
+    };
+
+    // Добавить обработчик событий
+    document.addEventListener('toggle', handleDetailsToggle, true);
+
+    // Очистка при размонтировании компонента
+    return () => {
+      document.removeEventListener('toggle', handleDetailsToggle, true);
+    };
+  }, []);
   const logoSrc = "/tilda/static_tildacdn_com-2123213.png";
 
   return (
@@ -33,8 +78,46 @@ export default function Home() {
             <span className="text-lg font-semibold tracking-wide whitespace-nowrap px-3 py-1 rounded-lg border border-white/20 bg-black/40 backdrop-blur">СМК Сталь</span>
           </div>
           <nav className="hidden md:flex items-center gap-5 text-sm font-semibold uppercase">
-            <a href="#services" className="link-nav">Услуги</a>
-            <a href="#constructions" className="link-nav">Типовые конструкции</a>
+            {/* Выпадающее меню Услуги */}
+            <details className="relative">
+              <summary className="link-nav cursor-pointer list-none">Услуги</summary>
+              <div className="absolute left-0 mt-2 w-80 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-40">
+                <div className="flex flex-col gap-2 text-left normal-case font-normal">
+                  <a href="#services" className="link-nav font-semibold border-b border-white/20 pb-2">Все услуги</a>
+                  {services.map((service) => {
+                    const url = serviceUrls[service.name];
+                    return url ? (
+                      <Link key={service.name} href={url} className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">
+                        {service.name}
+                      </Link>
+                    ) : null;
+                  })}
+                </div>
+              </div>
+            </details>
+            
+            {/* Выпадающее меню Типовые конструкции */}
+            <details className="relative">
+              <summary className="link-nav cursor-pointer list-none">Типовые конструкции</summary>
+              <div className="absolute left-0 mt-2 w-80 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-40">
+                <div className="flex flex-col gap-2 text-left normal-case font-normal max-h-96 overflow-y-auto">
+                  <a href="#constructions" className="link-nav font-semibold border-b border-white/20 pb-2">Все конструкции</a>
+                  {constructions.map((construction) => {
+                    const url = constructionUrls[construction.name];
+                    return url ? (
+                      <Link key={construction.name} href={url} className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">
+                        {construction.name}
+                      </Link>
+                    ) : (
+                      <span key={construction.name} className="text-sm py-1 text-gray-500">
+                        {construction.name} <span className="text-xs">(скоро)</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            </details>
+            
             <a href="#prices" className="link-nav">Цены</a>
             <a href="#steps" className="link-nav">Этапы</a>
             <a href="#projects" className="link-nav">Работы</a>
@@ -57,10 +140,10 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <details className="md:hidden">
               <summary className="link-nav">Меню</summary>
-              <div className="absolute right-4 mt-2 w-56 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-2 flex flex-col gap-1 z-40">
+              <div className="absolute right-4 mt-2 w-72 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 flex flex-col gap-1 z-40 max-h-96 overflow-y-auto">
+                {/* Основные разделы */}
+                <div className="text-xs text-gray-400 uppercase tracking-wide mb-2">Разделы</div>
                 {[
-                  ["#services","Услуги"],
-                  ["#constructions","Типовые конструкции"],
                   ["#prices","Цены"],
                   ["#steps","Этапы"],
                   ["#projects","Работы"],
@@ -69,8 +152,40 @@ export default function Home() {
                   ["#clients","Клиенты"],
                   ["#orders","Заказы"],
                 ].map(([href, label]) => (
-                  <a key={href} href={href} className="link-nav text-sm py-1">{label}</a>
+                  href.startsWith('/') ? (
+                    <Link key={href} href={href} className="link-nav text-sm py-1">{label}</Link>
+                  ) : (
+                    <a key={href} href={href} className="link-nav text-sm py-1">{label}</a>
+                  )
                 ))}
+                
+                {/* Услуги */}
+                <div className="text-xs text-gray-400 uppercase tracking-wide mt-3 mb-2">Услуги</div>
+                <a href="#services" className="link-nav text-sm py-1 font-semibold">Все услуги</a>
+                {services.map((service) => {
+                  const url = serviceUrls[service.name];
+                  return url ? (
+                    <Link key={service.name} href={url} className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">
+                      {service.name}
+                    </Link>
+                  ) : null;
+                })}
+                
+                {/* Конструкции */}
+                <div className="text-xs text-gray-400 uppercase tracking-wide mt-3 mb-2">Конструкции</div>
+                <a href="#constructions" className="link-nav text-sm py-1 font-semibold">Все конструкции</a>
+                {constructions.map((construction) => {
+                  const url = constructionUrls[construction.name];
+                  return url ? (
+                    <Link key={construction.name} href={url} className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">
+                      {construction.name}
+                    </Link>
+                  ) : (
+                    <span key={construction.name} className="text-xs py-1 ml-2 text-gray-500">
+                      {construction.name} <span className="text-xs">(скоро)</span>
+                    </span>
+                  );
+                })}
               </div>
             </details>
           </div>

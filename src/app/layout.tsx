@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import YandexMetrica from "@/components/YandexMetrica";
 import YandexDirect from "@/components/YandexDirect";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -112,6 +113,7 @@ export default function RootLayout({
         <YandexMetrica counterId={process.env.NEXT_PUBLIC_YANDEX_METRICA_ID || "XXXXXXXX"} />
         <YandexDirect targetId={process.env.NEXT_PUBLIC_YANDEX_DIRECT_ID} />
         {children}
+        <Footer />
       </body>
     </html>
   );
