@@ -10,7 +10,6 @@ function parseCredentials(): { client_email?: string; private_key?: string } | n
     try {
       text = Buffer.from(b64.trim(), "base64").toString("utf8");
     } catch {
-      // ignore and fallback
     }
   }
   if (!text && raw) {
@@ -71,13 +70,11 @@ export async function setupLeadsSheet(): Promise<void> {
   const tab = getTabName();
   const { sheets, sheetId } = await getSheetsClient();
 
-  // Find sheetId (gid) by title
   const meta = await sheets.spreadsheets.get({ spreadsheetId: sheetId });
   const sheet = meta.data.sheets?.find((s) => s.properties?.title === tab);
   const gid = sheet?.properties?.sheetId;
   if (gid == null) throw new Error(`Sheet tab '${tab}' not found`);
 
-  // Write header row
   await sheets.spreadsheets.values.update({
     spreadsheetId: sheetId,
     range: `${tab}!A1:F1`,
@@ -87,7 +84,6 @@ export async function setupLeadsSheet(): Promise<void> {
     },
   });
 
-  // Formatting: freeze header, banding (alternating colors), auto-resize columns, basic filter
   await sheets.spreadsheets.batchUpdate({
     spreadsheetId: sheetId,
     requestBody: {

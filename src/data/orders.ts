@@ -1,15 +1,14 @@
 export type PublicOrder = {
   id: string;
   title: string;
-  createdAt: string; // ISO date string
+  createdAt: string; 
   clientName?: string;
   location?: string;
   description?: string;
-  images: string[]; // paths under /public or external URLs
+  images: string[]; 
   tags?: string[];
 };
 
-// Edit this list to add/update showcased orders. Images can be placed under /public and referenced as "/orders/filename.jpg".
 export const publicOrders: PublicOrder[] = [
   {
     id: "ORD-OKEY-ALL-SPB",
@@ -58,7 +57,7 @@ export const publicOrders: PublicOrder[] = [
     createdAt: new Date().toISOString(),
     location:
       "Санкт-Петербург, пос. Парголово, Тихоокеанская ул., участок 4 (южнее дома 16, лит. А)",
-    images: ["/orders/school.jpeg"],
+    images: ["/orders/static_school.jpg"],
     tags: ["образование"],
   },
   {

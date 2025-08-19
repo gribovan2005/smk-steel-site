@@ -1,21 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import YandexMetrica from "@/components/YandexMetrica";
+import YandexDirect from "@/components/YandexDirect";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "СМК Сталь — металлоконструкции в Санкт-Петербурге",
+  title: "СМК Сталь — металлоконструкции в Санкт-Петербурге | Изготовление, монтаж, проектирование",
   description:
-    "Изготовление металлоконструкций в Санкт-Петербурге. Полный цикл производства. От 18000 руб/тн.",
+    "Изготовление металлоконструкций в Санкт-Петербурге ⚡ Полный цикл производства ⚡ Проектирование КМ/КМД ⚡ Монтаж ⚡ От 18000 руб/тн ⚡ Опыт с 2013 года ⚡ Допуски СРО",
   keywords: [
     "металлоконструкции",
     "изготовление металлоконструкций",
@@ -24,6 +28,15 @@ export const metadata: Metadata = {
     "фермы",
     "балки",
     "двутавр",
+    "колонны",
+    "монтаж металлоконструкций",
+    "проектирование КМ КМД",
+    "плазменная резка",
+    "вальцовка",
+    "СРО",
+    "производство металлоконструкций СПб",
+    "металлообработка",
+    "сварочные работы",
   ],
   alternates: {
     canonical: "https://xn----8sb2agb3adi6g.xn--p1ai",
@@ -70,13 +83,13 @@ export default function RootLayout({
     "@type": "Organization",
     name: "СМК Сталь",
     url: "https://xn----8sb2agb3adi6g.xn--p1ai",
-    logo: "https://static.tildacdn.com/tild6261-3530-4135-b865-373336663531/photo.png",
+    logo: "https://xn----8sb2agb3adi6g.xn--p1ai/logo.png",
     email: "zakaz@smksteel-spb.ru",
     telephone: "+7 (921) 947-29-11",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Санкт-Петербург",
-      streetAddress: "ул. Караваевская 57",
+      streetAddress: "ул. Мурзинская, д. 11, литера А, офис 701",
       addressCountry: "RU",
     },
     contactPoint: [
@@ -93,9 +106,11 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <YandexMetrica counterId={process.env.NEXT_PUBLIC_YANDEX_METRICA_ID || "XXXXXXXX"} />
+        <YandexDirect targetId={process.env.NEXT_PUBLIC_YANDEX_DIRECT_ID} />
         {children}
       </body>
     </html>

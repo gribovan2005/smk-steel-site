@@ -51,7 +51,6 @@ export async function uploadToDrive(options: { filename: string; mimeType?: stri
   });
 
   const fileId = res.data.id as string;
-  // Make public readable
   await drive.permissions.create({ fileId, requestBody: { type: "anyone", role: "reader" } });
 
   const viewUrl = `https://drive.google.com/file/d/${fileId}/view`;

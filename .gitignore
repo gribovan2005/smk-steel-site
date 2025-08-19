@@ -1,37 +1,29 @@
-# Dependencies
 node_modules/
 
-# Next.js
 .next/
 .next-standalone/
 out/
 
-# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# OS
 .DS_Store
 Thumbs.db
 
-# Env files
 .env
 .env.*
 !.env.example
 .env.local
 
-# Vercel / build artifacts
 .vercel/
 vercel-build-output/
 
-# Editor
 .vscode/
 .idea/
 *.swp
 
-# Misc
 coverage/
 *.local
 *.log 

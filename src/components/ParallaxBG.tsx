@@ -11,8 +11,15 @@ export default function ParallaxBG({ imageUrl, scalePercent = 125, brightness = 
       const doc = document.documentElement;
       const scrollTop = doc.scrollTop || document.body.scrollTop;
       const docHeight = doc.scrollHeight - doc.clientHeight;
-      const ratio = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
-      const shift = (ratio - 0.5) * 2 * maxShiftPercent; // clamp to [-maxShiftPercent, +maxShiftPercent]
+      
+      if (docHeight <= 0) return;
+      
+      const scrollRatio = scrollTop / docHeight;
+      const limitedRatio = Math.min(0.8, scrollRatio);
+      
+      const normalizedRatio = limitedRatio / 0.8;
+      const shift = (normalizedRatio - 0.5) * 2 * maxShiftPercent;
+      
       setPos(shift);
     };
     onScroll();

@@ -34,9 +34,9 @@ export default function OrdersPage() {
             <div key={o.id} className="rounded-xl border p-6">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
-                  <p className="text-sm text-gray-500">{new Date(o.createdAt).toLocaleString("ru-RU")} {o.location ? ` · ${o.location}` : ""}</p>
                   <p className="text-lg font-semibold">{o.title}</p>
-                  {o.clientName ? <p className="text-sm text-gray-600">Заказчик: {o.clientName}</p> : null}
+                  {o.location && <p className="text-sm text-gray-500">{o.location}</p>}
+                  {o.clientName && <p className="text-sm text-gray-600">Заказчик: {o.clientName}</p>}
                 </div>
                 {o.tags && o.tags.length ? (
                   <div className="flex flex-wrap gap-2">
@@ -46,7 +46,19 @@ export default function OrdersPage() {
                   </div>
                 ) : null}
               </div>
-              {o.description ? <p className="mt-3">{o.description}</p> : null}
+              {o.description ? (
+                o.clientName === "ОКЕЙ" ? (
+                  <div className="mt-3">
+                    <ol className="list-decimal text-gray-700 space-y-1 pl-6">
+                      {o.description.split('\n').map((address, idx) => (
+                        <li key={idx} className="text-sm">{address}</li>
+                      ))}
+                    </ol>
+                  </div>
+                ) : (
+                  <p className="mt-3">{o.description}</p>
+                )
+              ) : null}
               {o.images?.length ? (
                 <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                   {o.images.map((src, idx) => (

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { appendLeadToSheet } from "@/lib/googleSheets";
-import { insertOrder } from "@/lib/db";
+
 import { uploadToDrive } from "@/lib/googleDrive";
 import { put } from "@vercel/blob";
 
@@ -72,7 +72,6 @@ export async function POST(req: Request) {
         const f = files[idx];
         filenames.push(f.name || `file-${idx + 1}`);
         const buffer = Buffer.from(await f.arrayBuffer());
-        // Try Google Drive first
         let url: string | null = null;
         try {
           const r = await uploadToDrive({ filename: f.name || `file-${idx + 1}`, mimeType: f.type || undefined, buffer });
@@ -80,7 +79,6 @@ export async function POST(req: Request) {
         } catch (e) {
           console.error("Drive upload failed", e);
         }
-        // Fallback to Vercel Blob
         if (!url) {
           try {
             const uploaded = await put(`leads/${Date.now()}-${encodeURIComponent(f.name || `file-${idx + 1}`)}`, buffer, { access: "public", contentType: f.type || undefined });
@@ -99,7 +97,6 @@ export async function POST(req: Request) {
         `Комментарий: ${data.message || "—"}`,
       ];
       if (filenames.length) lines.push(`Файлы: ${filenames.join(", ")}`);
-      // raw links are not added to the text; we will append proxied links below
       lines.push(`Время: ${new Date().toLocaleString("ru-RU")}`);
 
       const text = lines.join("\n");
@@ -121,14 +118,7 @@ export async function POST(req: Request) {
           data.message || "",
           ...sheetLinks,
         ]),
-        insertOrder({
-          customer_name: data.name || null,
-          phone: data.phone,
-          email: data.email || null,
-          message: data.message || null,
-          attachment_filename: filenames[0] || null,
-          attachment_url: downloadUrls[0] || null,
-        }).catch(() => {}),
+
       ]);
 
       return NextResponse.json({ ok: true });
@@ -142,7 +132,14 @@ export async function POST(req: Request) {
       `Телефон: ${data.phone}`,
       `Email: ${data.email || "—"}`,
       `Комментарий: ${data.message || "—"}`,
-      `Время: ${new Date().toLocaleString("ru-RU")}`,
+      `Время: ${new Date().toLocaleString("ru-RU", {
+        timeZone: "Europe/Moscow",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      })}`,
     ].join("\n");
 
     await Promise.all([
@@ -154,12 +151,7 @@ export async function POST(req: Request) {
         data.email || "",
         data.message || "",
       ]),
-      insertOrder({
-        customer_name: data.name || null,
-        phone: data.phone,
-        email: data.email || null,
-        message: data.message || null,
-      }).catch(() => {}),
+
     ]);
 
     return NextResponse.json({ ok: true });
