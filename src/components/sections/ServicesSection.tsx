@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Section, SectionTitle, Button } from "@/components/ui";
 import { services } from "@/data/services";
 
-// Маппинг услуг на URL страниц
+// Маппинг услуг на URL страниц  
 const serviceUrls: Record<string, string> = {
   "Вальцовка обечаек": "/services/valtsovka-obechaek",
   "Плазменная резка": "/services/plazmennaya-rezka",

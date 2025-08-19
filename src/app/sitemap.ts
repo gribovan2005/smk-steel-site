@@ -19,9 +19,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services/montazh`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/services/km-kmd`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/services/valtsovka-obechaek`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/services/gibka-lista`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/services/valtsovka-profilya`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.9 },
     
     // Страницы типовых конструкций
     { url: `${base}/constructions/fermy`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/progony-balki-pokrytiya`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/elektrosvarnoj-dvutavr`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/kolonny`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/svyazi-fahverk-rasporki`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/constructions/balki-perekrytij`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/lestnitsy-ograzhdeniya-ploshhadki`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/zakladnye-izdeliya`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/stvornye-znaki`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/dymovye-truby`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/podkranovye-balki`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/privarka-statichnykh-boltov`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/prostranstvennye-konstruktsii`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/opory-lep`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/emkosti-rezervuary`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/constructions/nestandartnye-izdeliya`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
   ];
 } 

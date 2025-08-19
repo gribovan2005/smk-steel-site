@@ -31,10 +31,24 @@ export default function Home() {
     "Монтажные работы": "/services/montazh",
   };
 
-  // Маппинги URL-ов для конструкций (только созданные пока)
+  // Маппинги URL-ов для конструкций
   const constructionUrls: Record<string, string> = {
     "Фермы": "/constructions/fermy",
+    "Прогоны, балки покрытия": "/constructions/progony-balki-pokrytiya",
+    "Электросварной двутавр": "/constructions/elektrosvarnoj-dvutavr",
+    "Колонны": "/constructions/kolonny",
+    "Связи, фахверк, распорки": "/constructions/svyazi-fahverk-rasporki",
     "Балки перекрытий": "/constructions/balki-perekrytij",
+    "Лестницы, ограждения, площадки": "/constructions/lestnitsy-ograzhdeniya-ploshhadki",
+    "Закладные изделия": "/constructions/zakladnye-izdeliya",
+    "Створные знаки": "/constructions/stvornye-znaki",
+    "Дымовые трубы": "/constructions/dymovye-truby",
+    "Подкрановые балки": "/constructions/podkranovye-balki",
+    "Приварка статичных болтов": "/constructions/privarka-statichnykh-boltov",
+    "Пространственные конструкции": "/constructions/prostranstvennye-konstruktsii",
+    "Опоры ЛЭП": "/constructions/opory-lep",
+    "Емкости и резервуары": "/constructions/emkosti-rezervuary",
+    "Нестандартные изделия": "/constructions/nestandartnye-izdeliya",
   };
 
   // Автоматическое закрытие других выпадающих меню
@@ -195,14 +209,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
-        <ServicesSection />
-        <ConstructionsSection />
-        <PricingSection />
-        <StepsSection />
-        <EquipmentSection />
-        <ProjectsSection />
-        <ClientsSection />
-
+        
         <section id="orders" className="py-20">
           <div className="mx-auto max-w-7xl px-4">
             <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Заказы</h2>
@@ -250,6 +257,14 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <ServicesSection />
+        <ConstructionsSection />
+        <PricingSection />
+        <StepsSection />
+        <EquipmentSection />
+        <ProjectsSection />
+        <ClientsSection />
 
         <section id="lead" className="py-20">
           <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
