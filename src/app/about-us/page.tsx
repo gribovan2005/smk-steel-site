@@ -64,20 +64,20 @@ export default function AboutUsPage() {
           {/* Статистика */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-blue-400 mb-2">200+</div>
-              <div className="text-sm text-gray-300">довольных клиентов</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">200+</div>
+              <div className="text-sm2 text-white-300">довольных клиентов</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold  mb-2">500</div>
-              <div className="text-sm text-gray-300">тонн в месяц</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">300</div>
+              <div className="text-sm2 text-white-300">тонн в месяц</div>
             </div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">150+</div>
-              <div className="text-sm text-gray-300">объектов с монтажом</div>
+              <div className="text-sm2 text-white-300">объектов с монтажом</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-purple-400 mb-2">100%</div>
-              <div className="text-sm text-gray-300">соблюдение сроков</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">100%</div>
+              <div className="text-sm2 text-white-300">соблюдение сроков</div>
             </div>
           </div>
 
@@ -105,21 +105,21 @@ export default function AboutUsPage() {
               <h2 className="text-xl font-bold mb-6 ">Наши сильные стороны</h2>
               <div className="space-y-4 text-gray-300">
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <h3 className="font-semibold mb-2">Качественные материалы</h3>
-                    <p className="text-sm">Работаем только с сертифицированными материалами от надежных производителей</p>
+                    <p className="text-sm mb-2">Работаем только с сертифицированными материалами от надежных производителей</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <h3 className="font-semibold mb-2">Современное оборудование</h3>
-                    <p className="text-sm">Новейшие станки плазменной резки, гибки, вальцовки и сварки</p>
+                    <p className="text-sm mb-2">Новейшие станки плазменной резки, гибки, вальцовки и сварки</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <h3 className="font-semibold mb-2">Контроль качества</h3>
                     <p className="text-sm">Проводим дополнительные лабораторные испытания по требованию заказчика</p>
@@ -182,11 +182,11 @@ export default function AboutUsPage() {
             </p>
             <div className="grid md:grid-cols-3 gap-6 mt-6">
               <div className="text-center">
-                <div className="text-blue-400 font-semibold mb-2">Квалифицированные мастера</div>
+                <div className="text-orange-400 font-semibold mb-2">Квалифицированные мастера</div>
                 <p className="text-sm text-gray-300">Все допуски СРО и сертификаты</p>
               </div>
               <div className="text-center">
-                <div className=" font-semibold mb-2">Работаем круглогодично</div>
+                <div className="text-orange-400 font-semibold mb-2">Работаем круглогодично</div>
                 <p className="text-sm text-gray-300">Монтаж зимой и летом</p>
               </div>
               <div className="text-center">
@@ -210,8 +210,8 @@ export default function AboutUsPage() {
             </p>
             <div className="grid md:grid-cols-2 gap-8 mt-8">
               <div>
-                <h3 className="font-semibold  mb-4">Гарантии качества</h3>
-                <ul className="space-y-2 text-gray-300 text-sm">
+                <h3 className="font-semibold  mb-5">Гарантии качества</h3>
+                <ul className="space-y-2 text-gray-300 text-sm2">
                   <li>• Соблюдение сроков поставки</li>
                   <li>• Прозрачное ценообразование</li>
                   <li>• Технические паспорта на изделия</li>
@@ -220,8 +220,8 @@ export default function AboutUsPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold  mb-4">Преимущества работы с нами</h3>
-                <ul className="space-y-2 text-gray-300 text-sm">
+                <h3 className="font-semibold  mb-5">Преимущества работы с нами</h3>
+                <ul className="space-y-2 text-gray-300 text-sm2">
                   <li>• Индивидуальный подход</li>
                   <li>• Работа по чертежам заказчика</li>
                   <li>• Собственная конструкторская база</li>

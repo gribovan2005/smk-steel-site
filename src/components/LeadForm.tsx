@@ -113,7 +113,10 @@ export default function LeadForm() {
           multiple
           accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.zip"
           onChange={(e) => setFiles(Array.from(e.target.files || []))}
-          className="mt-1 block w-full text-sm text-gray-200 file:mr-4 file:rounded-md file:border file:border-white/20 file:bg-white file:text-black file:px-3 file:py-2 hover:file:bg-black hover:file:text-white hover:file:border-white"
+          className="mt-1 block w-full text-sm text-gray-200 
+            file:mr-4 file:rounded-md file:border file:border-white/20 
+            file:bg-white file:text-black file:px-3 file:py-2 file:text-sm  
+            hover:file:bg-black hover:file:text-white hover:file:border-white"
         />
         {files.length > 0 && (
           <p className="mt-1 text-xs text-gray-400">Выбрано файлов: {files.length}</p>
@@ -123,7 +126,7 @@ export default function LeadForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="btn w-full sm:w-auto disabled:opacity-60"
+        className="btn w-full sm:w-auto disabled:opacity-60 text-sm" 
       >
         {isSubmitting ? "Отправка..." : "Отправить заявку"}
       </button>

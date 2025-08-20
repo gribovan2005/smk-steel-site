@@ -39,7 +39,6 @@ export default function ContactsPage() {
             />
           </Link>
 
-          {/* Ссылка "На главную" — стильно и понятно */}
           <Link
             href="/"
             className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-1"
@@ -83,7 +82,7 @@ export default function ContactsPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-blue-300 mb-2">Режим работы</h3>
-                    <p className="text-gray-300">Пн-Вс: 9:00 - 18:00</p>
+                    <p className="text-gray-300">Пн-Вс: 9:00 - 20:00</p>
                   </div>
                 </div>
               </div>

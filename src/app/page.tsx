@@ -223,6 +223,7 @@ export default function Home() {
         <AboutSection />
         <StepsSection />
         <ServicesSection />
+        <ConstructionsSection />
         
         <section id="orders" className="py-20">
           <div className="mx-auto max-w-7xl px-4">
@@ -272,7 +273,7 @@ export default function Home() {
           </div>
         </section>
 
-        <ConstructionsSection />
+
         <ProjectsSection />
         <ClientsSection />
 

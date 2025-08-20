@@ -147,10 +147,10 @@ export default function KmKmdPage() {
         </Section>
 
         {/* CTA Section */}
-        <Section className="py-20 bg-blue-900/30 backdrop-blur-sm">
+        <Section className="py-20 bg-black-900/30">
           <div className="text-center">
-            <h2 className="text-4xl font-bold mb-6">Нужен проект КМ КМД?</h2>
-            <p className="text-xl text-gray-200 mb-8">
+            <h2 className="text-6xl font-bold mb-6 text-white">Нужен проект КМ КМД?</h2>
+            <p className="text-2xl text-gray-200 mb-8">
               Разработаем рабочую документацию в срок и по ГОСТу
             </p>
             <Button href="/#lead" variant="primary" size="lg">

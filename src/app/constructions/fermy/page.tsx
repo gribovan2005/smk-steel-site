@@ -128,10 +128,10 @@ export default function FermyPage() {
         </Section>
 
         {/* CTA Section */}
-        <Section className="ppy-20 bg-blue-900/30 backdrop-blur-sm">
+        <Section className="py-20 bg-black-900/30">
           <div className="text-center">
-            <h2 className="text-4xl font-bold mb-6">Нужны металлические фермы?</h2>
-            <p className="text-xl text-gray-200 mb-8">
+            <h2 className="text-6xl font-bold mb-6 text-white">Нужны металлические фермы?</h2>
+            <p className="text-2xl text-gray-200 mb-8">
               Изготовим по вашим чертежам или разработаем проект
             </p>
             <Button href="/#lead" variant="primary" size="lg">

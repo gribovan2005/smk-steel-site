@@ -16,7 +16,7 @@ const HeroSection = () => {
             <Button href="#services" variant="outline" size="lg">
               Наши услуги
             </Button>
-            <Button href="#lead" variant="primary" size="lg">
+            <Button href="#lead" variant="outline" size="lg">
               Получить расчет
             </Button>
           </div>

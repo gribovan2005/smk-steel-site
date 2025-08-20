@@ -66,7 +66,6 @@ export default function EquipmentPage() {
             />
           </Link>
 
-          {/* Ссылка "На главную" — стильно и понятно */}
           <Link
             href="/"
             className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-1"
@@ -85,27 +84,25 @@ export default function EquipmentPage() {
             </p>
           </div>
 
-          {/* Основные характеристики производства */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-blue-400 mb-2">30мм</div>
-              <div className="text-sm text-gray-300">максимальная толщина резки</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">30мм</div>
+              <div className="text-sm2 text-gray-300">максимальная толщина резки</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold  mb-2">160т</div>
-              <div className="text-sm text-gray-300">усилие гибочного пресса</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">160т</div>
+              <div className="text-sm2 text-gray-300">усилие гибочного пресса</div>
             </div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">12м</div>
-              <div className="text-sm text-gray-300">максимальная длина заготовки</div>
+              <div className="text-sm2 text-gray-300">максимальная длина заготовки</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-purple-400 mb-2">24/7</div>
-              <div className="text-sm text-gray-300">режим работы производства</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">24/7</div>
+              <div className="text-sm2 text-gray-300">режим работы производства</div>
             </div>
           </div>
 
-          {/* Список оборудования */}
           <div className="grid gap-8 mb-12">
             {equipmentList.map((equipment, index) => (
               <div key={equipment.name} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur overflow-hidden">
@@ -129,7 +126,7 @@ export default function EquipmentPage() {
                       <ul className="space-y-2">
                         {equipment.specs.map((spec, specIndex) => (
                           <li key={specIndex} className="flex items-center gap-3 text-gray-300">
-                            <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></div>
+                            <div className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></div>
                             <span className="text-sm">{spec}</span>
                           </li>
                         ))}
@@ -141,27 +138,26 @@ export default function EquipmentPage() {
             ))}
           </div>
 
-          {/* Дополнительные возможности */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
               <h2 className="text-xl font-bold mb-6 ">Контроль качества</h2>
               <div className="space-y-4 text-gray-300">
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <h3 className="font-semibold mb-2">Измерительное оборудование</h3>
                     <p className="text-sm">Координатно-измерительные машины для контроля размеров</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <h3 className="font-semibold mb-2">Неразрушающий контроль</h3>
                     <p className="text-sm">УЗК и магнитопорошковая дефектоскопия сварных швов</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <h3 className="font-semibold mb-2">Лабораторные испытания</h3>
                     <p className="text-sm">Испытания на растяжение, ударную вязкость</p>
@@ -201,21 +197,20 @@ export default function EquipmentPage() {
             </div>
           </div>
 
-          {/* Преимущества оборудования */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-center ">Преимущества нашего оборудования</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center ">Преимущества нашего оборудования</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-blue-400 font-semibold mb-3">Высокая точность</div>
-                <p className="text-sm text-gray-300">Современные системы ЧПУ обеспечивают точность до ±0.1мм</p>
+                <div className="text-orange-400 font-semibold mb-5">Высокая точность</div>
+                <p className="text-sm2 text-gray-300">Современные системы ЧПУ обеспечивают точность до ±0.1мм</p>
               </div>
               <div className="text-center">
-                <div className=" font-semibold mb-3">Производительность</div>
-                <p className="text-sm text-gray-300">Автоматизация процессов увеличивает скорость в 3 раза</p>
+                <div className="text-orange-400 font-semibold mb-5">Производительность</div>
+                <p className="text-sm2 text-gray-300">Автоматизация процессов увеличивает скорость в 3 раза</p>
               </div>
               <div className="text-center">
-                <div className="text-orange-400 font-semibold mb-3">Универсальность</div>
-                <p className="text-sm text-gray-300">Обработка различных марок сталей и сплавов</p>
+                <div className="text-orange-400 font-semibold mb-5">Универсальность</div>
+                <p className="text-sm2 text-gray-300">Обработка различных марок сталей и сплавов</p>
               </div>
             </div>
           </div>

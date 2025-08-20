@@ -28,7 +28,6 @@ export default function AboutPage() {
 
       <header className="relative z-30 border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
-          {/* Логотип — больше, без обводки и фона */}
           <Link href="/" className="flex items-center">
             <Image
               src="/static_smk_steel.png"
@@ -39,7 +38,6 @@ export default function AboutPage() {
             />
           </Link>
 
-          {/* Ссылка "На главную" — стильно и понятно */}
           <Link
             href="/"
             className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-1"
@@ -77,15 +75,15 @@ export default function AboutPage() {
                 <h2 className="text-xl font-semibold mb-4">Наши преимущества</h2>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
                     Более 10 лет успешной работы на рынке
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
                     Полный цикл производства металлоконструкций
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-purple-400 rounded-full flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
                     Выполнение функций генерального подрядчика
                   </li>
                   <li className="flex items-center gap-3">
@@ -93,7 +91,7 @@ export default function AboutPage() {
                     Все необходимые допуски СРО
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-red-400 rounded-full flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
                     Собственное современное производство
                   </li>
                 </ul>

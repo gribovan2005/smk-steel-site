@@ -23,7 +23,6 @@ export const metadata: Metadata = {
 
 export default function ClientsPage() {
 
-  // Реальные клиенты с логотипами с главной страницы
   const clientLogos = [
     "/tilda/static_company_1.jpg",
     "/tilda/static_company_2.jpg", 
@@ -87,20 +86,19 @@ export default function ClientsPage() {
       <main className="relative z-10">
         <div className="mx-auto max-w-7xl px-4 py-16">
           <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-shadow">Наши клиенты</h1>
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-shadow">Наши клиенты</h1>
             <p className="text-gray-300 max-w-3xl mx-auto text-shadow text-lg">
               Более 10 лет мы работаем с ведущими компаниями России, обеспечивая высокое качество и соблюдение сроков
             </p>
           </div>
 
-          {/* Статистика клиентов */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-blue-400 mb-2">200+</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">200+</div>
               <div className="text-sm text-gray-300">довольных клиентов</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">95%</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">95%</div>
               <div className="text-sm text-gray-300">повторных заказов</div>
             </div>
             <div className="text-center">
@@ -108,12 +106,11 @@ export default function ClientsPage() {
               <div className="text-sm text-gray-300">соблюдение сроков</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-purple-400 mb-2">10 лет</div>
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">10 лет</div>
               <div className="text-sm text-gray-300">средний срок сотрудничества</div>
             </div>
           </div>
 
-          {/* Логотипы клиентов */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
             <h2 className="text-2xl font-bold mb-8 text-center">Наши клиенты</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">

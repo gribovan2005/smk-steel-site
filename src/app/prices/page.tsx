@@ -235,10 +235,10 @@ export default function PricesPage() {
             </div>
           </div>
 
-          <Section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-xl">
+          <Section className="py-20 bg-black-900/30 rounded-xl">
           <div className="text-center">
-            <h2 className="text-4xl font-bold mb-6">Хотите получить расчет стоимости?</h2>
-            <p className="text-xl text-gray-200 mb-8">
+            <h2 className="text-6xl font-bold mb-6 text-white">Хотите получить расчет стоимости?</h2>
+            <p className="text-2xl text-gray-200 mb-8">
               Заполните форму ниже и мы свяжемся с вами в ближайшее время
             </p>
             <Button href="/#lead" variant="primary" size="lg">
