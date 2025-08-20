@@ -110,7 +110,6 @@ export default function ClientsPage() {
               <div className="text-sm text-gray-300">средний срок сотрудничества</div>
             </div>
           </div>
-
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
             <h2 className="text-2xl font-bold mb-8 text-center">Наши клиенты</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
