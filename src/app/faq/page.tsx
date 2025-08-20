@@ -101,11 +101,7 @@ export default function FAQPage() {
         </div>
       </main>
 
-      <footer className="relative z-10 py-8 border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400 text-center">
-          © {new Date().getFullYear()} СМК Сталь
-        </div>
-      </footer>
+
     </div>
   );
 } 

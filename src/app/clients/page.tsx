@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import ParallaxBG from "@/components/ParallaxBG";
+import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
   title: "Наши клиенты - СМК Сталь | Отзывы и рекомендации",
@@ -21,7 +22,6 @@ export const metadata: Metadata = {
 };
 
 export default function ClientsPage() {
-
 
   // Реальные клиенты с логотипами с главной страницы
   const clientLogos = [
@@ -175,32 +175,14 @@ export default function ClientsPage() {
             </div>
           </div>
 
-          {/* CTA для новых клиентов */}
-          <div className="rounded-xl border border-white/10 bg-blue-900/80 p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Станьте нашим клиентом!</h2>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Присоединяйтесь к числу наших довольных клиентов. Получите персональное коммерческое предложение уже сегодня
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a 
-                href="#lead"
-                className="btn-outline"
-              >
-                Заказать расчет
-              </a>
-              <Link href="/" className="btn-outline">
-                На главную
-              </Link>
-            </div>
+          <div className="mt-12 text-center">
+            <Link href="/" className="btn-outline">
+              На главную
+            </Link>
           </div>
         </div>
       </main>
 
-      <footer className="relative z-10 py-8 border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400 text-center">
-          © {new Date().getFullYear()} СМК Сталь
-        </div>
-      </footer>
     </div>
   );
 } 

@@ -139,6 +139,7 @@ export default function Home() {
               <span className="link-nav cursor-pointer">О нас</span>
               <div className="absolute left-0 mt-2 w-64 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="flex flex-col gap-2 text-left normal-case font-normal">
+                  <Link href="/about" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">О компании</Link>
                   <Link href="/about-us" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">О заводе</Link>
                   <Link href="/orders" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Заказы</Link>
                   <Link href="/equipment" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Оборудование</Link>

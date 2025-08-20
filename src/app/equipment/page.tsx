@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import ParallaxBG from "@/components/ParallaxBG";
+import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
   title: "Оборудование СМК Сталь | Современное производственное оборудование",
@@ -26,25 +27,25 @@ export default function EquipmentPage() {
       name: "Установка плазменной резки",
       description: "Высокоточная резка металла до 30мм",
       specs: ["Толщина резки: до 30мм", "Точность: ±0.5мм", "Скорость: до 8м/мин"],
-      image: "/tilda/static_plazma.jpg"
+      image: "/tilda/static_plazmennaya_rezka.jpg"
     },
     {
       name: "Гибочные прессы",
       description: "Гибка листового металла различной толщины",
       specs: ["Усилие: 160 тонн", "Длина: 3200мм", "Точность: ±0.1°"],
-      image: "/tilda/static_gibka.jpg"
+      image: "/tilda/static_gibka_lista.jpg"
     },
     {
       name: "Сварочные роботы",
       description: "Автоматизированная сварка для серийного производства",
       specs: ["6-осевые манипуляторы", "MIG/MAG сварка", "Повторяемость: ±0.02мм"],
-      image: "/tilda/static_robot.jpg"
+      image: "/welding_2.jpg"
     },
     {
       name: "Вальцовочное оборудование",
       description: "Вальцовка обечаек и профильного проката",
       specs: ["Диаметр: до 3000мм", "Толщина: до 25мм", "Длина: до 12м"],
-      image: "/tilda/static_valtsovka.jpg"
+      image: "/tilda/static_oborudovanie_1.jpg"
     }
   ];
 
@@ -208,32 +209,17 @@ export default function EquipmentPage() {
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="rounded-xl border border-white/10 bg-blue-900/80 p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Хотите увидеть наше производство?</h2>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Приглашаем на экскурсию по заводу, чтобы вы могли лично убедиться в качестве нашего оборудования
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a 
-                href="tel:+79219472911" 
-                className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Заказать расчет
-              </a>
-              <Link href="/" className="btn-outline">
-                На главную страницу
-              </Link>
-            </div>
+          <div className="mt-12 text-center">
+            <Link href="/" className="btn-outline">
+              На главную
+            </Link>
           </div>
+          
+
         </div>
       </main>
 
-      <footer className="relative z-10 py-8 border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400 text-center">
-          © {new Date().getFullYear()} СМК Сталь
-        </div>
-      </footer>
+
     </div>
   );
 } 

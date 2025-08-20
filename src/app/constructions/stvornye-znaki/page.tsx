@@ -121,9 +121,9 @@ export default function StvornyeZnakiPage() {
           </div>
         </Section>
 
-        <Section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
+        <Section className="py-20 bg-blue-900/30 backdrop-blur-sm">
           <div className="text-center">
-            <h2 className="text-4xl font-bold mb-6">Нужны створные знаки?</h2>
+            <h2 className="text-4xl font-bold mb-6 text-white">Нужны створные знаки?</h2>
             <p className="text-xl text-gray-200 mb-8">
               Обеспечим безопасность судоходства надежными конструкциями
             </p>

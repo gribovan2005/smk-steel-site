@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import ParallaxBG from "@/components/ParallaxBG";
+import LeadForm from "@/components/LeadForm";
+import { Section, Button } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "О нас - СМК Сталь | Производство металлоконструкций с 2013 года",
   description: "СМК Сталь - надежный производитель металлоконструкций в Санкт-Петербурге с 2013 года. Собственное производство, квалифицированная команда, допуски СРО.",
   keywords: [
     "о нас СМК Сталь",
-    "производство металлоконструкций",
-    "завод металлоконструкций СПб",
-    "команда СМК Сталь",
-    "производственные возможности"
+    "производство металлоконструкций СПб",
+    "завод металлоконструкций",
+    "история СМК Сталь",
+    "команда СМК Сталь"
   ],
   openGraph: {
     title: "О нас - СМК Сталь",
-    description: "Производство металлоконструкций с 2013 года. Собственное производство в Санкт-Петербурге.",
-    images: [{ url: "/welding_3.jpg", width: 1200, height: 630 }],
+    description: "Надежный производитель металлоконструкций в Санкт-Петербурге с 2013 года.",
+    images: [{ url: "/welding_5.jpg", width: 1200, height: 630 }],
   },
 };
 
@@ -218,32 +219,17 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="rounded-xl border border-white/10 bg-blue-900/80 p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Нужна консультация специалиста?</h2>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Чтобы получить бесплатную консультацию по услуге, заполните форму заявки или позвоните по номеру
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a 
-                href="tel:+79219472911" 
-                className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                +7 (921) 947-29-11
-              </a>
-              <Link href="/" className="btn-outline">
-                На главную страницу
-              </Link>
-            </div>
+          <div className="mt-12 text-center">
+            <Link href="/" className="btn-outline">
+              На главную
+            </Link>
           </div>
+          
+
         </div>
       </main>
 
-      <footer className="relative z-10 py-8 border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400 text-center">
-          © {new Date().getFullYear()} СМК Сталь
-        </div>
-      </footer>
+
     </div>
   );
 } 
