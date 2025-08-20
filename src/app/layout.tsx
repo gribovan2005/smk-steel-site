@@ -22,7 +22,10 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: "#0b0f17",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0b0f17" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0f17" },
+  ],
 };
 
 export const metadata: Metadata = {
