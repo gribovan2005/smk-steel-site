@@ -2,7 +2,6 @@ import Link from "next/link";
 import { services } from "@/data/services";
 import { constructions } from "@/data/constructions";
 
-// Маппинг услуг на URL страниц
 const serviceUrls: Record<string, string> = {
   "Вальцовка обечаек": "/services/valtsovka-obechaek",
   "Плазменная резка": "/services/plazmennaya-rezka",
@@ -12,7 +11,6 @@ const serviceUrls: Record<string, string> = {
   "Монтажные работы": "/services/montazh",
 };
 
-// Маппинг конструкций на URL страниц
 const constructionUrls: Record<string, string> = {
   "Фермы": "/constructions/fermy",
   "Прогоны, балки покрытия": "/constructions/progony-balki-pokrytiya",
@@ -38,7 +36,6 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
-          {/* Компания */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">СМК Сталь</h3>
             <p className="text-sm text-gray-300 mb-4">
@@ -52,7 +49,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Услуги */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Услуги</h3>
             <ul className="space-y-2 text-sm">
@@ -74,7 +70,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Конструкции */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Типовые конструкции</h3>
             <ul className="space-y-2 text-sm max-h-64 overflow-y-auto">
@@ -96,7 +91,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Контакты */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Контакты</h3>
             <div className="space-y-3 text-sm">
@@ -126,7 +120,6 @@ const Footer = () => {
               </div>
             </div>
             
-            {/* Дополнительные страницы */}
             <div className="mt-6 pt-6 border-t border-white/10">
               <ul className="space-y-2 text-sm">
                 <li>
@@ -154,14 +147,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <div>
-              © 2024 СМК Сталь. Все права защищены.
+              © 2025 СМК Сталь. Все права защищены.
             </div>
             <div>
-              ИНН 7816698068 • ОГРН 1137847365496
+              ИНН 7811564681 • ОГРН 1137847431028
             </div>
           </div>
         </div>

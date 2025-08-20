@@ -1,4 +1,4 @@
-import { Section } from "@/components/ui";
+import { Section, Button } from "@/components/ui";
 
 const AboutSection = () => {
   return (
@@ -34,6 +34,11 @@ const AboutSection = () => {
                 <span className="w-2 h-2 bg-purple-400 rounded-full"></span>
                 Генподрядные работы
               </div>
+            </div>
+            <div className="mt-8">
+              <Button href="/" variant="primary" size="md">
+                На главную
+              </Button>
             </div>
           </div>
         </div>
