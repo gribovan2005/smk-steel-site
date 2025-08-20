@@ -78,7 +78,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white relative">
-      <ParallaxBG imageUrl="/welding_2.jpg" scalePercent={160} brightness={1.18} contrast={1.08} maxShiftPercent={10} />
+      <ParallaxBG imageUrl="/welding_5.jpg" scalePercent={160} brightness={1.18} contrast={1.08} maxShiftPercent={10} />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
       
       <Script
@@ -192,6 +192,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
+        <StepsSection />
+        <ServicesSection />
         
         <section id="orders" className="py-20">
           <div className="mx-auto max-w-7xl px-4">
@@ -241,9 +243,7 @@ export default function Home() {
           </div>
         </section>
 
-        <ServicesSection />
         <ConstructionsSection />
-        <StepsSection />
         <EquipmentSection />
         <ProjectsSection />
         <ClientsSection />
