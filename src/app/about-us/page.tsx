@@ -141,28 +141,60 @@ export default function AboutUsPage() {
                 <div>
                   <h3 className="font-semibold mb-2">Металлообработка</h3>
                   <ul className="text-sm space-y-1">
-                    <li>• Плазменная резка до 30мм</li>
-                    <li>• Гибка листового металла</li>
-                    <li>• Вальцовка обечаек и профиля</li>
-                    <li>• Механическая обработка</li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Плазменная резка до 30мм
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Гибка листового металла
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Вальцовка обечаек и профиля
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Механическая обработка
+                    </li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Сварочные работы</h3>
                   <ul className="text-sm space-y-1">
-                    <li>• Полуавтоматическая сварка</li>
-                    <li>• Аргонодуговая сварка</li>
-                    <li>• Работа с нержавейкой</li>
-                    <li>• Сварка алюминия</li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Полуавтоматическая сварка
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Аргонодуговая сварка
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Работа с нержавейкой
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Сварка алюминия
+                    </li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Дополнительные услуги</h3>
                   <ul className="text-sm space-y-1">
-                    <li>• Проектирование КМ/КМД</li>
-                    <li>• Покрытие и покраска</li>
-                    <li>• Горячее цинкование</li>
-                    <li>• Монтажные работы</li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Проектирование КМ/КМД
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Покрытие и покраска
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Горячее цинкование
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -196,7 +228,6 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* Условия работы */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
             <h2 className="text-2xl font-bold mb-6 ">Условия работы</h2>
             <p className="text-gray-300 leading-relaxed mb-6">
@@ -212,21 +243,43 @@ export default function AboutUsPage() {
               <div>
                 <h3 className="font-semibold  mb-5">Гарантии качества</h3>
                 <ul className="space-y-2 text-gray-300 text-sm2">
-                  <li>• Соблюдение сроков поставки</li>
-                  <li>• Прозрачное ценообразование</li>
-                  <li>• Технические паспорта на изделия</li>
-                  <li>• Сертификаты на материалы</li>
-                  <li>• Лабораторные испытания</li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Соблюдение сроков поставки
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Прозрачное ценообразование
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Технические паспорта на изделия
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Лабораторные испытания
+                  </li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold  mb-5">Преимущества работы с нами</h3>
                 <ul className="space-y-2 text-gray-300 text-sm2">
-                  <li>• Индивидуальный подход</li>
-                  <li>• Работа по чертежам заказчика</li>
-                  <li>• Собственная конструкторская база</li>
-                  <li>• Полный цикл производства</li>
-                  <li>• Доставка по всей России</li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Индивидуальный подход
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Работа по чертежам заказчика
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Собственная конструкторская база
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Доставка по всей России
+                  </li>
                 </ul>
               </div>
             </div>

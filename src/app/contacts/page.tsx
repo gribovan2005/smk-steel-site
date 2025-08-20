@@ -60,19 +60,19 @@ export default function ContactsPage() {
           <div className="grid gap-8 max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
               <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-                <h2 className="text-xl font-semibold mb-4">Связь с нами</h2>
+                <h2 className="text-xl text-orange-300 font-semibold mb-4">Связь с нами</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-semibold text-blue-300 mb-2">Телефон</h3>
+                    <h3 className="font-semibold text-white-300 mb-2">Телефон</h3>
                     <a 
                       href="tel:+79219472911" 
-                      className="text-white font-medium hover:text-blue-300 transition-colors text-lg"
+                      className="text-white font-medium hover:text-white-300 transition-colors text-lg"
                     >
                       +7 (921) 947-29-11
                     </a>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-blue-300 mb-2">Email</h3>
+                    <h3 className="font-semibold text-white-300 mb-2">Email</h3>
                     <a 
                       href="mailto:zakaz@smksteel-spb.ru" 
                       className="text-gray-300 hover:text-white transition-colors"
@@ -81,30 +81,30 @@ export default function ContactsPage() {
                     </a>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-blue-300 mb-2">Режим работы</h3>
+                    <h3 className="font-semibold text-white-300 mb-2">Режим работы</h3>
                     <p className="text-gray-300">Пн-Вс: 9:00 - 20:00</p>
                   </div>
                 </div>
               </div>
 
               <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-                <h2 className="text-xl font-semibold mb-4">Реквизиты</h2>
+                <h2 className="text-xl text-orange-300 font-semibold mb-4">Реквизиты</h2>
                 <div className="space-y-3 text-gray-300">
                   <div>
-                    <span className="text-blue-300">ИНН:</span> 7811564681
+                    <span className="text-white-300">ИНН:</span> 7811564681
                   </div>
                   <div>
-                    <span className="text-blue-300">ОГРН:</span> 1137847431028
+                    <span className="text-white-300">ОГРН:</span> 1137847431028
                   </div>
                   <div>
-                    <span className="text-blue-300">КПП:</span> 781101001
+                    <span className="text-white-300">КПП:</span> 781101001
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-              <h2 className="text-xl font-semibold mb-4">Наши адреса</h2>
+              <h2 className="text-xl text-orange-300 font-semibold mb-4">Наши адреса</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-semibold  mb-2">Офис</h3>
@@ -126,22 +126,40 @@ export default function ContactsPage() {
             </div>
 
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-              <h2 className="text-xl font-semibold mb-4">Как нас найти</h2>
+              <h2 className="text-xl text-orange-300 font-semibold mb-4">Как нас найти</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-semibold  mb-3">До офиса</h3>
-                  <ul className="space-y-2 text-gray-300 text-sm">
-                    <li>• м. Рыбацкое - 10 мин пешком</li>
-                    <li>• От КАД - съезд на ул. Шелгунова</li>
-                    <li>• Парковка возле здания</li>
+                  <ul className="space-y-2 text-gray-300 text-sm2">
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      м. Рыбацкое - 10 мин пешком
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      От КАД - съезд на ул. Шелгунова
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Парковка возле здания
+                    </li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-semibold  mb-3">До производства</h3>
-                  <ul className="space-y-2 text-gray-300 text-sm">
-                    <li>• м. Парнас - 15 мин на транспорте</li>
-                    <li>• От КАД - съезд Домостроительная</li>
-                    <li>• Удобный въезд для грузового транспорта</li>
+                  <ul className="space-y-2 text-gray-300 text-sm2">
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      м. Парнас - 15 мин на транспорте
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      От КАД - съезд Домостроительная
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                      Удобный въезд для грузового транспорта
+                    </li>
                   </ul>
                 </div>
               </div>

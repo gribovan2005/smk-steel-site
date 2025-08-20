@@ -100,12 +100,30 @@ export default function AboutPage() {
               <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
                 <h2 className="text-xl font-semibold mb-4">Наши услуги</h2>
                 <ul className="space-y-3 text-gray-300">
-                  <li>• Проектирование КМ/КМД</li>
-                  <li>• Изготовление металлоконструкций</li>
-                  <li>• Плазменная резка металла</li>
-                  <li>• Гибка и вальцовка</li>
-                  <li>• Монтаж металлоконструкций</li>
-                  <li>• Комплексные строительные работы</li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Проектирование КМ/КМД
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Изготовление металлоконструкций
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Плазменная резка металла
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Гибка и вальцовка
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Монтаж металлоконструкций
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Комплексные строительные работы
+                  </li>
                 </ul>
               </div>
             </div>
