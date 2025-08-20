@@ -17,6 +17,14 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#0b0f17",
+};
+
 export const metadata: Metadata = {
   title: "СМК Сталь — металлоконструкции в Санкт-Петербурге | Изготовление, монтаж, проектирование",
   description:
@@ -72,6 +80,21 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   metadataBase: new URL("https://xn----8sb2agb3adi6g.xn--p1ai"),
+  formatDetection: {
+    telephone: false,
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "СМК Сталь",
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "msapplication-TileColor": "#0b0f17",
+    "msapplication-config": "none",
+  },
 };
 
 export default function RootLayout({
