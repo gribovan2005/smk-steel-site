@@ -133,7 +133,21 @@ export default function Home() {
             </div>
             
             <Link href="/prices" className="link-nav">Цены</Link>
-            <Link href="/about-us" className="link-nav">О нас</Link>
+            
+            {/* Выпадающее меню О нас */}
+            <div className="relative group">
+              <span className="link-nav cursor-pointer">О нас</span>
+              <div className="absolute left-0 mt-2 w-64 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="flex flex-col gap-2 text-left normal-case font-normal">
+                  <Link href="/about-us" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">О заводе</Link>
+                  <Link href="/orders" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Заказы</Link>
+                  <Link href="/equipment" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Оборудование</Link>
+                  <Link href="/projects" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Работы</Link>
+                  <Link href="/clients" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Клиенты</Link>
+                </div>
+              </div>
+            </div>
+            
             <Link href="/faq" className="link-nav">FAQ</Link>
             <Link href="/contacts" className="link-nav">Контакты</Link>
           </nav>
@@ -145,7 +159,6 @@ export default function Home() {
                 <div className="text-xs text-gray-400 uppercase tracking-wide mb-2">Разделы</div>
                 {[
                   ["/prices","Цены"],
-                  ["/about-us","О нас"],
                   ["/faq","FAQ"],
                   ["/contacts","Контакты"],
                 ].map(([href, label]) => (
@@ -155,6 +168,14 @@ export default function Home() {
                     <a key={href} href={href} className="link-nav text-sm py-1">{label}</a>
                   )
                 ))}
+                
+                {/* О нас */}
+                <div className="text-xs text-gray-400 uppercase tracking-wide mt-3 mb-2">О нас</div>
+                <Link href="/about-us" className="link-nav text-sm py-1 font-semibold">О заводе</Link>
+                <Link href="/orders" className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">Заказы</Link>
+                <Link href="/equipment" className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">Оборудование</Link>
+                <Link href="/projects" className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">Работы</Link>
+                <Link href="/clients" className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">Клиенты</Link>
                 
                 {/* Услуги */}
                 <div className="text-xs text-gray-400 uppercase tracking-wide mt-3 mb-2">Услуги</div>
@@ -244,7 +265,6 @@ export default function Home() {
         </section>
 
         <ConstructionsSection />
-        <EquipmentSection />
         <ProjectsSection />
         <ClientsSection />
 

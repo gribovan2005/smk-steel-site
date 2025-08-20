@@ -1,0 +1,239 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import ParallaxBG from "@/components/ParallaxBG";
+
+export const metadata: Metadata = {
+  title: "Оборудование СМК Сталь | Современное производственное оборудование",
+  description: "Современное оборудование СМК Сталь для производства металлоконструкций. Плазменная резка, гибочные станки, сварочное оборудование.",
+  keywords: [
+    "оборудование СМК Сталь",
+    "производственное оборудование",
+    "плазменная резка оборудование",
+    "сварочное оборудование",
+    "металлообрабатывающие станки"
+  ],
+  openGraph: {
+    title: "Оборудование СМК Сталь",
+    description: "Современное производственное оборудование для изготовления металлоконструкций.",
+    images: [{ url: "/welding_5.jpg", width: 1200, height: 630 }],
+  },
+};
+
+export default function EquipmentPage() {
+  const equipmentList = [
+    {
+      name: "Установка плазменной резки",
+      description: "Высокоточная резка металла до 30мм",
+      specs: ["Толщина резки: до 30мм", "Точность: ±0.5мм", "Скорость: до 8м/мин"],
+      image: "/tilda/static_plazma.jpg"
+    },
+    {
+      name: "Гибочные прессы",
+      description: "Гибка листового металла различной толщины",
+      specs: ["Усилие: 160 тонн", "Длина: 3200мм", "Точность: ±0.1°"],
+      image: "/tilda/static_gibka.jpg"
+    },
+    {
+      name: "Сварочные роботы",
+      description: "Автоматизированная сварка для серийного производства",
+      specs: ["6-осевые манипуляторы", "MIG/MAG сварка", "Повторяемость: ±0.02мм"],
+      image: "/tilda/static_robot.jpg"
+    },
+    {
+      name: "Вальцовочное оборудование",
+      description: "Вальцовка обечаек и профильного проката",
+      specs: ["Диаметр: до 3000мм", "Толщина: до 25мм", "Длина: до 12м"],
+      image: "/tilda/static_valtsovka.jpg"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen text-white relative">
+      <ParallaxBG imageUrl="/welding_5.jpg" scalePercent={160} brightness={1.18} contrast={1.08} maxShiftPercent={10} />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+
+      <header className="relative z-30 border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="text-lg font-semibold tracking-wide px-3 py-1 rounded-lg border border-white/20 bg-black/40 backdrop-blur">
+            СМК Сталь
+          </Link>
+          <Link href="/" className="text-white/80 hover:text-white transition-colors">
+            ← На главную
+          </Link>
+        </div>
+      </header>
+
+      <main className="relative z-10">
+        <div className="mx-auto max-w-7xl px-4 py-16">
+          <div className="text-center mb-12">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-shadow">Наше оборудование</h1>
+            <p className="text-gray-300 max-w-3xl mx-auto text-shadow text-lg">
+              Современное высокотехнологичное оборудование для производства качественных металлоконструкций
+            </p>
+          </div>
+
+          {/* Основные характеристики производства */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-blue-400 mb-2">30мм</div>
+              <div className="text-sm text-gray-300">максимальная толщина резки</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">160т</div>
+              <div className="text-sm text-gray-300">усилие гибочного пресса</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-orange-400 mb-2">12м</div>
+              <div className="text-sm text-gray-300">максимальная длина заготовки</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-purple-400 mb-2">24/7</div>
+              <div className="text-sm text-gray-300">режим работы производства</div>
+            </div>
+          </div>
+
+          {/* Список оборудования */}
+          <div className="grid gap-8 mb-12">
+            {equipmentList.map((equipment, index) => (
+              <div key={equipment.name} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur overflow-hidden">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 ${index % 2 === 1 ? 'lg:grid-cols-2' : ''}`}>
+                  <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <div className="relative h-64 lg:h-full">
+                      <Image
+                        src={equipment.image}
+                        alt={equipment.name}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
+                  <div className={`p-8 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <h3 className="text-2xl font-bold mb-4 text-blue-300">{equipment.name}</h3>
+                    <p className="text-gray-300 mb-6 leading-relaxed">{equipment.description}</p>
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-orange-300">Технические характеристики:</h4>
+                      <ul className="space-y-2">
+                        {equipment.specs.map((spec, specIndex) => (
+                          <li key={specIndex} className="flex items-center gap-3 text-gray-300">
+                            <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></div>
+                            <span className="text-sm">{spec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Дополнительные возможности */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
+              <h2 className="text-xl font-bold mb-6 text-green-300">Контроль качества</h2>
+              <div className="space-y-4 text-gray-300">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Измерительное оборудование</h3>
+                    <p className="text-sm">Координатно-измерительные машины для контроля размеров</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Неразрушающий контроль</h3>
+                    <p className="text-sm">УЗК и магнитопорошковая дефектоскопия сварных швов</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Лабораторные испытания</h3>
+                    <p className="text-sm">Испытания на растяжение, ударную вязкость</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
+              <h2 className="text-xl font-bold mb-6 text-orange-300">Вспомогательное оборудование</h2>
+              <div className="space-y-4 text-gray-300">
+                <div>
+                  <h3 className="font-semibold mb-2">Грузоподъемная техника</h3>
+                  <ul className="text-sm space-y-1">
+                    <li>• Мостовые краны до 20 тонн</li>
+                    <li>• Автокраны до 50 тонн</li>
+                    <li>• Вилочные погрузчики</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Покрасочный участок</h3>
+                  <ul className="text-sm space-y-1">
+                    <li>• Дробеструйная очистка</li>
+                    <li>• Покрасочная камера</li>
+                    <li>• Сушильная печь</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Заготовительный участок</h3>
+                  <ul className="text-sm space-y-1">
+                    <li>• Ленточнопильные станки</li>
+                    <li>• Гильотинные ножницы</li>
+                    <li>• Правильные машины</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Преимущества оборудования */}
+          <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
+            <h2 className="text-2xl font-bold mb-6 text-center text-yellow-300">Преимущества нашего оборудования</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="text-blue-400 font-semibold mb-3">Высокая точность</div>
+                <p className="text-sm text-gray-300">Современные системы ЧПУ обеспечивают точность до ±0.1мм</p>
+              </div>
+              <div className="text-center">
+                <div className="text-green-400 font-semibold mb-3">Производительность</div>
+                <p className="text-sm text-gray-300">Автоматизация процессов увеличивает скорость в 3 раза</p>
+              </div>
+              <div className="text-center">
+                <div className="text-orange-400 font-semibold mb-3">Универсальность</div>
+                <p className="text-sm text-gray-300">Обработка различных марок сталей и сплавов</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="rounded-xl border border-white/10 bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">Хотите увидеть наше производство?</h2>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              Приглашаем на экскурсию по заводу, чтобы вы могли лично убедиться в качестве нашего оборудования
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="tel:+79219472911" 
+                className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Записаться на экскурсию
+              </a>
+              <Link href="/" className="btn-outline">
+                На главную
+              </Link>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer className="relative z-10 py-8 border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400 text-center">
+          © {new Date().getFullYear()} СМК Сталь
+        </div>
+      </footer>
+    </div>
+  );
+} 

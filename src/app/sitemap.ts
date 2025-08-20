@@ -16,6 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/orders`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/faq`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.6 },
     
+    // Новые страницы "О нас"
+    { url: `${base}/equipment`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/projects`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/clients`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.6 },
+    
     // Страницы услуг
     { url: `${base}/services/plazmennaya-rezka`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/services/montazh`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.9 },
