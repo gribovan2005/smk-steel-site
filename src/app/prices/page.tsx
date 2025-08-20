@@ -215,21 +215,51 @@ export default function PricesPage() {
               <div>
                 <h3 className="font-semibold mb-3">Условия работы</h3>
                 <ul className="space-y-2 text-sm">
-                  <li>• Минимальный заказ: от 2 тонн</li>
-                  <li>• Предоплата: 50% от суммы заказа</li>
-                  <li>• Срок изготовления: от 7 рабочих дней</li>
-                  <li>• Доставка по СПб: включена в стоимость</li>
-                  <li>• Гарантия: 12 месяцев</li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Минимальный заказ: от 2 тонн
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Предоплата: 50% от суммы заказа
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Срок изготовления: от 7 рабочих дней
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Доставка по СПб: включена в стоимость
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Гарантия: 12 месяцев
+                  </li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold mb-3">Что влияет на стоимость</h3>
                 <ul className="space-y-2 text-sm">
-                  <li>• Сложность конструкции</li>
-                  <li>• Марка стали и толщина металла</li>
-                  <li>• Объем заказа</li>
-                  <li>• Требования к покрытию</li>
-                  <li>• Срочность изготовления</li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Сложность конструкции
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Марка стали и толщина металла
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Объем заказа
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Требования к покрытию
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    Срочность изготовления
+                  </li>
                 </ul>
               </div>
             </div>
