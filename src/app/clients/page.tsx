@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Клиенты СМК Сталь - ведущие компании Санкт-Петербурга и России. Отзывы о качестве работ и соблюдении сроков изготовления металлоконструкций.",
   keywords: [
     "клиенты СМК Сталь",
-    "отзывы о СМК Сталь",
+    "отзывы о СМК Сталь", 
     "рекомендации металлоконструкции",
     "партнеры СМК Сталь",
     "референс лист"
@@ -21,40 +21,18 @@ export const metadata: Metadata = {
 };
 
 export default function ClientsPage() {
-  const testimonials = [
-    {
-      company: 'ООО "Новые Коммунальные Технологии"',
-      text: 'Коллектив ООО "Новые Коммунальные Технологии" выражает свою признательность за плодотворное взаимовыгодное сотрудничество. Компания не раз доказывала свою благонадежность в качестве поставщика.',
-      position: 'Технический директор',
-      name: 'А.В. Петров'
-    },
-    {
-      company: 'ООО "ТЕРРИКОН"',
-      text: 'Рекомендуем производственную компанию ООО "СМК СТАЛЬ", как надежного партнера с высоким качеством сервиса и профессионализма. Выражаем огромную благодарность за предоставление услуг по металлообработке и производству металлоконструкций.',
-      position: 'Генеральный директор',
-      name: 'И.С. Смирнов'
-    },
-    {
-      company: 'ООО "Залей пол"',
-      text: 'ООО "Залей пол" выражает благодарность производственной компании ООО "СМК СТАЛЬ" за изготовление и покраску полимерно-порошковым покрытием колесоотбойников по нашим чертежам. Качество и оперативность поставки на высоте!',
-      position: 'Коммерческий директор',
-      name: 'М.А. Козлова'
-    },
-    {
-      company: 'ООО "Новый дом в Луге"',
-      text: 'ООО "Новый дом в Луге" выражает огромную благодарность ООО "СМК Сталь" за быстрое и качественное изготовление и монтаж металлических ограждений балконов.',
-      position: 'Главный инженер',
-      name: 'В.П. Николаев'
-    }
-  ];
 
-  const majorClients = [
-    { name: "ИКЕА", sector: "Торговля", projects: "Металлоконструкции торговых залов" },
-    { name: "Газпром", sector: "Энергетика", projects: "Промышленное оборудование" },
-    { name: "Лахта Центр", sector: "Строительство", projects: "Высотное строительство" },
-    { name: "ОКЕЙ", sector: "Торговля", projects: "Сеть гипермаркетов" },
-    { name: "ПСПбГМУ", sector: "Медицина", projects: "Купольные конструкции" },
-    { name: "Северный поток", sector: "Энергетика", projects: "Инфраструктурные объекты" }
+
+  // Реальные клиенты с логотипами с главной страницы
+  const clientLogos = [
+    "/tilda/static_company_1.jpg",
+    "/tilda/static_company_2.jpg", 
+    "/tilda/static_company_3.jpg",
+    "/tilda/static_company_4.jpg",
+    "/tilda/static_company_5.png",
+    "/tilda/static_company_6.jpg",
+    "/tilda/static_company_7.jpg",
+    "/tilda/static_company_8.jpg",
   ];
 
   const clientCategories = [
@@ -125,15 +103,19 @@ export default function ClientsPage() {
             </div>
           </div>
 
-          {/* Крупные клиенты */}
+          {/* Логотипы клиентов */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
-            <h2 className="text-2xl font-bold mb-8 text-center text-blue-300">Крупные клиенты</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {majorClients.map((client) => (
-                <div key={client.name} className="rounded-lg border border-white/10 bg-black/20 p-4">
-                  <h3 className="text-xl font-semibold mb-2 text-white">{client.name}</h3>
-                  <p className="text-sm text-blue-300 mb-2">{client.sector}</p>
-                  <p className="text-sm text-gray-300">{client.projects}</p>
+            <h2 className="text-2xl font-bold mb-8 text-center">Наши клиенты</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
+              {clientLogos.map((logo, index) => (
+                <div key={index} className="relative h-24 sm:h-32 w-full flex items-center justify-center">
+                  <Image
+                    src={logo}
+                    alt={`Клиент ${index + 1}`}
+                    fill
+                    className="object-contain transition-all duration-300 opacity-90 hover:opacity-100 filter brightness-200"
+                    sizes="(max-width: 768px) 45vw, 20vw"
+                  />
                 </div>
               ))}
             </div>
@@ -141,16 +123,14 @@ export default function ClientsPage() {
 
           {/* Категории клиентов */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
-            <h2 className="text-2xl font-bold mb-8 text-center text-green-300">Наши партнеры по отраслям</h2>
+            <h2 className="text-2xl font-bold mb-8 text-center">Наши партнеры по отраслям</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {clientCategories.map((category, index) => (
                 <div key={category.title} className="text-center">
                   <div className={`text-6xl mb-4 ${index === 0 ? '' : index === 1 ? '' : index === 2 ? '' : ''}`}>
                     {index === 0 ? '🏗️' : index === 1 ? '🏭' : index === 2 ? '🛒' : '🏛️'}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3" style={{
-                    color: index === 0 ? '#60a5fa' : index === 1 ? '#34d399' : index === 2 ? '#fb7185' : '#a78bfa'
-                  }}>{category.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3">{category.title}</h3>
                   <p className="text-sm text-gray-300 mb-2">{category.description}</p>
                   <div className="text-lg font-bold text-orange-400">{category.count}</div>
                 </div>
@@ -158,80 +138,55 @@ export default function ClientsPage() {
             </div>
           </div>
 
-          {/* Отзывы клиентов */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-8 text-center text-orange-300">Отзывы наших клиентов</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div key={testimonial.company} className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-                  <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-blue-300 mb-2">{testimonial.company}</h3>
-                    <p className="text-gray-300 text-sm italic leading-relaxed">"{testimonial.text}"</p>
-                  </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-400">{testimonial.position}</span>
-                    <span className="text-white font-medium">{testimonial.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Почему нас выбирают */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
-            <h2 className="text-2xl font-bold mb-8 text-center text-purple-300">Почему нас выбирают</h2>
+            <h2 className="text-2xl font-bold mb-8 text-center">Почему нас выбирают</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="text-center p-6 rounded-lg border border-white/10 bg-black/20">
                 <div className="text-4xl mb-4">⚡</div>
-                <h3 className="text-lg font-semibold mb-3 text-yellow-300">Соблюдение сроков</h3>
+                <h3 className="text-lg font-semibold mb-3">Соблюдение сроков</h3>
                 <p className="text-sm text-gray-300">100% проектов сдано в оговоренные сроки за последние 3 года</p>
               </div>
               <div className="text-center p-6 rounded-lg border border-white/10 bg-black/20">
                 <div className="text-4xl mb-4">🎯</div>
-                <h3 className="text-lg font-semibold mb-3 text-blue-300">Высокое качество</h3>
+                <h3 className="text-lg font-semibold mb-3">Высокое качество</h3>
                 <p className="text-sm text-gray-300">Строгий контроль качества на всех этапах производства</p>
               </div>
               <div className="text-center p-6 rounded-lg border border-white/10 bg-black/20">
                 <div className="text-4xl mb-4">💰</div>
-                <h3 className="text-lg font-semibold mb-3 text-green-300">Конкурентные цены</h3>
+                <h3 className="text-lg font-semibold mb-3">Конкурентные цены</h3>
                 <p className="text-sm text-gray-300">Прямое производство без посредников обеспечивает лучшие цены</p>
               </div>
               <div className="text-center p-6 rounded-lg border border-white/10 bg-black/20">
                 <div className="text-4xl mb-4">🔧</div>
-                <h3 className="text-lg font-semibold mb-3 text-orange-300">Полный цикл</h3>
+                <h3 className="text-lg font-semibold mb-3">Полный цикл</h3>
                 <p className="text-sm text-gray-300">От проектирования до монтажа - все услуги в одном месте</p>
               </div>
               <div className="text-center p-6 rounded-lg border border-white/10 bg-black/20">
                 <div className="text-4xl mb-4">👥</div>
-                <h3 className="text-lg font-semibold mb-3 text-pink-300">Опытная команда</h3>
+                <h3 className="text-lg font-semibold mb-3">Опытная команда</h3>
                 <p className="text-sm text-gray-300">Квалифицированные специалисты с опытом работы более 10 лет</p>
               </div>
               <div className="text-center p-6 rounded-lg border border-white/10 bg-black/20">
                 <div className="text-4xl mb-4">📋</div>
-                <h3 className="text-lg font-semibold mb-3 text-indigo-300">Все допуски</h3>
+                <h3 className="text-lg font-semibold mb-3">Все допуски</h3>
                 <p className="text-sm text-gray-300">Полный пакет разрешительных документов и допусков СРО</p>
               </div>
             </div>
           </div>
 
           {/* CTA для новых клиентов */}
-          <div className="rounded-xl border border-white/10 bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-8 text-center">
+          <div className="rounded-xl border border-white/10 bg-blue-900/80 p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">Станьте нашим клиентом!</h2>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
               Присоединяйтесь к числу наших довольных клиентов. Получите персональное коммерческое предложение уже сегодня
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a 
-                href="tel:+79219472911" 
-                className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg font-semibold transition-colors"
+                href="#lead"
+                className="btn-outline"
               >
-                Стать клиентом
-              </a>
-              <a 
-                href="mailto:zakaz@smksteel-spb.ru" 
-                className="bg-green-600 hover:bg-green-500 px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Получить КП
+                Заказать расчет
               </a>
               <Link href="/" className="btn-outline">
                 На главную

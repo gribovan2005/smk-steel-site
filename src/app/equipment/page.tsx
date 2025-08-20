@@ -59,7 +59,7 @@ export default function EquipmentPage() {
             СМК Сталь
           </Link>
           <Link href="/" className="text-white/80 hover:text-white transition-colors">
-            ← На главную
+            ← На главную страницу
           </Link>
         </div>
       </header>
@@ -80,7 +80,7 @@ export default function EquipmentPage() {
               <div className="text-sm text-gray-300">максимальная толщина резки</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">160т</div>
+              <div className="text-3xl sm:text-4xl font-bold  mb-2">160т</div>
               <div className="text-sm text-gray-300">усилие гибочного пресса</div>
             </div>
             <div className="text-center">
@@ -110,10 +110,10 @@ export default function EquipmentPage() {
                     </div>
                   </div>
                   <div className={`p-8 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <h3 className="text-2xl font-bold mb-4 text-blue-300">{equipment.name}</h3>
+                    <h3 className="text-2xl font-bold mb-4">{equipment.name}</h3>
                     <p className="text-gray-300 mb-6 leading-relaxed">{equipment.description}</p>
                     <div className="space-y-3">
-                      <h4 className="font-semibold text-orange-300">Технические характеристики:</h4>
+                      <h4 className="font-semibold">Технические характеристики:</h4>
                       <ul className="space-y-2">
                         {equipment.specs.map((spec, specIndex) => (
                           <li key={specIndex} className="flex items-center gap-3 text-gray-300">
@@ -132,7 +132,7 @@ export default function EquipmentPage() {
           {/* Дополнительные возможности */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-              <h2 className="text-xl font-bold mb-6 text-green-300">Контроль качества</h2>
+              <h2 className="text-xl font-bold mb-6 ">Контроль качества</h2>
               <div className="space-y-4 text-gray-300">
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
@@ -159,7 +159,7 @@ export default function EquipmentPage() {
             </div>
 
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-              <h2 className="text-xl font-bold mb-6 text-orange-300">Вспомогательное оборудование</h2>
+              <h2 className="text-xl font-bold mb-6 ">Вспомогательное оборудование</h2>
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h3 className="font-semibold mb-2">Грузоподъемная техника</h3>
@@ -191,14 +191,14 @@ export default function EquipmentPage() {
 
           {/* Преимущества оборудования */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-center text-yellow-300">Преимущества нашего оборудования</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center ">Преимущества нашего оборудования</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="text-blue-400 font-semibold mb-3">Высокая точность</div>
                 <p className="text-sm text-gray-300">Современные системы ЧПУ обеспечивают точность до ±0.1мм</p>
               </div>
               <div className="text-center">
-                <div className="text-green-400 font-semibold mb-3">Производительность</div>
+                <div className=" font-semibold mb-3">Производительность</div>
                 <p className="text-sm text-gray-300">Автоматизация процессов увеличивает скорость в 3 раза</p>
               </div>
               <div className="text-center">
@@ -209,7 +209,7 @@ export default function EquipmentPage() {
           </div>
 
           {/* CTA */}
-          <div className="rounded-xl border border-white/10 bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-8 text-center">
+          <div className="rounded-xl border border-white/10 bg-blue-900/80 p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">Хотите увидеть наше производство?</h2>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
               Приглашаем на экскурсию по заводу, чтобы вы могли лично убедиться в качестве нашего оборудования
@@ -219,10 +219,10 @@ export default function EquipmentPage() {
                 href="tel:+79219472911" 
                 className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg font-semibold transition-colors"
               >
-                Записаться на экскурсию
+                Заказать расчет
               </a>
               <Link href="/" className="btn-outline">
-                На главную
+                На главную страницу
               </Link>
             </div>
           </div>

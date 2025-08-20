@@ -97,7 +97,7 @@ export default function PricesPage() {
 
             {/* Услуги металлообработки */}
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-              <h2 className="text-xl font-semibold mb-6 text-green-300">Услуги металлообработки</h2>
+              <h2 className="text-xl font-semibold mb-6 ">Услуги металлообработки</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
@@ -141,7 +141,7 @@ export default function PricesPage() {
             {/* Проектирование и монтаж */}
             <div className="grid md:grid-cols-2 gap-8">
               <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-                <h2 className="text-xl font-semibold mb-6 text-orange-300">Проектирование</h2>
+                <h2 className="text-xl font-semibold mb-6 ">Проектирование</h2>
                 <div className="space-y-4 text-gray-300">
                   <div className="flex justify-between">
                     <span>Разработка КМ</span>
@@ -159,7 +159,7 @@ export default function PricesPage() {
               </div>
 
               <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-                <h2 className="text-xl font-semibold mb-6 text-purple-300">Монтаж</h2>
+                <h2 className="text-xl font-semibold mb-6 ">Монтаж</h2>
                 <div className="space-y-4 text-gray-300">
                   <div className="flex justify-between">
                     <span>Монтаж каркаса</span>
@@ -179,7 +179,7 @@ export default function PricesPage() {
 
             {/* Дополнительная информация */}
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-              <h2 className="text-xl font-semibold mb-4 text-yellow-300">Дополнительная информация</h2>
+              <h2 className="text-xl font-semibold mb-4 ">Дополнительная информация</h2>
               <div className="grid md:grid-cols-2 gap-6 text-gray-300">
                 <div>
                   <h3 className="font-semibold mb-3">Условия работы:</h3>

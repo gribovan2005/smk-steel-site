@@ -142,7 +142,6 @@ export default function Home() {
                   <Link href="/about-us" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">О заводе</Link>
                   <Link href="/orders" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Заказы</Link>
                   <Link href="/equipment" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Оборудование</Link>
-                  <Link href="/projects" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Работы</Link>
                   <Link href="/clients" className="link-nav text-sm py-1 hover:text-blue-300 transition-colors">Клиенты</Link>
                 </div>
               </div>
@@ -174,7 +173,6 @@ export default function Home() {
                 <Link href="/about-us" className="link-nav text-sm py-1 font-semibold">О заводе</Link>
                 <Link href="/orders" className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">Заказы</Link>
                 <Link href="/equipment" className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">Оборудование</Link>
-                <Link href="/projects" className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">Работы</Link>
                 <Link href="/clients" className="link-nav text-xs py-1 ml-2 text-gray-300 hover:text-white transition-colors">Клиенты</Link>
                 
                 {/* Услуги */}

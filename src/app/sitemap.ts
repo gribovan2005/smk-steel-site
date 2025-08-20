@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     
     // Новые страницы "О нас"
     { url: `${base}/equipment`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/projects`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.6 },
+
     { url: `${base}/clients`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.6 },
     
     // Страницы услуг

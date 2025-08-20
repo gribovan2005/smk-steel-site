@@ -32,7 +32,7 @@ export default function AboutUsPage() {
             СМК Сталь
           </Link>
           <Link href="/" className="text-white/80 hover:text-white transition-colors">
-            ← На главную
+            ← На главную страницу
           </Link>
         </div>
       </header>
@@ -54,7 +54,7 @@ export default function AboutUsPage() {
               <div className="text-sm text-gray-300">довольных клиентов</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">500</div>
+              <div className="text-3xl sm:text-4xl font-bold  mb-2">500</div>
               <div className="text-sm text-gray-300">тонн в месяц</div>
             </div>
             <div className="text-center">
@@ -69,7 +69,7 @@ export default function AboutUsPage() {
 
           {/* О заводе */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-blue-300">О заводе</h2>
+            <h2 className="text-2xl font-bold mb-6 ">О заводе</h2>
             <p className="text-gray-300 leading-relaxed mb-6">
               ООО «СМК Сталь» занимается производством металлоконструкций с 2013 г.
             </p>
@@ -88,7 +88,7 @@ export default function AboutUsPage() {
           {/* Наши сильные стороны */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-              <h2 className="text-xl font-bold mb-6 text-green-300">Наши сильные стороны</h2>
+              <h2 className="text-xl font-bold mb-6 ">Наши сильные стороны</h2>
               <div className="space-y-4 text-gray-300">
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
@@ -122,7 +122,7 @@ export default function AboutUsPage() {
             </div>
 
             <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
-              <h2 className="text-xl font-bold mb-6 text-orange-300">Производственные возможности</h2>
+              <h2 className="text-xl font-bold mb-6 ">Производственные возможности</h2>
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h3 className="font-semibold mb-2">Металлообработка</h3>
@@ -157,7 +157,7 @@ export default function AboutUsPage() {
 
           {/* Монтаж */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-purple-300">Монтаж металлоконструкций в Санкт-Петербурге и ЛО</h2>
+            <h2 className="text-2xl font-bold mb-6 ">Монтаж металлоконструкций в Санкт-Петербурге и ЛО</h2>
             <p className="text-gray-300 leading-relaxed mb-6">
               На заводе по производству металлоконструкций ООО «СМК Сталь» вы сможете заказать услуги сборки 
               и монтажа изделий из металла с доставкой по СПБ и Ленинградской области.
@@ -172,7 +172,7 @@ export default function AboutUsPage() {
                 <p className="text-sm text-gray-300">Все допуски СРО и сертификаты</p>
               </div>
               <div className="text-center">
-                <div className="text-green-400 font-semibold mb-2">Работаем круглогодично</div>
+                <div className=" font-semibold mb-2">Работаем круглогодично</div>
                 <p className="text-sm text-gray-300">Монтаж зимой и летом</p>
               </div>
               <div className="text-center">
@@ -184,7 +184,7 @@ export default function AboutUsPage() {
 
           {/* Условия работы */}
           <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-8 mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-yellow-300">Условия работы</h2>
+            <h2 className="text-2xl font-bold mb-6 ">Условия работы</h2>
             <p className="text-gray-300 leading-relaxed mb-6">
               В торгово-производственной компании «СМК Сталь» вы сможете заказать проектирование и изготовление 
               конструкций из металла с доставкой по всей России. Наш завод металлообработки работает для вас 
@@ -196,7 +196,7 @@ export default function AboutUsPage() {
             </p>
             <div className="grid md:grid-cols-2 gap-8 mt-8">
               <div>
-                <h3 className="font-semibold text-blue-300 mb-4">Гарантии качества</h3>
+                <h3 className="font-semibold  mb-4">Гарантии качества</h3>
                 <ul className="space-y-2 text-gray-300 text-sm">
                   <li>• Соблюдение сроков поставки</li>
                   <li>• Прозрачное ценообразование</li>
@@ -206,7 +206,7 @@ export default function AboutUsPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-green-300 mb-4">Преимущества работы с нами</h3>
+                <h3 className="font-semibold  mb-4">Преимущества работы с нами</h3>
                 <ul className="space-y-2 text-gray-300 text-sm">
                   <li>• Индивидуальный подход</li>
                   <li>• Работа по чертежам заказчика</li>
@@ -219,7 +219,7 @@ export default function AboutUsPage() {
           </div>
 
           {/* CTA */}
-          <div className="rounded-xl border border-white/10 bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-8 text-center">
+          <div className="rounded-xl border border-white/10 bg-blue-900/80 p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">Нужна консультация специалиста?</h2>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
               Чтобы получить бесплатную консультацию по услуге, заполните форму заявки или позвоните по номеру
@@ -232,7 +232,7 @@ export default function AboutUsPage() {
                 +7 (921) 947-29-11
               </a>
               <Link href="/" className="btn-outline">
-                На главную
+                На главную страницу
               </Link>
             </div>
           </div>

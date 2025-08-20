@@ -95,7 +95,7 @@ export default function ContactsPage() {
               <h2 className="text-xl font-semibold mb-4">Наши адреса</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold text-orange-300 mb-2">Офис</h3>
+                  <h3 className="font-semibold  mb-2">Офис</h3>
                   <p className="text-gray-300 leading-relaxed">
                     192012, г. Санкт-Петербург<br/>
                     ул. Мурзинская, д. 11, литера А, офис 701<br/>
@@ -103,7 +103,7 @@ export default function ContactsPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-orange-300 mb-2">Производство</h3>
+                  <h3 className="font-semibold  mb-2">Производство</h3>
                   <p className="text-gray-300 leading-relaxed">
                     г. Санкт-Петербург<br/>
                     м. Парнас, ул. Домостроительная 10Б<br/>
@@ -117,7 +117,7 @@ export default function ContactsPage() {
               <h2 className="text-xl font-semibold mb-4">Как нас найти</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold text-green-300 mb-3">До офиса</h3>
+                  <h3 className="font-semibold  mb-3">До офиса</h3>
                   <ul className="space-y-2 text-gray-300 text-sm">
                     <li>• м. Рыбацкое - 10 мин пешком</li>
                     <li>• От КАД - съезд на ул. Шелгунова</li>
@@ -125,7 +125,7 @@ export default function ContactsPage() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-green-300 mb-3">До производства</h3>
+                  <h3 className="font-semibold  mb-3">До производства</h3>
                   <ul className="space-y-2 text-gray-300 text-sm">
                     <li>• м. Парнас - 15 мин на транспорте</li>
                     <li>• От КАД - съезд Домостроительная</li>
