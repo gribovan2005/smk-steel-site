@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect } from "react";
 import ParallaxBG from "@/components/ParallaxBG";
 import LeadForm from "@/components/LeadForm";
@@ -89,7 +90,15 @@ export default function Home() {
       <header className="sticky top-0 z-30 bg-black/80 backdrop-blur border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="text-lg font-semibold tracking-wide whitespace-nowrap px-3 py-1 rounded-lg border border-white/20 bg-black/40 backdrop-blur">СМК Сталь</span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/static_smk_steel.png"
+                alt="СМК Сталь — Производство металлоконструкций"
+                width={180}  
+                height={60}  
+                className="h-12 w-auto"
+              />
+            </Link>
           </div>
           <nav className="hidden md:flex items-center gap-5 text-sm font-semibold uppercase">
             {/* Выпадающее меню Услуги */}

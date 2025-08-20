@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ButtonProps } from "@/types";
 
 const Button: React.FC<ButtonProps> = ({

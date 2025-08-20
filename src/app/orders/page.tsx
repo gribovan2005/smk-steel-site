@@ -35,7 +35,7 @@ export default function OrdersPage() {
     <div className="min-h-screen text-white relative">
       <ParallaxBG imageUrl="/welding_5.jpg" scalePercent={160} brightness={1.18} contrast={1.08} maxShiftPercent={10} />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
-
+      
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <nav className="bg-black/30 backdrop-blur py-4 relative z-10">

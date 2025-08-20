@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { services } from "@/data/services";
 import { constructions } from "@/data/constructions";
 

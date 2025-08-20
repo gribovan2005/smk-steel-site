@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import ParallaxBG from "@/components/ParallaxBG";
 
 export const metadata: Metadata = {
@@ -66,11 +67,23 @@ export default function FAQPage() {
 
       <header className="relative z-30 border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-lg font-semibold tracking-wide px-3 py-1 rounded-lg border border-white/20 bg-black/40 backdrop-blur">
-            СМК Сталь
+          {/* Логотип — больше, без обводки и фона */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/static_smk_steel.png"
+              alt="СМК Сталь — Производство металлоконструкций"
+              width={180}
+              height={60}
+              className="h-12 w-auto"
+            />
           </Link>
-          <Link href="/" className="text-white/80 hover:text-white transition-colors">
-            ← На главную
+
+          {/* Ссылка "На главную" — стильно и понятно */}
+          <Link
+            href="/"
+            className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-1"
+          >
+            ← <span className="hidden sm:inline">На главную</span>
           </Link>
         </div>
       </header>
