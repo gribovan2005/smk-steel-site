@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     
     // Основные страницы
     { url: `${base}/about`, lastModified: lastMod, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${base}/about-us`, lastModified: lastMod, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${base}/prices`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/contacts`, lastModified: lastMod, changeFrequency: "yearly", priority: 0.8 },
     { url: `${base}/orders`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/faq`, lastModified: lastMod, changeFrequency: "monthly", priority: 0.6 },

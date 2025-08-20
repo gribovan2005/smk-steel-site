@@ -86,16 +86,16 @@ export default function Home() {
         strategy="lazyOnload"
       />
 
-      <header className="relative z-30">
+      <header className="sticky top-0 z-30 bg-black/80 backdrop-blur border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="text-lg font-semibold tracking-wide whitespace-nowrap px-3 py-1 rounded-lg border border-white/20 bg-black/40 backdrop-blur">СМК Сталь</span>
           </div>
           <nav className="hidden md:flex items-center gap-5 text-sm font-semibold uppercase">
             {/* Выпадающее меню Услуги */}
-            <details className="relative">
-              <summary className="link-nav cursor-pointer list-none">Услуги</summary>
-              <div className="absolute left-0 mt-2 w-80 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-40">
+            <div className="relative group">
+              <span className="link-nav cursor-pointer">Услуги</span>
+              <div className="absolute left-0 mt-2 w-80 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="flex flex-col gap-2 text-left normal-case font-normal">
                   <a href="#services" className="link-nav font-semibold border-b border-white/20 pb-2">Все услуги</a>
                   {services.map((service) => {
@@ -108,13 +108,13 @@ export default function Home() {
                   })}
                 </div>
               </div>
-            </details>
+            </div>
             
             {/* Выпадающее меню Типовые конструкции */}
-            <details className="relative">
-              <summary className="link-nav cursor-pointer list-none">Типовые конструкции</summary>
-              <div className="absolute left-0 mt-2 w-80 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-40">
-                <div className="flex flex-col gap-2 text-left normal-case font-normal max-h-96 overflow-y-auto">
+            <div className="relative group">
+              <span className="link-nav cursor-pointer">Типовые конструкции</span>
+              <div className="absolute left-0 mt-2 w-80 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 max-h-96 overflow-y-auto">
+                <div className="flex flex-col gap-2 text-left normal-case font-normal">
                   <a href="#constructions" className="link-nav font-semibold border-b border-white/20 pb-2">Все конструкции</a>
                   {constructions.map((construction) => {
                     const url = constructionUrls[construction.name];
@@ -130,26 +130,12 @@ export default function Home() {
                   })}
                 </div>
               </div>
-            </details>
+            </div>
             
-            <a href="#prices" className="link-nav">Цены</a>
-            <a href="#steps" className="link-nav">Этапы</a>
-            <a href="#projects" className="link-nav">Работы</a>
-            <a href="#equipment" className="link-nav">Оборудование</a>
-            <a href="/faq" className="link-nav">FAQ</a>
-            <a href="#clients" className="link-nav">Клиенты</a>
-            <a href="#orders" className="link-nav">Заказы</a>
-            <details className="relative">
-              <summary className="link-nav cursor-pointer list-none">Контакты</summary>
-              <div className="absolute right-0 mt-2 w-72 rounded-xl border border-white/10 bg-black/70 backdrop-blur p-3 z-40">
-                <div className="flex flex-col gap-2 text-left normal-case font-normal">
-                  <a href="tel:+79219472911" className="link-nav">+7 (921) 947-29-11</a>
-                  <a href="mailto:zakaz@smksteel-spb.ru" className="link-nav">zakaz@smksteel-spb.ru</a>
-                  <div className="text-sm text-gray-300">192012, г. Санкт-Петербург, вн. тер. г. муниципальный округ Рыбацкое, ул. Мурзинская, д. 11, литера А, офис 701</div>
-                  <a href="#lead" className="btn-outline btn-sm mt-1">Связаться</a>
-                </div>
-              </div>
-            </details>
+            <Link href="/prices" className="link-nav">Цены</Link>
+            <Link href="/about-us" className="link-nav">О нас</Link>
+            <Link href="/faq" className="link-nav">FAQ</Link>
+            <Link href="/contacts" className="link-nav">Контакты</Link>
           </nav>
           <div className="flex items-center gap-3">
             <details className="md:hidden">
@@ -158,13 +144,10 @@ export default function Home() {
                 {/* Основные разделы */}
                 <div className="text-xs text-gray-400 uppercase tracking-wide mb-2">Разделы</div>
                 {[
-                  ["#prices","Цены"],
-                  ["#steps","Этапы"],
-                  ["#projects","Работы"],
-                  ["#equipment","Оборудование"],
+                  ["/prices","Цены"],
+                  ["/about-us","О нас"],
                   ["/faq","FAQ"],
-                  ["#clients","Клиенты"],
-                  ["#orders","Заказы"],
+                  ["/contacts","Контакты"],
                 ].map(([href, label]) => (
                   href.startsWith('/') ? (
                     <Link key={href} href={href} className="link-nav text-sm py-1">{label}</Link>
@@ -260,7 +243,6 @@ export default function Home() {
 
         <ServicesSection />
         <ConstructionsSection />
-        <PricingSection />
         <StepsSection />
         <EquipmentSection />
         <ProjectsSection />
