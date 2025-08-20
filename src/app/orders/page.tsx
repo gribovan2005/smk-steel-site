@@ -102,11 +102,8 @@ export default function OrdersPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <Link 
-              href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
-            >
-              ← На главную страницу
+            <Link href="/" className="btn-outline">
+              На главную
             </Link>
           </div>
         </div>

@@ -1,17 +1,154 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import ParallaxBG from "@/components/ParallaxBG";
+
+export const metadata: Metadata = {
+  title: "Контакты СМК Сталь | Связаться с производителем металлоконструкций",
+  description: "Контакты СМК Сталь в Санкт-Петербурге. Телефон, адрес офиса и производства. Связаться с производителем металлоконструкций.",
+  keywords: [
+    "контакты СМК Сталь",
+    "телефон СМК Сталь", 
+    "адрес СМК Сталь",
+    "офис металлоконструкции",
+    "производство СПб"
+  ],
+  openGraph: {
+    title: "Контакты СМК Сталь",
+    description: "Свяжитесь с нами для заказа металлоконструкций в Санкт-Петербурге.",
+    images: [{ url: "/welding_3.jpg", width: 1200, height: 630 }],
+  },
+};
 
 export default function ContactsPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
-      <div className="mb-6">
-        <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-4">
-          ← На главную
-        </Link>
-      </div>
-      <h1 className="text-3xl font-bold mb-6">Контакты</h1>
-      <p className="text-gray-300">Телефон: +7 (921) 947-29-11</p>
-      <p className="text-gray-300">Email: zakaz@smksteel-spb.ru</p>
-      <p className="text-gray-300">Адрес: 192012, г. Санкт-Петербург, вн. тер. г. муниципальный округ Рыбацкое, ул. Мурзинская, д. 11, литера А, офис 701</p>
+    <div className="min-h-screen text-white relative">
+      <ParallaxBG imageUrl="/welding_2.jpg" scalePercent={160} brightness={1.18} contrast={1.08} maxShiftPercent={10} />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+
+      <header className="relative z-30 border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="text-lg font-semibold tracking-wide px-3 py-1 rounded-lg border border-white/20 bg-black/40 backdrop-blur">
+            СМК Сталь
+          </Link>
+          <Link href="/" className="text-white/80 hover:text-white transition-colors">
+            ← На главную
+          </Link>
+        </div>
+      </header>
+
+      <main className="relative z-10">
+        <div className="mx-auto max-w-7xl px-4 py-16">
+          <div className="text-center mb-12">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-shadow">Контакты</h1>
+            <p className="text-gray-300 max-w-2xl mx-auto text-shadow">
+              Свяжитесь с нами любым удобным способом для консультации или заказа металлоконструкций
+            </p>
+          </div>
+
+          <div className="grid gap-8 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
+                <h2 className="text-xl font-semibold mb-4">Связь с нами</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-semibold text-blue-300 mb-2">Телефон</h3>
+                    <a 
+                      href="tel:+79219472911" 
+                      className="text-white font-medium hover:text-blue-300 transition-colors text-lg"
+                    >
+                      +7 (921) 947-29-11
+                    </a>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-blue-300 mb-2">Email</h3>
+                    <a 
+                      href="mailto:zakaz@smksteel-spb.ru" 
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      zakaz@smksteel-spb.ru
+                    </a>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-blue-300 mb-2">Режим работы</h3>
+                    <p className="text-gray-300">Пн-Вс: 9:00 - 18:00</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
+                <h2 className="text-xl font-semibold mb-4">Реквизиты</h2>
+                <div className="space-y-3 text-gray-300">
+                  <div>
+                    <span className="text-blue-300">ИНН:</span> 7811564681
+                  </div>
+                  <div>
+                    <span className="text-blue-300">ОГРН:</span> 1137847431028
+                  </div>
+                  <div>
+                    <span className="text-blue-300">КПП:</span> 781101001
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
+              <h2 className="text-xl font-semibold mb-4">Наши адреса</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-semibold text-orange-300 mb-2">Офис</h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    192012, г. Санкт-Петербург<br/>
+                    ул. Мурзинская, д. 11, литера А, офис 701<br/>
+                    <span className="text-sm text-gray-400">(юридический адрес)</span>
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-orange-300 mb-2">Производство</h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    г. Санкт-Петербург<br/>
+                    м. Парнас, ул. Домостроительная 10Б<br/>
+                    <span className="text-sm text-gray-400">(фактический адрес)</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-black/30 backdrop-blur p-6">
+              <h2 className="text-xl font-semibold mb-4">Как нас найти</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-semibold text-green-300 mb-3">До офиса</h3>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• м. Рыбацкое - 10 мин пешком</li>
+                    <li>• От КАД - съезд на ул. Шелгунова</li>
+                    <li>• Парковка возле здания</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-green-300 mb-3">До производства</h3>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• м. Парнас - 15 мин на транспорте</li>
+                    <li>• От КАД - съезд Домостроительная</li>
+                    <li>• Удобный въезд для грузового транспорта</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link href="/" className="btn-outline">
+              На главную
+            </Link>
+          </div>
+        </div>
+      </main>
+
+      <footer className="relative z-10 py-8 border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 text-sm text-gray-400 text-center">
+          © {new Date().getFullYear()} СМК Сталь
+        </div>
+      </footer>
     </div>
   );
 } 

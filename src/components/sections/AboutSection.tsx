@@ -35,11 +35,7 @@ const AboutSection = () => {
                 Генподрядные работы
               </div>
             </div>
-            <div className="mt-8">
-              <Button href="/" variant="primary" size="md">
-                На главную
-              </Button>
-            </div>
+
           </div>
         </div>
       </div>
