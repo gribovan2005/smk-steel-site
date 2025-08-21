@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import Script from 'next/script';
+import Script from "next/script";
 
 interface YandexDirectProps {
-  targetId?: string;
+    targetId?: string;
 }
 
 const YandexDirect: React.FC<YandexDirectProps> = ({ targetId }) => {
-  return (
-    <>
-      <Script
-        id="yandex-direct-tracking"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+    return (
+        <>
+            <Script
+                id="yandex-direct-tracking"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: `
             (function(w, d, n, s, t) {
               w[n] = w[n] || [];
               w[n].push(function() {
                 Ya.Context.AdvManager.render({
-                  blockId: "${targetId || 'R-A-XXXXXX-X'}",
-                  renderTo: "yandex_rtb_${targetId || 'R-A-XXXXXX-X'}",
+                  blockId: "${targetId || "R-A-XXXXXX-X"}",
+                  renderTo: "yandex_rtb_${targetId || "R-A-XXXXXX-X"}",
                   async: true
                 });
               });
@@ -31,14 +31,14 @@ const YandexDirect: React.FC<YandexDirectProps> = ({ targetId }) => {
               t.parentNode.insertBefore(s, t);
             })(window, document, "yandexContextAsyncCallbacks");
           `,
-        }}
-      />
-      
-      <Script
-        id="yandex-direct-goal"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+                }}
+            />
+
+            <Script
+                id="yandex-direct-goal"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: `
             window.yaContextCb = window.yaContextCb || [];
             window.yaContextCb.push(function() {
               if (typeof Ya !== 'undefined' && Ya.adfoxCode) {
@@ -58,10 +58,10 @@ const YandexDirect: React.FC<YandexDirectProps> = ({ targetId }) => {
               }
             });
           `,
-        }}
-      />
-    </>
-  );
+                }}
+            />
+        </>
+    );
 };
 
-export default YandexDirect; 
+export default YandexDirect;
