@@ -2,10 +2,12 @@
 
 Домен: https://smk-steel.ru/
 
-![Главная страница](/reference/1.png)
+## Скриншоты сайта
 
-![Одна из страниц](/reference/3.png)
+![Главная страница](public/reference/1.png)
 
-![Еще пример страницы](/reference/4.png)
+![Одна из страниц](public/reference/3.png)
+
+![Еще пример страницы](public/reference/4.png)
 
 
